@@ -33,13 +33,12 @@ RECAP = {
 
 # ---------------------------------------------------------------- Week 10 stops
 STOPS = [
- dict(pair=('Craig', 'Ricer'), n=1, bar="Bar Tour stop: The Red Shed", photo='red_shed_group', cap="The Red Shed, more recently.",
-      text=("Ricer is 7-2 and two games clear in the Right. Craig is 2-7 and at 1%, though he has beaten Ricer in two of their last four. "
-            "The Red Shed was Ricer's bar, and the Long Island Iced Tea was his drink.")),
+ dict(pair=('Craig', 'Ricer'), n=1, bar=None,
+      text=("Ricer is 7-2 and two games clear in the Right. Craig is 2-7 and at 1%, though he has beaten Ricer in two of their last four.")),
  dict(pair=('Chad', 'Schwanz'), n=2, bar=None,
       text=("A rematch of last year's final, which Chad won by 50. Schwanz has won six straight and leads the league in points; "
             "Chad just climbed to 80% playoff odds.")),
- dict(pair=('Rusty', 'Frenches'), n=3, bar="Bar Tour stop: State Street Brats", photo='rusty_moose_brats', cap="Rusty's 21st, State Street Brats. Yes, that's the moose.",
+ dict(pair=('Rusty', 'Frenches'), n=3, bar=None,
       text=("Rusty is second in the league in points and 3-6, which takes some doing. His playoff odds are down to 32%. "
             "The Frenches have won the last three in this series, including Week 1 by 0.8.")),
  dict(pair=('Abeln', 'Giff'), n=4, bar=None,
@@ -122,6 +121,10 @@ figcaption{font:italic 14px/1.35 'Barlow';color:var(--mut);margin-top:6px}
 .call .p{font:400 26px/1.05 'Anton';text-transform:uppercase;margin:4px 0}
 .call p{margin:4px 0 0;font-size:15px}
 .small{font-size:13.5px;color:var(--mut)}
+.stopcard{background:var(--card);border:2px solid var(--ink);padding:14px 14px 6px;margin:14px 0}
+.stopcard .sn{display:inline-block;background:var(--red);color:#fff;font:700 13px 'Barlow Condensed';letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;transform:skew(-8deg)}
+.stopcard h3{font:400 30px/1 'Anton';text-transform:uppercase;margin:8px 0 2px}
+.stopcard .addr{font:700 12px 'Courier Prime';letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
 .pick{font:700 17px 'Barlow Condensed';text-transform:uppercase;letter-spacing:.03em;margin:4px 0 14px}
 .pick span{background:var(--red);color:#fff;padding:2px 7px;margin-right:6px;font-size:14px;letter-spacing:.1em}
 .vs .t{font-size:20px!important}
@@ -130,7 +133,7 @@ figcaption{font:italic 14px/1.35 'Barlow';color:var(--mut);margin-top:6px}
 """
 
 def nav():
-    items = [('top', 'Top'), ('results', 'Last week'), ('money', 'Specials'), ('door', 'The door')]
+    items = [('top', 'Top'), ('tour', 'Bar Tour'), ('results', 'Last week'), ('money', 'Specials'), ('door', 'The door')]
     items += [('games', 'This week')]
     return '<nav class="nav">' + ''.join(f'<a href="#{k}">{v}</a>' for k, v in items) + '</nav>'
 
@@ -225,6 +228,18 @@ def terrace():
             'Since 2005, a projected gap under 10 points has picked the winner 49% of the time; 10 to 20, 56%; over 20, 66%.</p>'
             '</section>')
 
+TOUR = (
+ '<section id="tour"><h2>The State Street Bar Tour</h2><p class="dek">No. 1. Two stops this week. The rest of the street isn\'t going anywhere.</p>'
+ '<div class="stopcard"><div class="sn">Stop 1</div><h3>The Red Shed</h3><div class="addr">406 N. Frances, off State</div>'
+ f'<figure><img src="{PH["red_shed_group"]}" alt="" loading="lazy"><figcaption>The Red Shed, more recently.</figcaption></figure>'
+ '<p>A small brick bar with a covered wagon on the roof, open since 1969. Nickel taps, Nerds shots, and Long Island Iced Teas in mason jars, '
+ 'which is where Ricer comes in. It was his bar and that was his drink. In 2024 the Shed moved to State Street and took the wagon along, '
+ 'parked in the front window. It has since closed.</p><p class="small">This week: Ricer hosts Craig.</p></div>'
+ '<div class="stopcard"><div class="sn">Stop 2</div><h3>State Street Brats</h3><div class="addr">603 State</div>'
+ f'<figure><img src="{PH["rusty_moose_brats"]}" alt="" loading="lazy" style="transform:rotate(.7deg)"><figcaption>Rusty\'s 21st. Yes, that\'s the moose.</figcaption></figure>'
+ '<p>Open since 1953, when it was Shorty and Lammy\'s Brathaus, and the Bavarian front and the beer garden have barely changed. '
+ 'Rusty turned 21 here and celebrated on the bar with the moose. There is, as you can see, documentation.</p>'
+ '<p class="small">This week: Rusty visits the Frenches.</p></div></section>')
 PICKNOTE = ('<p class="small" style="margin-top:14px">How the picks work: a projected score is 70% of a team\'s 2026 average plus 30% of the '
             'league average. Since 2005, a projected gap under 10 points has picked the winner 49% of the time; 10 to 20, 56%; over 20, 66%.</p>')
 HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
@@ -233,10 +248,8 @@ HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="
         '<header class="mast" id="top"><div class="k">Bullwinkle\'s Dance League &middot; Vol. 37</div>'
         '<h1><span>FFL</span>Review</h1><div class="sub">The State Street Bar Tour, No. 1 &middot; Week 10</div></header>'
         + ('<div class="prov">Sample. Week 9 as it stood Sunday night; Monday night is still to play, so scores, picks and odds will move.</div>' if PROV else '')
-        + '<section id="tour"><h2>The State Street Bar Tour</h2><p class="dek">No. 1. Two stops this week; the rest of the street isn\'t going anywhere.</p>'
-        + '<div class="legend"><a class="li" href="#s1"><span class="n">1</span><span>The Red Shed</span><em>Craig at Ricer</em></a>'
-        + '<a class="li" href="#s3"><span class="n">2</span><span>State Street Brats</span><em>Rusty at Frenches</em></a></div></section>'
-        + three() + results() + money() + door()
+        + three() + TOUR
+         + results() + money() + door()
         + '<section id="games"><h2>This week</h2><p class="dek">Week 10. Records, playoff odds, and the pick.</p></section>' + ''.join(stop(s) for s in STOPS) + PICKNOTE
         + '<div class="foot">Bullwinkle\'s Dance League &middot; FFL Review &middot; Week 10 &middot; Est. 1990, hand-delivered then, texted now</div>'
         + '</div></body></html>')

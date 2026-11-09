@@ -67,7 +67,12 @@ body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 'Barlow',sy
 section{scroll-margin-top:46px;padding-top:22px}
 .mast{background:var(--red);color:#fff;margin:0 -16px;padding:22px 18px 18px}
 .mast .k{font:700 12px 'Courier Prime',monospace;letter-spacing:.18em;text-transform:uppercase;opacity:.9}
-.mast h1{font:400 64px/0.9 'Anton';letter-spacing:2px;margin:8px 0 6px;text-transform:uppercase}
+.mast h1{font:400 54px/0.95 'Anton';letter-spacing:1.5px;margin:10px 0 8px;text-transform:uppercase}
+.mast .wm{background:#fff;color:var(--red);padding:1px 6px;font-weight:700}
+.route{display:flex;align-items:center;gap:6px;margin-top:14px;font:700 14px 'Barlow Condensed';text-transform:uppercase;letter-spacing:.06em;flex-wrap:wrap}
+.route .d{display:inline-block;width:24px;height:24px;border-radius:50%;background:#fff;color:var(--red);text-align:center;line-height:24px}
+.route i{flex:0 0 22px;border-top:2px dashed rgba(255,255,255,.8)}
+.route .more{font:italic 500 14px 'Barlow';text-transform:none;letter-spacing:0;opacity:.85}
 .mast h1 span{display:inline-block;background:#fff;color:var(--red);padding:0 8px;transform:skew(-8deg);margin-right:6px}
 .mast .sub{font:700 20px/1.2 'Barlow Condensed';text-transform:uppercase;letter-spacing:.04em}
 .prov{background:#fff;color:var(--red);border-bottom:3px solid var(--red);font:700 13px/1.35 'Barlow Condensed';letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;margin:0 -16px}
@@ -133,8 +138,7 @@ figcaption{font:italic 14px/1.35 'Barlow';color:var(--mut);margin-top:6px}
 """
 
 def nav():
-    items = [('top', 'Top'), ('tour', 'Bar Tour'), ('results', 'Last week'), ('money', 'Specials'), ('door', 'The door')]
-    items += [('games', 'This week')]
+    items = [('tour', 'The Tour'), ('results', 'Last call'), ('money', 'Specials'), ('door', 'The door'), ('games', 'On tap')]
     return '<nav class="nav">' + ''.join(f'<a href="#{k}">{v}</a>' for k, v in items) + '</nav>'
 
 def crawl_map():
@@ -157,7 +161,7 @@ def crawl_map():
     return '<div class="map">' + ''.join(o) + f'</div><div class="legend">{leg}</div>'
 
 def results():
-    h = '<section id="results"><h2>Last week</h2><p class="dek">Week 9' + (', as it stood Sunday night. Monday night still to play.' if PROV else '.') + '</p>'
+    h = '<section id="results"><h2>Last call: Week 9</h2><p class="dek">Week 9' + (', as it stood Sunday night. Monday night still to play.' if PROV else '.') + '</p>'
     for a, hh, (sa, sh) in W9:
         w = a if sa > sh else hh
         h += (f'<div class="res"><div class="sc">{lg(a, 34)}<span class="{"w" if w == a else ""}">{a}</span>'
@@ -214,7 +218,7 @@ def stop(s):
     return out
 
 def three():
-    return ('<section><h2>Three things that changed</h2><ol class="three">'
+    return ('<section><h2>Heard at the bar</h2><p class="dek">Three things that changed.</p><ol class="three">'
             f'<li><b>Ricer took the Right.</b> Two straight wins, the week\'s high score, and a two-game lead at {wl("Ricer")}. Division odds: {pct("Ricer","div")}.</li>'
             f'<li><b>Chad got back in it.</b> Up 14 points to {pct("Chad")}, provided Abes doesn\'t find 75 on Monday night.</li>'
             f'<li><b>Rusty keeps scoring and losing.</b> Second in points, {wl("Rusty")}, down 16 to {pct("Rusty")}.</li>'
@@ -229,7 +233,7 @@ def terrace():
             '</section>')
 
 TOUR = (
- '<section id="tour"><h2>The State Street Bar Tour</h2><p class="dek">No. 1. Two stops this week.</p>'
+ '<section id="tour"><h2>Stop No. 1</h2><p class="dek">Two bars this week. The rest of the street keeps.</p>'
  '<div class="stopcard"><div class="sn">Stop 1</div><h3>The Red Shed</h3><div class="addr">406 N. Frances</div>'
  f'<figure><img src="{PH["red_shed_group"]}" alt="" loading="lazy"><figcaption>The Red Shed, a few years ago.</figcaption></figure>'
  '<p>The broken pool table and the Long Island Iced Teas, in mason jars. Ricer\'s bar. It moved to State Street in 2024 and has since closed.</p></div>'
@@ -241,13 +245,13 @@ PICKNOTE = ('<p class="small" style="margin-top:14px">How the picks work: a proj
 HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
         '<title>FFL Review, Week 10: The State Street Bar Tour, No. 1</title>'
         f'<style>{FONTS}{CSS}</style></head><body>{nav()}<div class="wrap">'
-        '<header class="mast" id="top"><div class="k">Bullwinkle\'s Dance League &middot; Vol. 37</div>'
-        '<h1><span>FFL</span>Review</h1><div class="sub">The State Street Bar Tour, No. 1 &middot; Week 10</div></header>'
+        '<header class="mast" id="top"><div class="k"><span class="wm">FFL Review</span> &middot; Bullwinkle\'s Dance League &middot; Week 10</div>'
+        '<h1>The State Street<br>Bar Tour</h1><div class="sub">Stop No. 1 &middot; The Red Shed and State Street Brats</div>'
+        '<div class="route"><span class="d">1</span><span>Red Shed</span><i></i><span class="d">2</span><span>Brats</span><i></i><span class="more">more stops to come</span></div></header>'
         + ('<div class="prov">Sample. Week 9 as it stood Sunday night; Monday night is still to play, so scores, picks and odds will move.</div>' if PROV else '')
-        + three() + TOUR
-         + results() + money() + door()
-        + '<section id="games"><h2>This week</h2><p class="dek">Week 10. Records, playoff odds, and the pick.</p></section>' + ''.join(stop(s) for s in STOPS) + PICKNOTE
-        + '<div class="foot">Bullwinkle\'s Dance League &middot; FFL Review &middot; Week 10 &middot; Est. 1990, hand-delivered then, texted now</div>'
+        + TOUR + three() + results() + money() + door()
+        + '<section id="games"><h2>On tap: Week 10</h2><p class="dek">Records, playoff odds, and the pick.</p></section>' + ''.join(stop(s) for s in STOPS) + PICKNOTE
+        + '<div class="foot">Bullwinkle\'s Dance League &middot; FFL Review &middot; Week 10 &middot; The State Street Bar Tour continues</div>'
         + '</div></body></html>')
 open('ffl_wk10.html', 'w').write(HTML)
 print('ok', len(HTML) // 1024, 'KB; picks', hits9, SEASON)

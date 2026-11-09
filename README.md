@@ -7,7 +7,7 @@ Weekly newsletter for Bullwinkle's Dance League (BDL), built as HTML and rendere
 - `shared/data/` – game logs the builds read: `all_games.csv` (1991–2018 regular season, project upload "All Games 19912018.csv") and `recent.csv` (2019–2025 regular season, 1993 Week 15, every playoff game since 1990)
 - `shared/season2026/` – this season: `games_2026.csv` (every result), `picks_2026.csv` (every Bold Prediction and how it went), `weekly_high_2026.csv`, `keepers_2026.csv`
 - `shared/odds/` – the odds printed each week (`odds_snapshot_wkN.json`), so next week's change is always against what was published
-- `shared/history/` – playoff finishes, division standings, payouts, keepers; see its README for sources and known disagreements
+- `shared/history/` – one row per owner per season (division finish, playoff finish, awards), plus season awards and keepers
 - `shared/lore.md` – owner stories Derek has supplied; the only stories that get printed
 - `shared/themes_and_ribbing.md` – themes used and coming, and who's taken how much grief
 - `shared/logos/` – original team logos

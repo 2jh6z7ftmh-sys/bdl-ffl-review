@@ -139,7 +139,7 @@ figcaption{font:italic 14px/1.35 'Barlow';color:var(--mut);margin-top:6px}
 """
 
 def nav():
-    items = [('tour', 'The Tour'), ('results', 'Last call'), ('money', 'Specials'), ('door', 'The door'), ('games', 'On tap')]
+    items = [('top', 'Top'), ('results', 'Last call'), ('money', 'Specials'), ('door', 'The door'), ('games', 'On tap'), ('tour', 'The Bar Tour')]
     return '<nav class="nav">' + ''.join(f'<a href="#{k}">{v}</a>' for k, v in items) + '</nav>'
 
 def crawl_map():
@@ -234,7 +234,7 @@ def terrace():
             '</section>')
 
 TOUR = (
- '<section id="tour"><h2>Tonight\'s stops</h2><p class="dek">An ongoing series: a couple of bars an issue, for as long as the league lasts. Two this week.</p>'
+ '<section id="tour" style="margin-top:22px;border-top:4px solid var(--red)"><h2>The State Street Bar Tour</h2><p class="dek">An ongoing series: a couple of bars an issue, for as long as the league lasts. Two this week.</p>'
  '<div class="stopcard"><div class="sn">Stop 1</div><h3>The Red Shed</h3><div class="addr">406 N. Frances</div>'
  f'<figure><img src="{PH["red_shed_group"]}" alt="" loading="lazy"><figcaption>The Red Shed, a few years ago.</figcaption></figure>'
  '<p>The broken pool table and the Long Island Iced Teas, in mason jars. Ricer\'s bar. It moved to State Street in 2024 and has since closed.</p></div>'
@@ -250,8 +250,8 @@ HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="
         '<h1>The State Street<br>Bar Tour</h1><div class="sub">Stop No. 1 &middot; The Red Shed and State Street Brats</div><div class="series">An ongoing series</div>'
         '<div class="route"><span class="d">1</span><span>Red Shed</span><i></i><span class="d">2</span><span>Brats</span><i></i><span class="more">more stops to come</span></div></header>'
         + ('<div class="prov">Sample. Week 9 as it stood Sunday night; Monday night is still to play, so scores, picks and odds will move.</div>' if PROV else '')
-        + TOUR + three() + results() + money() + door()
-        + '<section id="games"><h2>On tap: Week 10</h2><p class="dek">Records, playoff odds, and the pick.</p></section>' + ''.join(stop(s) for s in STOPS) + PICKNOTE
+        + three() + results() + money() + door()
+        + '<section id="games"><h2>On tap: Week 10</h2><p class="dek">Records, playoff odds, and the pick.</p></section>' + ''.join(stop(s) for s in STOPS) + PICKNOTE + TOUR
         + '<div class="foot">Bullwinkle\'s Dance League &middot; FFL Review &middot; Week 10 &middot; The State Street Bar Tour continues</div>'
         + '</div></body></html>')
 open('ffl_wk10.html', 'w').write(HTML)

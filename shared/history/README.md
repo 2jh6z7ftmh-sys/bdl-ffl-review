@@ -15,15 +15,17 @@ Playoff game scores live in `../data/recent.csv` (type `po-QF`, `po-SF`, `po-Fin
 - Chad and Chewy were one franchise 1997–2002 (Chad was part owner of Chewy's team or not yet in the league), so those games and the 2002 title count as Chad's. Chewy's own team after that (2003–2008) stays separate.
 - Schwanz sat out 2001–2008.
 
-## Where the letter grid and the games disagree
-Checked 11/8/26, playoff games vs. `playoff_results_letters.csv`, real-score years only:
+## Corrections (Derek, 11/8/26: the scores win over the spreadsheet)
+`playoff_results_letters.csv` has been corrected to match the playoff games and is no longer identical to the project upload:
 
-| Year | Owner | Letter grid | Games | Evidence |
+| Year | Owner | Was | Now | Evidence |
 |---|---|---|---|---|
-| 2023 | Giff | D | C | CBS 2023 bracket (project file "playoffs 2023.pdf"): Giff beat Craig 148.44–112.42 in the quarterfinal, lost to Abeln 131.20–116.68 in the semifinal |
-| 2023 | Craig | C | D | Same bracket: Craig lost that quarterfinal |
-| 2013 | Abeln | C | D | Frenches beat Abeln 106–48 in the quarterfinal |
-| 2019 | Craig | F | D | Giff beat Craig 65–63 in the quarterfinal |
+| 2023 | Giff | D | C | CBS 2023 bracket (project file "playoffs 2023.pdf"): beat Craig 148.44–112.42 in the quarterfinal, lost to Abeln 131.20–116.68 in the semifinal |
+| 2023 | Craig | C | D | Same bracket: lost that quarterfinal |
+| 2013 | Abeln | C | D | Lost to the Frenches 106–48 in the quarterfinal |
+| 2019 | Craig | F | D | Lost to Giff 65–63 in the quarterfinal |
+| 2025 | all | (missing) | added | From the 2025 playoff games: Chad A, Schwanz B, Ricer C, Abeln C, Tom D, Craig D, rest F |
 
-2023 looks like Giff and Craig swapped rows. The grid has no 2025 row yet (from games: Chad A, Schwanz B, Ricer C, Abeln C, Tom D, Craig D).
-Mismatches in reconstructed years (1993–1997, 2000) are not listed: those placeholder scores can't settle anything.
+Disagreements in reconstructed years (1993–1997, 2000) were left alone: placeholder scores can't settle them.
+
+Open: `division_standings.csv` 2025 has Craig 4th and the Frenches 3rd in the Left, but Craig made the playoffs and the Frenches didn't.

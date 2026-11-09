@@ -11,6 +11,7 @@ Weekly newsletter for Bullwinkle's Dance League (BDL), built as HTML and rendere
 - `shared/lore.md` – owner stories Derek has supplied; the only stories that get printed
 - `shared/themes_and_ribbing.md` – themes used and coming, and who's taken how much grief
 - `shared/logos/` – original team logos
+- `shared/mobilize.py` – turns a built issue into a phone-friendly web page with a jump bar (run from the week folder: `PYTHONPATH=. python3 ../../shared/mobilize.py ffl_wkN.html out.html "Title"`)
 - `shared/make_assets.py` – builds `ff/` (fonts) and `img/` (owner logos) in a week folder
 - `weeks/wkNN-theme/` – one folder per issue, with symlinks into `shared/`
 

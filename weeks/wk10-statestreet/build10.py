@@ -191,7 +191,7 @@ def money():
             f'<p class="small">Ricer, Schwanz, Derek and the Frenches have two each. Week 9 is Ricer\'s unless Monday night says otherwise.</p></section>')
 
 def door():
-    h = '<section id="door"><h2>The line at the door</h2><p class="dek">Giff did a stint on the door at Bull Feathers, and if he were working this one, we\'d all get in. He isn\'t. Top three in each division. Records through Week 9, playoff odds from 20,000 simulations of the rest of the season, and the change since last week.</p>'
+    h = '<section id="door"><h2>The line at the door</h2><p class="dek">Giff did a stint on the door at Bull Feathers, and if he were working this one, we\'d all get in. But he isn\'t and has to play by the rules this time. Top three from each division. Records through Week 9, playoff odds from 20,000 simulations of the rest of the season, and the change since last week.</p>'
     for name, div in (('Right Division', D.RIGHT), ('Left Division', D.LEFT)):
         rows = sorted(div, key=lambda o: (-S[o]['w'], -(S[o]['dw'] / max(1, S[o]['dw'] + S[o]['dl'])), -S[o]['pf']))
         h += f'<div class="dv">{name}</div><table><tr><th>Team</th><th>W-L</th><th>Div</th><th>Pts</th><th>Odds</th><th>+/-</th></tr>'

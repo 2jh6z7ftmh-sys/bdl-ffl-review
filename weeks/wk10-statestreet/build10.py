@@ -244,7 +244,7 @@ TOUR = (
 PICKNOTE = ('<p class="small" style="margin-top:14px">How the picks work: a projected score is 70% of a team\'s 2026 average plus 30% of the '
             'league average. Since 2005, a projected gap under 10 points has picked the winner 49% of the time; 10 to 20, 56%; over 20, 66%.</p>')
 HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-        '<title>FFL Review, Week 10: The State Street Bar Tour, No. 1</title>'
+        '<title>FFL Review</title>'
         f'<style>{FONTS}{CSS}</style></head><body>{nav()}<div class="wrap">'
         '<header class="mast" id="top"><div class="k"><span class="wm">FFL Review</span> &middot; Bullwinkle\'s Dance League &middot; Week 10</div>'
         '<h1>The State Street<br>Bar Tour</h1><div class="sub">Stop No. 1 &middot; The Red Shed and State Street Brats</div><div class="series">An ongoing series</div>'
@@ -252,7 +252,7 @@ HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="
         + ('<div class="prov">Sample. Week 9 as it stood Sunday night; Monday night is still to play, so scores, picks and odds will move.</div>' if PROV else '')
         + three() + results() + money() + door()
         + '<section id="games"><h2>On tap: Week 10</h2><p class="dek">Records, playoff odds, and the pick.</p></section>' + ''.join(stop(s) for s in STOPS) + PICKNOTE + TOUR
-        + '<div class="foot">Bullwinkle\'s Dance League &middot; FFL Review &middot; Week 10 &middot; The State Street Bar Tour continues</div>'
+        + '<section id="past"><h2 style="font-size:24px">Past issues</h2><p class="small">This is the FFL Review\'s permanent home: the newest issue is always here. Earlier web issues will be listed below as they come.</p></section>' + '<div class="foot">Bullwinkle\'s Dance League &middot; FFL Review &middot; Week 10 &middot; The State Street Bar Tour continues</div>'
         + '</div></body></html>')
 open('ffl_wk10.html', 'w').write(HTML)
 print('ok', len(HTML) // 1024, 'KB; picks', hits9, SEASON)

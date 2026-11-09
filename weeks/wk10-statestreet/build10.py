@@ -33,20 +33,29 @@ RECAP = {
 
 # ---------------------------------------------------------------- Week 10 stops
 STOPS = [
- dict(pair=('Craig', 'Ricer'), n=1, bar=None,
-      text=("Ricer is 7-2 and two games clear in the Right. Craig is 2-7 and at 1%, though he has beaten Ricer in two of their last four.")),
- dict(pair=('Chad', 'Schwanz'), n=2, bar=None,
-      text=("A rematch of last year's final, which Chad won by 50. Schwanz has won six straight and leads the league in points; "
+ dict(pair=('Craig', 'Ricer'), n=1, bar="The Red Shed and La Bamba\'s", photo='red_shed_group', cap="The Red Shed, a few years ago.",
+      memory=("The Red Shed: the broken pool table and the Long Island Iced Teas, in mason jars. Ricer\'s bar. La Bamba\'s was where every "
+              "night ended. One time Craig, pretty drunk, ordered a burrito and asked them to hold the mayo. We all knew it was crazy. "
+              "The guy at the counter gave him the food and said, \"One burrito, hold the mayo.\""),
+      text="Ricer is 7-2 and two games clear in the Right. Craig is 2-7 and at 1%, though he has beaten Ricer in two of their last four."),
+ dict(pair=('Chad', 'Schwanz'), n=2, bar="Church Key and Riley\'s",
+      memory=("Chad worked at both, and he always called the owner Mrs. Lee. The Lees later made the papers over federal tax cases; "
+              "bank tellers remembered Mr. Lee coming in with a backpack full of cash."),
+      text=("A rematch of last year\'s final, which Chad won by 50. Schwanz has won six straight and leads the league in points; "
             "Chad just climbed to 80% playoff odds.")),
- dict(pair=('Rusty', 'Frenches'), n=3, bar=None,
-      text=("Rusty is second in the league in points and 3-6, which takes some doing. His playoff odds are down to 32%. "
-            "The Frenches have won the last three in this series, including Week 1 by 0.8.")),
- dict(pair=('Abeln', 'Giff'), n=4, bar=None,
-      text=("Old housemates. Giff is 7-2 on three straight wins with the fewest points of any contender, which is its own kind of talent. "
-            "Abes is 1-8. Giff leads the series 38-33-2.")),
- dict(pair=('Derek', 'Tom'), n=5, bar=None,
-      text=("The oldest rivalry in the league: 73 games since 1990, Derek up 36-34-3. The Ferries have lost two straight and slipped to 68%. "
-            "Tom has outscored them both of the last two weeks.")),
+ dict(pair=('Rusty', 'Frenches'), n=3, bar="State Street Brats and the KK", photo='rusty_moose_brats', cap="Rusty, 21.",
+      memory=("At Brats, on your birthday, you kissed the moose. That\'s Rusty on his 21st. The KK was Rusty\'s bar. There is a story "
+              "involving John Hall, the Badgers\' kicker, around 1994. Rusty can tell it."),
+      text=("Rusty is second in the league in points and 3-6, and his playoff odds are down to 32%. The Frenches have won the last "
+            "three in this series, including Week 1 by 0.8.")),
+ dict(pair=('Abeln', 'Giff'), n=4, bar="Bull Feathers and Mondays",
+      memory="Giff worked the door at one and was banned from the other, for breaking a gumball machine.",
+      text=("Abes and Giff were housemates and have now played 73 times; Giff leads 38-33-2. Giff is 7-2 on three straight wins, "
+            "with the fewest points of any contender. Abes is 1-8.")),
+ dict(pair=('Derek', 'Tom'), n=5, bar="Dayton Square",
+      memory="Derek\'s apartment at Johnson and Broom, a block from La Bamba\'s. Almost everyone ended up here.",
+      text=("The oldest rivalry in the league: 73 games since 1990, Derek up 36-34-3. The Ferries have lost two straight and slipped "
+            "to 68%. Tom has outscored them both of the last two weeks.")),
 ]
 
 # ---------------------------------------------------------------- page
@@ -130,6 +139,8 @@ figcaption{font:italic 14px/1.35 'Barlow';color:var(--mut);margin-top:6px}
 .small{font-size:13.5px;color:var(--mut)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 8px}
 .chips span{border:1.5px solid var(--ink);padding:3px 9px;font:700 14px 'Barlow Condensed';text-transform:uppercase;letter-spacing:.04em;background:var(--card)}
+.stop .sn{display:inline-block;background:var(--red);color:#fff;font:700 13px 'Barlow Condensed';letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;transform:skew(-8deg)}
+.stop h3.bn{font:400 28px/1.05 'Anton';text-transform:uppercase;margin:8px 0 4px}
 .stopcard{background:var(--card);border:2px solid var(--ink);padding:14px 14px 6px;margin:14px 0}
 .stopcard .sn{display:inline-block;background:var(--red);color:#fff;font:700 13px 'Barlow Condensed';letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;transform:skew(-8deg)}
 .stopcard h3{font:400 30px/1 'Anton';text-transform:uppercase;margin:8px 0 2px}
@@ -142,7 +153,7 @@ figcaption{font:italic 14px/1.35 'Barlow';color:var(--mut);margin-top:6px}
 """
 
 def nav():
-    items = [('top', 'Top'), ('results', 'Last call'), ('money', 'Specials'), ('door', 'The door'), ('games', 'On tap'), ('tour', 'Bar Tour')]
+    items = [('top', 'Top'), ('results', 'Last call'), ('money', 'Specials'), ('door', 'The door'), ('games', 'Bar Tour')]
     return '<nav class="nav">' + ''.join(f'<a href="#{k}">{v}</a>' for k, v in items) + '</nav>'
 
 def crawl_map():
@@ -212,12 +223,13 @@ def stop(s):
     a, h = s['pair']
     pa, ph = proj(a), proj(h); pick = a if pa > ph else h; other = h if pick == a else a
     pp, po = max(pa, ph), min(pa, ph)
-    out = (f'<section class="stop" id="s{s["n"]}">' + (f'<div class="bar">{s["bar"]}</div>' if s.get('bar') else '') +
+    out = (f'<section class="stop" id="s{s["n"]}"><div class="sn">Stop {s["n"]}</div><h3 class="bn">{s["bar"]}</h3>'
            f'<div class="vs">{lg(a)}<div class="t">{a}<small>{wl(a)} &middot; {pct(a)}</small></div>'
            f'<div class="at">at</div><div class="t r">{h}<small>{wl(h)} &middot; {pct(h)}</small></div>{lg(h)}</div>')
     if s.get('photo'):
         out += f'<figure><img src="{PH[s["photo"]]}" alt="" loading="lazy"><figcaption>{s["cap"]}</figcaption></figure>'
-    out += (f'<p>{s["text"]}</p><p class="pick"><span>Pick</span> {pick} {pp:.0f}, {other} {po:.0f} &middot; {conf(pp - po).lower()}</p>'
+    out += (f'<p>{s["memory"]}</p><p>{s["text"]}</p>'
+            f'<p class="pick"><span>Pick</span> {pick} {pp:.0f}, {other} {po:.0f} &middot; {conf(pp - po).lower()}</p>'
             '<div class="rule" style="height:2px;background:var(--rule)"></div></section>')
     return out
 
@@ -269,10 +281,10 @@ HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="
         f'<style>{FONTS}{CSS}</style></head><body>{nav()}<div class="wrap">'
         '<header class="mast" id="top"><div class="k">Bullwinkle\'s Dance League &middot; Week 10 &middot; Nov. 10 to 16</div>'
         '<h1><span>FFL</span>Review</h1>'
-        '<div class="sub">The State Street Bar Tour</div><div class="series">Ten stops, inside</div></header>'
+        '<div class="sub">The State Street Bar Tour</div><div class="series">Five games, five stops</div></header>'
         + ('<div class="prov">Sample. Week 9 as it stood Sunday night; Monday night is still to play, so scores, picks and odds will move.</div>' if PROV else '')
         + three() + results() + money() + door()
-        + '<section id="games"><h2>On tap: Week 10</h2><p class="dek">Records, playoff odds, and the pick.</p></section>' + ''.join(stop(s) for s in STOPS) + PICKNOTE + TOUR
+        + '<section id="games"><h2>The State Street Bar Tour</h2><p class="dek">Week 10: five games, five stops.</p></section>' + ''.join(stop(s) for s in STOPS) + PICKNOTE
         + '<section id="past"><h2 style="font-size:24px">Past issues</h2><p class="small">This is the FFL Review\'s permanent home: the newest issue is always here. Earlier web issues will be listed below as they come.</p></section>' + '<div class="foot">Bullwinkle\'s Dance League &middot; FFL Review &middot; Week 10</div>'
         + '</div></body></html>')
 open('ffl_wk10.html', 'w').write(HTML)

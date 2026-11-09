@@ -237,14 +237,11 @@ def terrace():
             '</section>')
 
 TOUR = (
- '<section id="tour" style="margin-top:22px;border-top:4px solid var(--red)"><h2>The State Street Bar Tour</h2><p class="dek">An ongoing series, a couple of bars at a time.</p>'
- '<p>A lot of this league\'s history happened within a few blocks of State Street, so we\'re going back. Each issue, a stop or two and '
- 'what we did there. It\'ll take a while. That\'s the idea.</p>'
- '<div class="dv">Still to come, in no particular order</div><div class="chips">'
- + ''.join(f'<span>{b}</span>' for b in ["Bull Feathers", "The KK", "Church Key", "Mondays", "The Plaza", "Genna\'s", "The Flamingo",
-                                          "The Pub", "Stillwaters", "La Bamba\'s", "Dayton Square", "The Terrace"])
- + '</div><p class="small">Got a story or a photo from any of them? Send it to Derek.</p>'
- '<div class="dv" style="margin-top:18px">This issue: Stops 1 and 2</div>'
+ '<section id="tour" style="margin-top:22px;border-top:4px solid var(--red)"><h2>The State Street Bar Tour</h2>'
+ '<p>Most of us spent a good part of college on State Street. This series goes back through the bars one or two at a time, '
+ 'with the pictures and stories we have. First up: the Red Shed and State Street Brats. Still to come: Bull Feathers, the KK, '
+ 'Church Key, Mondays, the Plaza, La Bamba\'s and more.</p>'
+ '<p>If you have photos or stories from any of these, send them my way.</p>'
  '<div class="stopcard"><div class="sn">Stop 1</div><h3>The Red Shed</h3><div class="addr">406 N. Frances</div>'
  f'<figure><img src="{PH["red_shed_group"]}" alt="" loading="lazy"><figcaption>The Red Shed, a few years ago.</figcaption></figure>'
  '<p>The broken pool table and the Long Island Iced Teas, in mason jars. Ricer\'s bar. It moved to State Street in 2024 and has since closed.</p></div>'

@@ -128,6 +128,8 @@ figcaption{font:italic 14px/1.35 'Barlow';color:var(--mut);margin-top:6px}
 .call .p{font:400 26px/1.05 'Anton';text-transform:uppercase;margin:4px 0}
 .call p{margin:4px 0 0;font-size:15px}
 .small{font-size:13.5px;color:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 8px}
+.chips span{border:1.5px solid var(--ink);padding:3px 9px;font:700 14px 'Barlow Condensed';text-transform:uppercase;letter-spacing:.04em;background:var(--card)}
 .stopcard{background:var(--card);border:2px solid var(--ink);padding:14px 14px 6px;margin:14px 0}
 .stopcard .sn{display:inline-block;background:var(--red);color:#fff;font:700 13px 'Barlow Condensed';letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;transform:skew(-8deg)}
 .stopcard h3{font:400 30px/1 'Anton';text-transform:uppercase;margin:8px 0 2px}
@@ -235,7 +237,14 @@ def terrace():
             '</section>')
 
 TOUR = (
- '<section id="tour" style="margin-top:22px;border-top:4px solid var(--red)"><h2>The State Street Bar Tour</h2><p class="dek">An ongoing series, a couple of bars at a time. Two this week.</p>'
+ '<section id="tour" style="margin-top:22px;border-top:4px solid var(--red)"><h2>The State Street Bar Tour</h2><p class="dek">An ongoing series, a couple of bars at a time.</p>'
+ '<p>A lot of this league\'s history happened within a few blocks of State Street, so we\'re going back. Each issue, a stop or two and '
+ 'what we did there. It\'ll take a while. That\'s the idea.</p>'
+ '<div class="dv">Still to come, in no particular order</div><div class="chips">'
+ + ''.join(f'<span>{b}</span>' for b in ["Bull Feathers", "The KK", "Church Key", "Mondays", "The Plaza", "Genna\'s", "The Flamingo",
+                                          "The Pub", "Stillwaters", "La Bamba\'s", "Dayton Square", "The Terrace"])
+ + '</div><p class="small">Got a story or a photo from any of them? Send it to Derek.</p>'
+ '<div class="dv" style="margin-top:18px">This issue: Stops 1 and 2</div>'
  '<div class="stopcard"><div class="sn">Stop 1</div><h3>The Red Shed</h3><div class="addr">406 N. Frances</div>'
  f'<figure><img src="{PH["red_shed_group"]}" alt="" loading="lazy"><figcaption>The Red Shed, a few years ago.</figcaption></figure>'
  '<p>The broken pool table and the Long Island Iced Teas, in mason jars. Ricer\'s bar. It moved to State Street in 2024 and has since closed.</p></div>'

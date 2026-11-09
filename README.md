@@ -4,13 +4,15 @@ Weekly newsletter for Bullwinkle's Dance League (BDL), built as HTML and rendere
 
 ## Layout
 
-- `shared/data/` – league history the builds read
-  - `all_games.csv` – raw regular-season log 1991–2018 (project upload "All Games 19912018.csv")
-  - `recent.csv` – 2019–2025 regular season, 1993 Week 15, and all playoff games
-  - `odds_snapshot_wk7.json` – saved odds baseline (Week 8 baseline lives in `weeks/wk09-wrestling/`)
+- `shared/data/` – game logs the builds read: `all_games.csv` (1991–2018 regular season, project upload "All Games 19912018.csv") and `recent.csv` (2019–2025 regular season, 1993 Week 15, every playoff game since 1990)
+- `shared/season2026/` – this season: `games_2026.csv` (every result), `picks_2026.csv` (every Bold Prediction and how it went), `weekly_high_2026.csv`, `keepers_2026.csv`
+- `shared/odds/` – the odds printed each week (`odds_snapshot_wkN.json`), so next week's change is always against what was published
+- `shared/history/` – playoff finishes, division standings, payouts, keepers; see its README for sources and known disagreements
+- `shared/lore.md` – owner stories Derek has supplied; the only stories that get printed
+- `shared/themes_and_ribbing.md` – themes used and coming, and who's taken how much grief
 - `shared/logos/` – original team logos
-- `shared/make_assets.py` – builds `ff/` (fonts from npm @fontsource) and `img/` (owner logos) in a week folder
-- `weeks/wkNN-theme/` – one folder per issue; each is self-contained apart from symlinks into `shared/data`
+- `shared/make_assets.py` – builds `ff/` (fonts) and `img/` (owner logos) in a week folder
+- `weeks/wkNN-theme/` – one folder per issue, with symlinks into `shared/`
 
 ## Building an issue (Week 9 example)
 
@@ -27,8 +29,13 @@ Check every page with a contact sheet (`pdftoppm`) before sending.
 
 ## Starting a new week
 
-Copy the previous week's folder, rename the numbered files, then: update scores in `dataN.py`, pull lineups and moves from CBS, point odds at the previous week's snapshot, rewrite the copy and theme in `buildN.py`.
+Copy the previous week's folder and rename the numbered files. Then:
+1. Add last week's results to `shared/season2026/games_2026.csv` and `dataN.py`; grade last week's picks in `picks_2026.csv`; add the weekly high.
+2. Pull lineups and moves from CBS.
+3. Run the odds; save the new snapshot to `shared/odds/`.
+4. Write the theme and copy in `buildN.py`; log new picks, the theme and the ribbing counts.
+5. At season's end, fold `games_2026.csv` into `recent.csv`.
 
 ## Elsewhere
 
-Editorial rules (Newsletter_Playbook.md), research notes such as the Week 10 bar crawl (`claude/ffl-review-code/statestreet/bars10.md`) and older issues' code (Weeks 4–8) stay in the claude.ai project.
+Editorial rules (Newsletter_Playbook.md), research notes such as the Week 10 bar crawl (`claude/ffl-review-code/statestreet/bars10.md`), the money ledger and older issues' code (Weeks 4–8) stay in the claude.ai project.

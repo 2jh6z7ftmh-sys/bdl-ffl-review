@@ -1,0 +1,36 @@
+week,pick,opponent,proj_pick,proj_opp,confidence,winner,margin,result,source
+3,Rusty,Derek,,,,Derek,34.2,MISS,pick only; projections not saved
+3,Chad,Ricer,,,,Chad,13.3,HIT,pick only; projections not saved
+3,Abeln,Tom,,,,Tom,7.9,MISS,pick only; projections not saved
+3,Frenches,Schwanz,,,,Frenches,35.1,HIT,pick only; projections not saved
+3,Craig,Giff,,,,Giff,7.6,MISS,pick only; projections not saved
+4,Derek,Ricer,138,116,66%,Ricer,14.8,MISS,as printed
+4,Abeln,Giff,129,115,56%,Giff,27.3,MISS,as printed
+4,Rusty,Craig,128,126,Coin flip,Rusty,23.5,HIT,as printed
+4,Frenches,Chad,134,107,66%,Chad,58.8,MISS,as printed
+4,Schwanz,Tom,117,114,Coin flip,Schwanz,62.3,HIT,as printed
+5,Rusty,Ricer,130,114,56%,Ricer,11.6,MISS,as printed
+5,Derek,Craig,128,124,Coin flip,Derek,8.1,HIT,as printed
+5,Chad,Tom,119,116,Coin flip,Chad,15.7,HIT,as printed
+5,Schwanz,Giff,129,117,56%,Schwanz,23.3,HIT,as printed
+5,Frenches,Abeln,129,123,Coin flip,Frenches,8.0,HIT,as printed
+6,Derek,Abeln,127,122,Coin flip,Derek,58.2,HIT,model (same formula as printed)
+6,Ricer,Tom,121,118,Coin flip,Ricer,11.9,HIT,model (same formula as printed)
+6,Rusty,Chad,132,123,Coin flip,Rusty,36.9,HIT,model (same formula as printed)
+6,Frenches,Giff,128,119,Coin flip,Frenches,43.8,HIT,model (same formula as printed)
+6,Schwanz,Craig,132,123,Coin flip,Schwanz,61.7,HIT,model (same formula as printed)
+7,Derek,Chad,126,119,Coin flip,Derek,11.4,HIT,model (same formula as printed)
+7,Craig,Abeln,117,115,Coin flip,Craig,15.6,HIT,model (same formula as printed)
+7,Schwanz,Rusty,132,131,Coin flip,Schwanz,7.8,HIT,model (same formula as printed)
+7,Ricer,Giff,122,114,Coin flip,Giff,41.3,MISS,model (same formula as printed)
+7,Frenches,Tom,126,118,Coin flip,Tom,23.1,MISS,model (same formula as printed)
+8,Derek,Ricer,127,118,Coin flip,Ricer,35.5,MISS,model (same formula as printed)
+8,Tom,Giff,120,115,Coin flip,Giff,5.0,MISS,model (same formula as printed)
+8,Schwanz,Abeln,130,112,56%,Schwanz,32.2,HIT,model (same formula as printed)
+8,Frenches,Craig,125,116,Coin flip,Frenches,43.2,HIT,model (same formula as printed)
+8,Rusty,Chad,129,120,Coin flip,Chad,15.8,MISS,model (same formula as printed)
+9,Derek,Giff,123,116,Coin flip,,,,as printed
+9,Schwanz,Frenches,128,125,Coin flip,,,,as printed
+9,Chad,Abeln,120,109,56%,,,,as printed
+9,Rusty,Ricer,126,119,Coin flip,,,,as printed
+9,Tom,Craig,119,114,Coin flip,,,,as printed

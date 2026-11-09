@@ -36,49 +36,33 @@ STOPS = [
  dict(pair=('Craig', 'Ricer'), n=1, bar="The Red Shed, then La Bamba's", where="406 N. Frances, then Broom at State",
       photo='red_shed_group', cap="The Red Shed, more recently. Long Islands in mason jars, as always.",
       head="Ricer starts the night. Craig finishes it.",
-      story=("Ricer is a Red Shed man. Long Island Iced Teas, mason jars, no further questions. Craig's contribution to the "
-             "lore comes at the other end of the night: La Bamba's, a burrito, and a request to hold the mayo. "
-             "The man at the counter handed it over and said, \"One burrito, hold the mayo.\" Everyone knew."),
-      stakes=("Ricer is 7-2, leads the Right by two games and is better than 99% to make the playoffs. "
-              "Craig is 2-7 and at 1%. The series since 2010 is closer than the standings: Ricer leads 8-7-2."),
+      story="The Red Shed was Ricer's bar, and the Long Island Iced Tea was his drink. Craig's moment came at the end of the night, at La Bamba's. Pretty drunk, he ordered a burrito and asked them to hold the mayo. We all knew it was crazy. The guy at the counter handed it over and said, \"One burrito, hold the mayo.\"",
+      stakes="Ricer is 7-2 and two games clear in the Right. Craig is 2-7 and down to 1%. The series is closer than the standings: Ricer leads 8-7-2 since 2010, and Craig has won two of the last four.",
       wrong="Craig has beaten Ricer twice in the last four meetings, both by double digits."),
  dict(pair=('Chad', 'Schwanz'), n=2, bar="Church Key and Riley's", where="626 University and 402 W. Gorham",
       photo=None, cap=None,
       head="A rematch of last year's final.",
-      story=("Chad worked at Church Key and at Riley's Wines of the World, and he always called the woman who ran Riley's Mrs. Lee. "
-             "The public record fills in the rest: federal tax cases in 2002 and 2009, bank tellers who "
-             "remembered Mr. Lee arriving with bundles of cash in a backpack, and a 1995 return that reported Riley's gross "
-             "receipts at $6,241. Chad was an Evans Scholar, which makes this a caddie against Bushwood."),
-      stakes=("These two met in the 2025 final; Chad won 172.9 to 123.3. Schwanz has won six straight, leads the league in "
-              "points and holds a 73% grip on the Left. Chad's playoff odds jumped 14 points to 80%. Chad leads the series 15-10-1."),
+      story="Chad worked at Church Key and at Riley's Wines of the World, where the owner was always Mrs. Lee. The Lees later made the papers: federal tax cases in 2002 and 2009, and bank tellers who remembered Mr. Lee walking in with a backpack full of cash. Riley's 1995 tax return put the store's gross receipts at $6,241 for the year, which would surprise anyone who ever stood in that line.",
+      stakes="It's a rematch of last year's final, which Chad won 172.9 to 123.3. Schwanz has won six straight and leads the league in points. Chad's odds jumped to 80% this week. And since Chad was an Evans Scholar, it's also a caddie against Bushwood. Chad leads the series 15-10-1.",
       wrong="Schwanz has won six straight and won Week 1 against Chad by 1.3."),
  dict(pair=('Rusty', 'Frenches'), n=3, bar="State Street Brats and the KK", where="603 State, then Lake at Langdon",
       photo='rusty_moose_brats', cap="Rusty's 21st, State Street Brats. On the bar, with the moose.",
       photo2='rusty_mattress', cap2="Later, carrying a mattress back to Chad's. Reason unknown.",
       head="The Dog needs this one.",
-      story=("Rusty turned 21 at Brats and celebrated by climbing onto the bar and kissing the moose. The KK was his home bar; "
-             "his most famous night there involved John Hall, the Badgers' kicker, around 1994. The details remain sealed. "
-             "Rusty is welcome to unseal them in the group text."),
-      stakes=("Rusty is second in the league in points and 3-6, which is a hard way to live. His playoff odds fell 16 points "
-              "to 32%. He leads the series 13-6 since 2009, but the Frenches have won the last three, including the "
-              "largest margin in league history (165.8 to 71.6 in 2024) and Week 1 this year by 0.8."),
+      story="Rusty turned 21 at State Street Brats and celebrated by climbing on the bar to kiss the moose. There is a photo. The KK was his other home. His best story there involves John Hall, the Badgers' kicker, around 1994, and nobody can remember the rest. Rusty is invited to fill it in.",
+      stakes="Rusty is second in the league in points and 3-6, and his odds dropped to 32%. He leads the series 13-6, but the Frenches have won the last three, including the biggest blowout in league history (165.8 to 71.6 in 2024) and Week 1 this year by 0.8.",
       wrong="Projections have this at 125 to 124. The Week 1 meeting came down to 0.8."),
  dict(pair=('Abeln', 'Giff'), n=4, bar="Bull Feathers and Mondays", where="303 N. Henry, then 523 State",
       photo=None, cap=None,
       head="Housemates, with a bouncer's discount.",
-      story=("Giff worked the door at Bull Feathers, the basement club under Stillwaters. In the words of the people he "
-             "let in, they benefited the hell out of that. Mondays, on the other hand, banned Giff for "
-             "breaking a gumball machine. Abes and Giff lived in the same apartment; they have now played 73 times."),
-      stakes=("Giff is 7-2, has won three straight, and is better than 99% to make the playoffs despite scoring the fewest "
-              "points of any contender. Abes is 1-8 and below 1%. Giff leads the series 38-33-2."),
+      story="Giff worked the door at Bull Feathers, the basement bar under Stillwaters, and his friends benefited the hell out of that. Mondays was another story: Giff got banned for breaking a gumball machine. Abes and Giff lived in the same apartment, and they have now played each other 73 times.",
+      stakes="Giff is 7-2 with three straight wins and a playoff spot all but locked, despite scoring the fewest points of any contender. Abes is 1-8. Giff leads the series 38-33-2, though Abes won both meetings last year.",
       wrong="Abes beat Giff twice in 2025, including 132.6 to 86.9."),
  dict(pair=('Derek', 'Tom'), n=5, bar="Dayton Square", where="Johnson at Broom",
       photo='tom_downs_shotgun', cap="League law, before the websites: draft a player who's already taken, shotgun a beer. Tom paying up, with Downs.",
       head="The afterparty, and the oldest series in the league.",
-      story=("Almost everyone ended up at Dayton Square eventually. Derek and Tom go back further than any pair in the league: "
-             "73 meetings since 1990. Tom is also the best-documented payer of the old draft rule."),
-      stakes=("Derek leads the series 36-34-3. The Ferries are 5-4 with two straight losses, and their playoff odds fell 11 "
-              "points to 68%. Tom is 3-6 and at 20%, up 7 after Sunday."),
+      story="Dayton Square was Derek's apartment, a block from La Bamba's, and almost everyone ended up there. Derek and Tom have the oldest rivalry in the league, 73 games since 1990. Tom also has a place in draft history. Back before the websites, if you tried to draft a player who was already taken, you shotgunned a beer. There is a photo of Tom paying up.",
+      stakes="Derek leads the series 36-34-3. The Ferries are 5-4 after two straight losses, and their odds fell to 68%. Tom is 3-6, but he has won two of his last three and outscored the Ferries both of the last two weeks.",
       wrong="It's a 1.4-point projection. Tom has outscored the Ferries the last two weeks, and three other weeks this year were within 1.1 points."),
 ]
 
@@ -242,8 +226,7 @@ def stop(s):
     out += f'<p>{s["story"]}</p>'
     if s.get('photo2'):
         out += f'<figure><img src="{PH[s["photo2"]]}" alt="" loading="lazy" style="transform:rotate(.8deg)"><figcaption>{s["cap2"]}</figcaption></figure>'
-    out += (f'<div class="stake"><b>What\'s on the line.</b> {s["stakes"]} '
-            f'<span class="small">{len(P)} meetings since {P[0]["y"]}.</span></div>'
+    out += (f'<p>{s["stakes"]}</p>'
             f'<div class="call"><div class="k">The bouncer\'s call &middot; {conf(pp - po)}</div>'
             f'<div class="p">{pick} {pp:.0f}, {other} {po:.0f}</div>'
             f'<p><b>How this goes wrong.</b> {s["wrong"]}</p></div><div class="rule"></div></section>')

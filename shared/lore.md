@@ -18,13 +18,13 @@ Stories and facts Derek has supplied, by owner. Only what's here gets printed; n
 - Brag when the Ferries win; no mock humility. Self-owns count toward the ribbing balance.
 
 ## Ricer
-- Huge Red Shed fan; Long Island Iced Teas. Group photo at the Red Shed: `red_shed_group.jpg`.
+- Huge Red Shed fan; Long Island Iced Teas (potent, mason jars). The group played on the Red Shed's broken pool table; the LITs were the main thing. Group photo at the Red Shed: `red_shed_group.jpg`.
 - Original team name: Eureka. Ricer vs Rusty is the league's longest series and famously close (see the 1991–99 Barca–Kodiak log in the project).
 - Scored the only zero against Derek: 1993 Week 15, Ferries 32, Barca 0.
 - Habit of leaving big points on his bench.
 
 ## Rusty
-- 21st birthday at State Street Brats: kissed the moose, on his knees on the bar. Photo: `rusty_moose_brats.jpg`.
+- 21st birthday at State Street Brats: kissed the moose, on his knees on the bar. Kissing the moose was the Brats birthday tradition (per Derek; not found written up anywhere online). Photo: `rusty_moose_brats.jpg`.
 - Famous for his time at the KK; the story involves John Hall, the Badgers' kicker, around 1994. Details not yet supplied.
 - Carried a mattress back to Chad's, reason unknown. Photo: `rusty_mattress.jpg`.
 - College argument: Rusty (Sterling Sharpe) vs Abeln (Andre Rison) ended with Rusty doing a Superfly Snuka off the couch onto Abes. No added details.

@@ -10,8 +10,11 @@
 | 8 | 1970s trick-or-treat (not spooky) |
 | 9 | Saturday-morning wrestling |
 
+## The State Street Bar Tour (running series)
+A recurring series across issues and seasons, one or two bar stories at a time. No. 1 = Week 10, 2026 (Red Shed and La Bamba's for Craig v Ricer; Brats moose for Rusty v Frenches). Held for later: Mrs. Lee (Church Key/Riley's), Giff at Bull Feathers and Mondays, the shotgun rule, Rusty's John Hall story at the KK, Dayton Square, Genna's, the Plaza, Flamingo, the Pub, the Terrace.
+
 ## Coming up
-Wk 10 State Street, 1990 bar crawl · Wk 11 Baseball cards · Wk 12 MTV / Rolling Stone · Wk 13 Badger Herald · Wk 14 Sports Illustrated · Playoffs Prize fight
+Wk 10 State Street Bar Tour, No. 1 · Wk 11 Baseball cards · Wk 12 MTV / Rolling Stone · Wk 13 Badger Herald · Wk 14 Sports Illustrated · Playoffs Prize fight
 
 Backups: 6B Witte, NES video game, TV Guide, Mad Magazine, Columbia House, Saturday morning cartoons, 80s movies.
 Considered but out: Pirate, VHS horror rental, Daily Racing Form, Classified dossier.

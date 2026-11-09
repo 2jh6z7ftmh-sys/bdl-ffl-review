@@ -227,12 +227,12 @@ def terrace():
             '</section>')
 
 HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-        '<title>FFL Review, Week 10: State Street, 1990</title>'
+        '<title>FFL Review, Week 10: The State Street Bar Tour, No. 1</title>'
         f'<style>{FONTS}{CSS}</style></head><body>{nav()}<div class="wrap">'
         '<header class="mast" id="top"><div class="k">Bullwinkle\'s Dance League &middot; Vol. 37</div>'
-        '<h1><span>FFL</span>Review</h1><div class="sub">State Street, 1990 &middot; Week 10 &middot; Nov. 10 to 16</div></header>'
+        '<h1><span>FFL</span>Review</h1><div class="sub">The State Street Bar Tour, No. 1 &middot; Week 10</div></header>'
         + ('<div class="prov">Sample. Week 9 as it stood Sunday night; Monday night is still to play, so scores, picks and odds will move.</div>' if PROV else '')
-        + '<section><h2>Tonight\'s route</h2><p class="dek">State Street, 1990. A few stops this week; the rest of the night keeps for later.</p>'
+        + '<section><h2>The State Street Bar Tour</h2><p class="dek">No. 1. A few stops this week. The rest of the street isn\'t going anywhere.</p>'
         + crawl_map() + '</section>' + three() + results() + money() + door()
         + '<section id="games"><h2>This week</h2><p class="dek">Week 10. Records, playoff odds, and the pick.</p></section>' + ''.join(stop(s) for s in STOPS) + terrace()
         + '<div class="foot">Bullwinkle\'s Dance League &middot; FFL Review &middot; Week 10 &middot; Est. 1990, hand-delivered then, texted now</div>'

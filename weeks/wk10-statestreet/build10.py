@@ -67,7 +67,8 @@ body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 'Barlow',sy
 section{scroll-margin-top:46px;padding-top:22px}
 .mast{background:var(--red);color:#fff;margin:0 -16px;padding:22px 18px 18px}
 .mast .k{font:700 12px 'Courier Prime',monospace;letter-spacing:.18em;text-transform:uppercase;opacity:.9}
-.mast h1{font:400 54px/0.95 'Anton';letter-spacing:1.5px;margin:10px 0 8px;text-transform:uppercase}
+.mast h1{font:400 76px/0.9 'Anton';letter-spacing:2px;margin:8px 0 10px;text-transform:uppercase}
+.mast h1 span{display:inline-block;background:#fff;color:var(--red);padding:0 10px;transform:skew(-8deg);margin-right:8px}
 .mast .wm{background:#fff;color:var(--red);padding:1px 6px;font-weight:700}
 .route{display:flex;align-items:center;gap:6px;margin-top:14px;font:700 14px 'Barlow Condensed';text-transform:uppercase;letter-spacing:.06em;flex-wrap:wrap}
 .route .d{display:inline-block;width:24px;height:24px;border-radius:50%;background:#fff;color:var(--red);text-align:center;line-height:24px}
@@ -75,7 +76,7 @@ section{scroll-margin-top:46px;padding-top:22px}
 .mast .series{font:700 12px 'Courier Prime';letter-spacing:.16em;text-transform:uppercase;margin-top:6px;opacity:.9}
 .route .more{font:italic 500 14px 'Barlow';text-transform:none;letter-spacing:0;opacity:.85}
 .mast h1 span{display:inline-block;background:#fff;color:var(--red);padding:0 8px;transform:skew(-8deg);margin-right:6px}
-.mast .sub{font:700 20px/1.2 'Barlow Condensed';text-transform:uppercase;letter-spacing:.04em}
+.mast .sub{font:700 22px/1.2 'Barlow Condensed';text-transform:uppercase;letter-spacing:.04em}
 .prov{background:#fff;color:var(--red);border-bottom:3px solid var(--red);font:700 13px/1.35 'Barlow Condensed';letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;margin:0 -16px}
 h2{font:400 32px/1 'Anton';text-transform:uppercase;letter-spacing:.5px;margin:0 0 4px}
 h2 .no{display:inline-block;background:var(--red);color:#fff;font-size:20px;padding:4px 8px 2px;margin-right:8px;transform:skew(-8deg);vertical-align:4px}
@@ -246,8 +247,9 @@ PICKNOTE = ('<p class="small" style="margin-top:14px">How the picks work: a proj
 HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
         '<title>FFL Review</title>'
         f'<style>{FONTS}{CSS}</style></head><body>{nav()}<div class="wrap">'
-        '<header class="mast" id="top"><div class="k"><span class="wm">FFL Review</span> &middot; Bullwinkle\'s Dance League &middot; Week 10</div>'
-        '<h1>The State Street<br>Bar Tour</h1><div class="sub">Stop No. 1 &middot; The Red Shed and State Street Brats</div><div class="series">An ongoing series</div>'
+        '<header class="mast" id="top"><div class="k">Bullwinkle\'s Dance League &middot; Week 10 &middot; Nov. 10 to 16</div>'
+        '<h1><span>FFL</span>Review</h1>'
+        '<div class="sub">The State Street Bar Tour<br>Stop No.&nbsp;1</div><div class="series">An ongoing series</div>'
         '<div class="route"><span class="d">1</span><span>Red Shed</span><i></i><span class="d">2</span><span>Brats</span><i></i><span class="more">more stops to come</span></div></header>'
         + ('<div class="prov">Sample. Week 9 as it stood Sunday night; Monday night is still to play, so scores, picks and odds will move.</div>' if PROV else '')
         + three() + results() + money() + door()

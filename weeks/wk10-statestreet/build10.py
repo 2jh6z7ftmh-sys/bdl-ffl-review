@@ -35,8 +35,8 @@ RECAP = {
 STOPS = [
  dict(pair=('Craig', 'Ricer'), n=1, bar="The Red Shed and La Bamba\'s", photo='red_shed_group', cap="The Red Shed, a few years ago.",
       memory=("The Red Shed: the broken pool table and the Long Island Iced Teas, in mason jars. Ricer\'s bar. La Bamba\'s was where every "
-              "night ended. One time Craig, pretty drunk, ordered a burrito and asked them to hold the mayo. We all knew it was crazy. "
-              "The guy at the counter gave him the food and said, \"One burrito, hold the mayo.\""),
+              "night ended. Craig, pretty drunk, once asked them to hold the mayo on his burrito. "
+              "\"One burrito, hold the mayo,\" said the guy at the counter."),
       text="Ricer is 7-2 and two games clear in the Right. Craig is 2-7 and at 1%, though he has beaten Ricer in two of their last four."),
  dict(pair=('Chad', 'Schwanz'), n=2, bar="Church Key and Riley\'s",
       memory=("Chad worked at both, and he always called the owner Mrs. Lee. The Lees later made the papers over federal tax cases; "

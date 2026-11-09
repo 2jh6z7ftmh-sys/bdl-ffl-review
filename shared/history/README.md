@@ -2,7 +2,7 @@
 
 | File | One row per | What's in it |
 |---|---|---|
-| `owner_seasons.csv` | owner, season | division, division finish, playoff finish, awards (division title, scoring title) |
+| `owner_seasons.csv` | owner, season | division, division finish, playoff finish, awards (division title, scoring title), co-owner |
 | `season_awards.csv` | season | champion, runner-up, scoring title, division winners, payouts (from 2001) |
 | `keepers.csv` | keeper | 2022–2025 keepers and costs (2026 is in `../season2026/`) |
 
@@ -16,7 +16,10 @@ Division-winner byes show as Lost semifinal or better.
 - Chewy's 1997–2002 seasons count as Chad's (one franchise). Rows before an owner's first season were dropped (the old sheet carried 1990 finishes in the Ricer and Chad columns).
 - 3rd- and 5th-place games are excluded everywhere.
 
-## Open questions
-- 2025 Left Division: the sheet has Craig 4th and the Frenches 3rd, but Craig made the playoffs and the Frenches didn't.
-- Schwanz: notes say he sat out 2001–2008, but the sheet gives him Left Division finishes in 2007 (5th) and 2008 (3rd).
-- 1995–96: the sheet lists Chewy, while the 1995 playoff games list Chad.
+## Settled (Derek, 11/8/26)
+- 2025 Left Division: Craig 3rd, Frenches 4th. CBS 2025 standings: both 6-8, Craig won the tiebreak (beat the Frenches twice; 4-4 division record vs 3-5). The old sheet had them swapped.
+- Schwanz: the spreadsheet wins. He played 1996-1999 and 2007 on, and sat out 2000-2006.
+- Chewy: wherever Chewy appears, Chad is a half owner (`co_owner` column). Chewy's 1997-2002 games also count as Chad's in the game logs.
+
+## Note
+- 2025 Right Division: CBS lists Rusty 4th and Derek 5th (both 6-8, split 1-1); the sheet has Derek 4th on division record (4-4 vs 3-5), which matches the league's posted tiebreak order. Kept the sheet. Neither made the playoffs.

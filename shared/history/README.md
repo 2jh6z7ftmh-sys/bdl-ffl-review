@@ -1,31 +1,22 @@
 # League history
 
-| File | What it is | Source |
+| File | One row per | What's in it |
 |---|---|---|
-| `playoff_results_letters.csv` | Derek's playoff finish grid, 1990–2024 (A won final, B lost final, C lost 2nd round, D lost 1st round, F missed) | Project upload "Playoff Results.csv", unchanged |
-| `playoff_finishes_from_games.csv` | The same grades, derived from the playoff games in `../data/recent.csv` (1990–2025) | Generated |
-| `division_standings.csv` | Division finish by owner, 1990–2025 | Project upload "Division Standings.csv", unchanged |
-| `yearly_payouts.csv` | Champion, runner-up, scoring title and division winners by year, with payouts from 2001 | Project upload "FFL Yearly Payouts.csv", unchanged |
-| `keepers.csv` | Keepers and costs, 2022–2025 (2026 keepers are in `../season2026/keepers_2026.csv`) | Project upload "Keepers and costs.csv", unchanged |
+| `owner_seasons.csv` | owner, season | division, division finish, playoff finish, awards (division title, scoring title) |
+| `season_awards.csv` | season | champion, runner-up, scoring title, division winners, payouts (from 2001) |
+| `keepers.csv` | keeper | 2022–2025 keepers and costs (2026 is in `../season2026/`) |
 
-Playoff game scores live in `../data/recent.csv` (type `po-QF`, `po-SF`, `po-Final`; `-est` marks reconstructed 31-30 style placeholders).
-3rd- and 5th-place games are excluded everywhere.
+Playoff finish is one of: Champion, Runner-up, Lost semifinal, Lost quarterfinal, Missed playoffs, Not recorded (1990 and 1993, where only the final survives).
+Division-winner byes show as Lost semifinal or better.
 
-## Owner notes
-- Chad and Chewy were one franchise 1997–2002 (Chad was part owner of Chewy's team or not yet in the league), so those games and the 2002 title count as Chad's. Chewy's own team after that (2003–2008) stays separate.
-- Schwanz sat out 2001–2008.
+## Sources and rules
+- Playoff finishes come from the playoff game scores in `../data/recent.csv`. The scores win over the old spreadsheet (Derek, 11/8/26). That fixed 2023 (Giff reached the semis, Craig lost the quarterfinal; confirmed by the CBS 2023 bracket, project file "playoffs 2023.pdf"), 2013 Abeln and 2019 Craig, and added 2025.
+- `playoff_scores_reconstructed = 1` marks years where the playoff scores are 31-30 style placeholders (1990–1997, 2000). The champion is right; earlier rounds may not be.
+- Division finishes come from Derek's Division Standings sheet; awards and payouts from his FFL Yearly Payouts sheet (both project uploads).
+- Chewy's 1997–2002 seasons count as Chad's (one franchise). Rows before an owner's first season were dropped (the old sheet carried 1990 finishes in the Ricer and Chad columns).
+- 3rd- and 5th-place games are excluded everywhere.
 
-## Corrections (Derek, 11/8/26: the scores win over the spreadsheet)
-`playoff_results_letters.csv` has been corrected to match the playoff games and is no longer identical to the project upload:
-
-| Year | Owner | Was | Now | Evidence |
-|---|---|---|---|---|
-| 2023 | Giff | D | C | CBS 2023 bracket (project file "playoffs 2023.pdf"): beat Craig 148.44–112.42 in the quarterfinal, lost to Abeln 131.20–116.68 in the semifinal |
-| 2023 | Craig | C | D | Same bracket: lost that quarterfinal |
-| 2013 | Abeln | C | D | Lost to the Frenches 106–48 in the quarterfinal |
-| 2019 | Craig | F | D | Lost to Giff 65–63 in the quarterfinal |
-| 2025 | all | (missing) | added | From the 2025 playoff games: Chad A, Schwanz B, Ricer C, Abeln C, Tom D, Craig D, rest F |
-
-Disagreements in reconstructed years (1993–1997, 2000) were left alone: placeholder scores can't settle them.
-
-Open: `division_standings.csv` 2025 has Craig 4th and the Frenches 3rd in the Left, but Craig made the playoffs and the Frenches didn't.
+## Open questions
+- 2025 Left Division: the sheet has Craig 4th and the Frenches 3rd, but Craig made the playoffs and the Frenches didn't.
+- Schwanz: notes say he sat out 2001–2008, but the sheet gives him Left Division finishes in 2007 (5th) and 2008 (3rd).
+- 1995–96: the sheet lists Chewy, while the 1995 playoff games list Chad.

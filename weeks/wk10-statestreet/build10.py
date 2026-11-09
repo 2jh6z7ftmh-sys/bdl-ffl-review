@@ -142,7 +142,7 @@ figcaption{font:italic 14px/1.35 'Barlow';color:var(--mut);margin-top:6px}
 """
 
 def nav():
-    items = [('top', 'Top'), ('results', 'Last call'), ('money', 'Specials'), ('door', 'The door'), ('games', 'On tap'), ('tour', 'The Bar Tour')]
+    items = [('top', 'Top'), ('results', 'Last call'), ('money', 'Specials'), ('door', 'The door'), ('games', 'On tap'), ('tour', 'Bar Tour')]
     return '<nav class="nav">' + ''.join(f'<a href="#{k}">{v}</a>' for k, v in items) + '</nav>'
 
 def crawl_map():
@@ -165,7 +165,7 @@ def crawl_map():
     return '<div class="map">' + ''.join(o) + f'</div><div class="legend">{leg}</div>'
 
 def results():
-    h = '<section id="results"><h2>Last call: Week 9</h2><p class="dek">The clock at the Plaza ran fifteen minutes fast, so last call always came early. ' + ('Week 9 as it stood Sunday night; Monday night still to play.' if PROV else 'Week 9 final.') + '</p>'
+    h = '<section id="results"><h2>Last call: Week 9</h2><p class="dek">' + ('Week 9 as it stood Sunday night; Monday night still to play.' if PROV else 'Week 9 final.') + '</p>'
     for a, hh, (sa, sh) in W9:
         w = a if sa > sh else hh
         h += (f'<div class="res"><div class="sc">{lg(a, 34)}<span class="{"w" if w == a else ""}">{a}</span>'
@@ -236,18 +236,32 @@ def terrace():
             'Since 2005, a projected gap under 10 points has picked the winner 49% of the time; 10 to 20, 56%; over 20, 66%.</p>'
             '</section>')
 
-TOUR = (
- '<section id="tour" style="margin-top:22px;border-top:4px solid var(--red)"><h2>The State Street Bar Tour</h2>'
- '<p>Most of us spent a good part of college on State Street. This series goes back through the bars one or two at a time, '
- 'with the pictures and stories we have. First up: the Red Shed and State Street Brats. Still to come: Bull Feathers, the KK, '
- 'Church Key, Mondays, the Plaza, La Bamba\'s and more.</p>'
- '<p>If you have photos or stories from any of these, send them my way.</p>'
- '<div class="stopcard"><div class="sn">Stop 1</div><h3>The Red Shed</h3><div class="addr">406 N. Frances</div>'
- f'<figure><img src="{PH["red_shed_group"]}" alt="" loading="lazy"><figcaption>The Red Shed, a few years ago.</figcaption></figure>'
- '<p>The broken pool table and the Long Island Iced Teas, in mason jars. Ricer\'s bar. It moved to State Street in 2024 and has since closed.</p></div>'
- '<div class="stopcard"><div class="sn">Stop 2</div><h3>State Street Brats</h3><div class="addr">603 State</div>'
- f'<figure><img src="{PH["rusty_moose_brats"]}" alt="" loading="lazy"><figcaption>Rusty, 21.</figcaption></figure>'
- '<p>On your birthday, you kissed the moose. Rusty\'s 21st.</p></div></section>')
+BARS = [
+ ("Bull Feathers", "303 N. Henry, under Stillwaters", None, None, "Giff worked the door. We benefited the hell out of that."),
+ ("The Plaza", "319 N. Henry", None, None, "The clock ran fifteen minutes fast, so last call came early."),
+ ("Mondays", "523 State", None, None, "Giff was banned for breaking a gumball machine."),
+ ("The Red Shed", "406 N. Frances", "red_shed_group", "A few years ago.", "The broken pool table and the Long Island Iced Teas, in mason jars. Ricer\'s bar."),
+ ("State Street Brats", "603 State", "rusty_moose_brats", "Rusty, 21.", "On your birthday, you kissed the moose."),
+ ("The KK", "Lake and Langdon", None, None, "Rusty\'s bar. There is a story involving John Hall, the Badgers\' kicker, around 1994. Rusty can tell it."),
+ ("Church Key and Riley\'s", "University and Lake; Gorham and Broom", None, None,
+  "Chad worked at both, and he always called the owner Mrs. Lee. The Lees later made the papers over federal tax cases; "
+  "bank tellers remembered Mr. Lee coming in with a backpack full of cash."),
+ ("Union Terrace", "Memorial Union", "union_terrace_group", "A few years ago.", "The oasis."),
+ ("La Bamba\'s", "Broom at State", None, None,
+  "Where every night ended. One time Craig, pretty drunk, ordered a burrito and asked them to hold the mayo. We all knew it was crazy. "
+  "The guy at the counter gave him the food and said, \"One burrito, hold the mayo.\""),
+ ("Dayton Square", "Johnson at Broom", None, None, "Derek\'s apartment, a block from La Bamba\'s. Almost everyone ended up here."),
+]
+def tour():
+    h = ('<section id="tour" style="margin-top:22px;border-top:4px solid var(--red)"><h2>The State Street Bar Tour</h2>'
+         '<p class="dek">Ten stops, from Henry Street to Dayton Square.</p>')
+    for i, (name, addr, ph, cap, text) in enumerate(BARS, 1):
+        h += f'<div class="stopcard"><div class="sn">Stop {i}</div><h3>{name}</h3><div class="addr">{addr}</div>'
+        if ph:
+            h += f'<figure><img src="{PH[ph]}" alt="" loading="lazy"><figcaption>{cap}</figcaption></figure>'
+        h += f'<p>{text}</p></div>'
+    return h + '</section>'
+TOUR = tour()
 PICKNOTE = ('<p class="small" style="margin-top:14px">How the picks work: a projected score is 70% of a team\'s 2026 average plus 30% of the '
             'league average. Since 2005, a projected gap under 10 points has picked the winner 49% of the time; 10 to 20, 56%; over 20, 66%.</p>')
 HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
@@ -255,12 +269,11 @@ HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="
         f'<style>{FONTS}{CSS}</style></head><body>{nav()}<div class="wrap">'
         '<header class="mast" id="top"><div class="k">Bullwinkle\'s Dance League &middot; Week 10 &middot; Nov. 10 to 16</div>'
         '<h1><span>FFL</span>Review</h1>'
-        '<div class="sub">The State Street Bar Tour<br>Stop No.&nbsp;1</div><div class="series">An ongoing series</div>'
-        '<div class="route"><span class="d">1</span><span>Red Shed</span><i></i><span class="d">2</span><span>Brats</span><i></i><span class="more">more stops to come</span></div></header>'
+        '<div class="sub">The State Street Bar Tour</div><div class="series">Ten stops, inside</div></header>'
         + ('<div class="prov">Sample. Week 9 as it stood Sunday night; Monday night is still to play, so scores, picks and odds will move.</div>' if PROV else '')
         + three() + results() + money() + door()
         + '<section id="games"><h2>On tap: Week 10</h2><p class="dek">Records, playoff odds, and the pick.</p></section>' + ''.join(stop(s) for s in STOPS) + PICKNOTE + TOUR
-        + '<section id="past"><h2 style="font-size:24px">Past issues</h2><p class="small">This is the FFL Review\'s permanent home: the newest issue is always here. Earlier web issues will be listed below as they come.</p></section>' + '<div class="foot">Bullwinkle\'s Dance League &middot; FFL Review &middot; Week 10 &middot; The State Street Bar Tour continues</div>'
+        + '<section id="past"><h2 style="font-size:24px">Past issues</h2><p class="small">This is the FFL Review\'s permanent home: the newest issue is always here. Earlier web issues will be listed below as they come.</p></section>' + '<div class="foot">Bullwinkle\'s Dance League &middot; FFL Review &middot; Week 10</div>'
         + '</div></body></html>')
 open('ffl_wk10.html', 'w').write(HTML)
 print('ok', len(HTML) // 1024, 'KB; picks', hits9, SEASON)

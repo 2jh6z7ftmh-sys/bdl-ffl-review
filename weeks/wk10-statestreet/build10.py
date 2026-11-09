@@ -229,17 +229,13 @@ def terrace():
             '</section>')
 
 TOUR = (
- '<section id="tour"><h2>The State Street Bar Tour</h2><p class="dek">No. 1. Two stops this week. The rest of the street isn\'t going anywhere.</p>'
- '<div class="stopcard"><div class="sn">Stop 1</div><h3>The Red Shed</h3><div class="addr">406 N. Frances, a block off State</div>'
- f'<figure><img src="{PH["red_shed_group"]}" alt="" loading="lazy"><figcaption>Back at the pool table, more recently.</figcaption></figure>'
- '<p>We played on the broken pool table and drank the Long Island Iced Teas, which came in mason jars and were potent enough that '
- 'nobody remembers much else. Ricer was the biggest fan.</p>'
- '<p class="small">The Shed moved to State Street in 2024 and has since closed. This week: Ricer hosts Craig.</p></div>'
+ '<section id="tour"><h2>The State Street Bar Tour</h2><p class="dek">No. 1. Two stops this week.</p>'
+ '<div class="stopcard"><div class="sn">Stop 1</div><h3>The Red Shed</h3><div class="addr">406 N. Frances</div>'
+ f'<figure><img src="{PH["red_shed_group"]}" alt="" loading="lazy"><figcaption>The Red Shed, a few years ago.</figcaption></figure>'
+ '<p>The broken pool table and the Long Island Iced Teas, in mason jars. Ricer\'s bar. It moved to State Street in 2024 and has since closed.</p></div>'
  '<div class="stopcard"><div class="sn">Stop 2</div><h3>State Street Brats</h3><div class="addr">603 State</div>'
- f'<figure><img src="{PH["rusty_moose_brats"]}" alt="" loading="lazy" style="transform:rotate(.7deg)"><figcaption>Rusty\'s 21st.</figcaption></figure>'
- '<p>At Brats, your birthday meant kissing the moose. On his 21st, Rusty did it properly: up on the bar, on his knees, both hands. '
- 'There is, as you can see, documentation.</p>'
- '<p class="small">Still there. This week: Rusty visits the Frenches.</p></div></section>')
+ f'<figure><img src="{PH["rusty_moose_brats"]}" alt="" loading="lazy"><figcaption>Rusty, 21.</figcaption></figure>'
+ '<p>On your birthday, you kissed the moose. Rusty\'s 21st.</p></div></section>')
 PICKNOTE = ('<p class="small" style="margin-top:14px">How the picks work: a projected score is 70% of a team\'s 2026 average plus 30% of the '
             'league average. Since 2005, a projected gap under 10 points has picked the winner 49% of the time; 10 to 20, 56%; over 20, 66%.</p>')
 HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'

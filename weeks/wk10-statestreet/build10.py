@@ -204,8 +204,8 @@ def door():
             h += (f'<tr><td>{o}{owe}</td><td>{wl(o)}</td><td>{S[o]["dw"]}-{S[o]["dl"]}</td><td>{S[o]["pf"]:.0f}</td>'
                   f'<td><b>{pct(o)}</b></td><td class="{cls}">{c:+.0f}</td></tr>')
         h += '</table>'
-    h += ('<p class="small">Trade deadline: the week the first team is mathematically eliminated. Nobody is yet; Abes, at 1-8, '
-          'is still alive on paper.</p></section>')
+    h += ('<p class="small">Trade deadline: the week the first team is mathematically eliminated. Nobody is yet. Abes is at 1-8 '
+          'and still alive on paper.</p></section>')
     return h
 
 def stop(s):

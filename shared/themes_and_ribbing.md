@@ -11,7 +11,7 @@
 | 9 | Saturday-morning wrestling |
 
 ## The State Street Bar Tour (running series)
-A recurring series across issues and seasons, one or two bar stories at a time. No. 1 = Week 10, 2026 (Red Shed for Craig v Ricer; Brats moose for Rusty v Frenches). Held for later: La Bamba's and the mayo order (give it its own stop), Mrs. Lee (Church Key/Riley's), Giff at Bull Feathers and Mondays, the shotgun rule, Rusty's John Hall story at the KK, Dayton Square, Genna's, the Plaza, Flamingo, the Pub, the Terrace.
+A recurring series across issues and seasons, one or two bar stories at a time. No. 1 = Week 10, 2026 (Red Shed for Craig v Ricer; Brats moose for Rusty v Frenches; passing references: the Plaza clock running 15 minutes fast, Giff working the Bull Feathers door). Held for later: La Bamba's and the mayo order (give it its own stop), Mrs. Lee (Church Key/Riley's), Giff at Bull Feathers and Mondays, the shotgun rule, Rusty's John Hall story at the KK, Dayton Square, Genna's, the Plaza, Flamingo, the Pub, the Terrace.
 
 ## Coming up
 Wk 10 State Street Bar Tour, No. 1 · Wk 11 Baseball cards · Wk 12 MTV / Rolling Stone · Wk 13 Badger Herald · Wk 14 Sports Illustrated · Playoffs Prize fight

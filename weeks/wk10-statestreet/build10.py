@@ -72,6 +72,7 @@ section{scroll-margin-top:46px;padding-top:22px}
 .route{display:flex;align-items:center;gap:6px;margin-top:14px;font:700 14px 'Barlow Condensed';text-transform:uppercase;letter-spacing:.06em;flex-wrap:wrap}
 .route .d{display:inline-block;width:24px;height:24px;border-radius:50%;background:#fff;color:var(--red);text-align:center;line-height:24px}
 .route i{flex:0 0 22px;border-top:2px dashed rgba(255,255,255,.8)}
+.mast .series{font:700 12px 'Courier Prime';letter-spacing:.16em;text-transform:uppercase;margin-top:6px;opacity:.9}
 .route .more{font:italic 500 14px 'Barlow';text-transform:none;letter-spacing:0;opacity:.85}
 .mast h1 span{display:inline-block;background:#fff;color:var(--red);padding:0 8px;transform:skew(-8deg);margin-right:6px}
 .mast .sub{font:700 20px/1.2 'Barlow Condensed';text-transform:uppercase;letter-spacing:.04em}
@@ -161,7 +162,7 @@ def crawl_map():
     return '<div class="map">' + ''.join(o) + f'</div><div class="legend">{leg}</div>'
 
 def results():
-    h = '<section id="results"><h2>Last call: Week 9</h2><p class="dek">Week 9' + (', as it stood Sunday night. Monday night still to play.' if PROV else '.') + '</p>'
+    h = '<section id="results"><h2>Last call: Week 9</h2><p class="dek">The clock at the Plaza ran fifteen minutes fast, so last call always came early. ' + ('Week 9 as it stood Sunday night; Monday night still to play.' if PROV else 'Week 9 final.') + '</p>'
     for a, hh, (sa, sh) in W9:
         w = a if sa > sh else hh
         h += (f'<div class="res"><div class="sc">{lg(a, 34)}<span class="{"w" if w == a else ""}">{a}</span>'
@@ -190,7 +191,7 @@ def money():
             f'<p class="small">Ricer, Schwanz, Derek and the Frenches have two each. Week 9 is Ricer\'s unless Monday night says otherwise.</p></section>')
 
 def door():
-    h = '<section id="door"><h2>The line at the door</h2><p class="dek">Records through Week 9, playoff odds from 20,000 simulations of the rest of the season, and the change since last week. Top three in each division get in.</p>'
+    h = '<section id="door"><h2>The line at the door</h2><p class="dek">Giff worked the door at Bull Feathers. Here, the top three in each division get in. Records through Week 9, playoff odds from 20,000 simulations of the rest of the season, and the change since last week.</p>'
     for name, div in (('Right Division', D.RIGHT), ('Left Division', D.LEFT)):
         rows = sorted(div, key=lambda o: (-S[o]['w'], -(S[o]['dw'] / max(1, S[o]['dw'] + S[o]['dl'])), -S[o]['pf']))
         h += f'<div class="dv">{name}</div><table><tr><th>Team</th><th>W-L</th><th>Div</th><th>Pts</th><th>Odds</th><th>+/-</th></tr>'
@@ -233,7 +234,7 @@ def terrace():
             '</section>')
 
 TOUR = (
- '<section id="tour"><h2>Stop No. 1</h2><p class="dek">Two bars this week. The rest of the street keeps.</p>'
+ '<section id="tour"><h2>Tonight\'s stops</h2><p class="dek">An ongoing series: a couple of bars an issue, for as long as the league lasts. Two this week.</p>'
  '<div class="stopcard"><div class="sn">Stop 1</div><h3>The Red Shed</h3><div class="addr">406 N. Frances</div>'
  f'<figure><img src="{PH["red_shed_group"]}" alt="" loading="lazy"><figcaption>The Red Shed, a few years ago.</figcaption></figure>'
  '<p>The broken pool table and the Long Island Iced Teas, in mason jars. Ricer\'s bar. It moved to State Street in 2024 and has since closed.</p></div>'
@@ -246,7 +247,7 @@ HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="
         '<title>FFL Review, Week 10: The State Street Bar Tour, No. 1</title>'
         f'<style>{FONTS}{CSS}</style></head><body>{nav()}<div class="wrap">'
         '<header class="mast" id="top"><div class="k"><span class="wm">FFL Review</span> &middot; Bullwinkle\'s Dance League &middot; Week 10</div>'
-        '<h1>The State Street<br>Bar Tour</h1><div class="sub">Stop No. 1 &middot; The Red Shed and State Street Brats</div>'
+        '<h1>The State Street<br>Bar Tour</h1><div class="sub">Stop No. 1 &middot; The Red Shed and State Street Brats</div><div class="series">An ongoing series</div>'
         '<div class="route"><span class="d">1</span><span>Red Shed</span><i></i><span class="d">2</span><span>Brats</span><i></i><span class="more">more stops to come</span></div></header>'
         + ('<div class="prov">Sample. Week 9 as it stood Sunday night; Monday night is still to play, so scores, picks and odds will move.</div>' if PROV else '')
         + TOUR + three() + results() + money() + door()

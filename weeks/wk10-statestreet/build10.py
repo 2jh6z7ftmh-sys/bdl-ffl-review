@@ -56,7 +56,7 @@ FONTS = ''.join(f"@font-face{{font-family:'{n}';src:url({img('ff/'+f+'.woff2','f
                                     ('Barlow','barlow-latin-700-normal',700,'normal'),('Barlow Condensed','barlow-condensed-latin-700-normal',700,'normal'),
                                     ('Courier Prime','courier-prime-latin-700-normal',700,'normal')])
 CSS = """
-:root{--red:#c5050c;--redd:#8f0309;--ink:#15121c;--paper:#f7f0e1;--card:#fffaf0;--mut:#6b6455;--rule:#d9c9a6;--gold:#f2b632}
+:root{--red:#c5050c;--redd:#8f0309;--ink:#15121c;--paper:#f7f0e1;--card:#fffaf0;--mut:#6b6455;--rule:#d9c9a6;--gold:#ffffff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 'Barlow',system-ui,sans-serif;-webkit-text-size-adjust:100%}
@@ -70,7 +70,7 @@ section{scroll-margin-top:46px;padding-top:22px}
 .mast h1{font:400 64px/0.9 'Anton';letter-spacing:2px;margin:8px 0 6px;text-transform:uppercase}
 .mast h1 span{display:inline-block;background:#fff;color:var(--red);padding:0 8px;transform:skew(-8deg);margin-right:6px}
 .mast .sub{font:700 20px/1.2 'Barlow Condensed';text-transform:uppercase;letter-spacing:.04em}
-.prov{background:var(--gold);color:var(--ink);font:700 13px/1.35 'Barlow Condensed';letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;margin:0 -16px}
+.prov{background:#fff;color:var(--red);border-bottom:3px solid var(--red);font:700 13px/1.35 'Barlow Condensed';letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;margin:0 -16px}
 h2{font:400 32px/1 'Anton';text-transform:uppercase;letter-spacing:.5px;margin:0 0 4px}
 h2 .no{display:inline-block;background:var(--red);color:#fff;font-size:20px;padding:4px 8px 2px;margin-right:8px;transform:skew(-8deg);vertical-align:4px}
 .dek{font:italic 15px/1.4 'Barlow';color:var(--mut);margin:0 0 12px}
@@ -102,7 +102,7 @@ td{padding:6px 0;border-bottom:1px solid var(--rule);text-align:right}
 .board .row b{font:700 17px 'Barlow Condensed';text-transform:uppercase;letter-spacing:.04em;color:var(--gold)}
 .board .row:last-child{border:0}
 .pot{display:flex;height:26px;margin:10px 0 4px;border:2px solid #fff;font:700 13px/22px 'Barlow Condensed';text-transform:uppercase;text-align:center}
-.pot .in{background:var(--gold);color:var(--ink)} .pot .out{background:repeating-linear-gradient(45deg,#fff 0 6px,#ddd 6px 12px);color:var(--ink)}
+.pot .in{background:var(--red);color:#fff} .pot .out{background:repeating-linear-gradient(45deg,#fff 0 6px,#ddd 6px 12px);color:var(--ink)}
 .tab{background:var(--card);border:2px solid var(--ink);padding:10px 14px;margin-top:10px;font-family:'Courier Prime',monospace;font-size:15px}
 .tab .l{display:flex;justify-content:space-between;border-bottom:1px dotted var(--mut);padding:3px 0}
 .stop .bar{font:700 13px 'Courier Prime';letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
@@ -163,7 +163,7 @@ def results():
         h += (f'<div class="res"><div class="sc">{lg(a, 34)}<span class="{"w" if w == a else ""}">{a}</span>'
               f'<span style="color:var(--mut)">at</span><span class="{"w" if w == hh else ""}">{hh}</span>{lg(hh, 34)}'
               f'<span class="pts">{sa:.1f} to {sh:.1f}</span></div><p>{RECAP[(a, hh)]}</p></div>')
-    h += (f'<div class="call" style="box-shadow:5px 5px 0 var(--gold)"><div class="k">The bouncer\'s call, graded</div>'
+    h += (f'<div class="call" style="box-shadow:5px 5px 0 var(--ink)"><div class="k">The bouncer\'s call, graded</div>'
           f'<div class="p">{hits9}-{5 - hits9} last week. {SEASON[0]}-{SEASON[1]} on the season.</div>'
           f'<p>Missed on Derek over Giff and Rusty over Ricer. Hit on Schwanz, Chad and Tom.</p></div></section>')
     return h

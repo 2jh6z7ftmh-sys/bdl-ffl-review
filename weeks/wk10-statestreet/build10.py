@@ -33,14 +33,13 @@ RECAP = {
 
 # ---------------------------------------------------------------- Week 10 stops
 STOPS = [
- dict(pair=('Craig', 'Ricer'), n=1, bar="The Red Shed and La Bamba's", photo='red_shed_group', cap="The Red Shed, more recently.",
+ dict(pair=('Craig', 'Ricer'), n=1, bar="Bar Tour stop: The Red Shed", photo='red_shed_group', cap="The Red Shed, more recently.",
       text=("Ricer is 7-2 and two games clear in the Right. Craig is 2-7 and at 1%, though he has beaten Ricer in two of their last four. "
-            "In the old days this was Ricer's Long Island at the Red Shed and Craig's burrito at La Bamba's, where he once asked them to "
-            "hold the mayo. The guy handed it over: \"One burrito, hold the mayo.\"")),
+            "The Red Shed was Ricer's bar, and the Long Island Iced Tea was his drink.")),
  dict(pair=('Chad', 'Schwanz'), n=2, bar=None,
       text=("A rematch of last year's final, which Chad won by 50. Schwanz has won six straight and leads the league in points; "
             "Chad just climbed to 80% playoff odds.")),
- dict(pair=('Rusty', 'Frenches'), n=3, bar="State Street Brats", photo='rusty_moose_brats', cap="Rusty's 21st, State Street Brats. Yes, that's the moose.",
+ dict(pair=('Rusty', 'Frenches'), n=3, bar="Bar Tour stop: State Street Brats", photo='rusty_moose_brats', cap="Rusty's 21st, State Street Brats. Yes, that's the moose.",
       text=("Rusty is second in the league in points and 3-6, which takes some doing. His playoff odds are down to 32%. "
             "The Frenches have won the last three in this series, including Week 1 by 0.8.")),
  dict(pair=('Abeln', 'Giff'), n=4, bar=None,
@@ -131,8 +130,8 @@ figcaption{font:italic 14px/1.35 'Barlow';color:var(--mut);margin-top:6px}
 """
 
 def nav():
-    items = [('top', 'Map'), ('results', 'Last week'), ('money', 'Specials'), ('door', 'The door')]
-    items += [('games', 'This week')] + [('terrace', 'Last call')]
+    items = [('top', 'Top'), ('results', 'Last week'), ('money', 'Specials'), ('door', 'The door')]
+    items += [('games', 'This week')]
     return '<nav class="nav">' + ''.join(f'<a href="#{k}">{v}</a>' for k, v in items) + '</nav>'
 
 def crawl_map():
@@ -226,15 +225,19 @@ def terrace():
             'Since 2005, a projected gap under 10 points has picked the winner 49% of the time; 10 to 20, 56%; over 20, 66%.</p>'
             '</section>')
 
+PICKNOTE = ('<p class="small" style="margin-top:14px">How the picks work: a projected score is 70% of a team\'s 2026 average plus 30% of the '
+            'league average. Since 2005, a projected gap under 10 points has picked the winner 49% of the time; 10 to 20, 56%; over 20, 66%.</p>')
 HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
         '<title>FFL Review, Week 10: The State Street Bar Tour, No. 1</title>'
         f'<style>{FONTS}{CSS}</style></head><body>{nav()}<div class="wrap">'
         '<header class="mast" id="top"><div class="k">Bullwinkle\'s Dance League &middot; Vol. 37</div>'
         '<h1><span>FFL</span>Review</h1><div class="sub">The State Street Bar Tour, No. 1 &middot; Week 10</div></header>'
         + ('<div class="prov">Sample. Week 9 as it stood Sunday night; Monday night is still to play, so scores, picks and odds will move.</div>' if PROV else '')
-        + '<section><h2>The State Street Bar Tour</h2><p class="dek">No. 1. A few stops this week. The rest of the street isn\'t going anywhere.</p>'
-        + crawl_map() + '</section>' + three() + results() + money() + door()
-        + '<section id="games"><h2>This week</h2><p class="dek">Week 10. Records, playoff odds, and the pick.</p></section>' + ''.join(stop(s) for s in STOPS) + terrace()
+        + '<section id="tour"><h2>The State Street Bar Tour</h2><p class="dek">No. 1. Two stops this week; the rest of the street isn\'t going anywhere.</p>'
+        + '<div class="legend"><a class="li" href="#s1"><span class="n">1</span><span>The Red Shed</span><em>Craig at Ricer</em></a>'
+        + '<a class="li" href="#s3"><span class="n">2</span><span>State Street Brats</span><em>Rusty at Frenches</em></a></div></section>'
+        + three() + results() + money() + door()
+        + '<section id="games"><h2>This week</h2><p class="dek">Week 10. Records, playoff odds, and the pick.</p></section>' + ''.join(stop(s) for s in STOPS) + PICKNOTE
         + '<div class="foot">Bullwinkle\'s Dance League &middot; FFL Review &middot; Week 10 &middot; Est. 1990, hand-delivered then, texted now</div>'
         + '</div></body></html>')
 open('ffl_wk10.html', 'w').write(HTML)

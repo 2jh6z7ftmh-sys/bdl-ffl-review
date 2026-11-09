@@ -33,37 +33,22 @@ RECAP = {
 
 # ---------------------------------------------------------------- Week 10 stops
 STOPS = [
- dict(pair=('Craig', 'Ricer'), n=1, bar="The Red Shed, then La Bamba's", where="406 N. Frances, then Broom at State",
-      photo='red_shed_group', cap="The Red Shed, more recently. Long Islands in mason jars, as always.",
-      head="Ricer starts the night. Craig finishes it.",
-      story="The Red Shed was Ricer's bar, and the Long Island Iced Tea was his drink. Craig's moment came at the end of the night, at La Bamba's. Pretty drunk, he ordered a burrito and asked them to hold the mayo. We all knew it was crazy. The guy at the counter handed it over and said, \"One burrito, hold the mayo.\"",
-      stakes="Ricer is 7-2 and two games clear in the Right. Craig is 2-7 and down to 1%. The series is closer than the standings: Ricer leads 8-7-2 since 2010, and Craig has won two of the last four.",
-      wrong="Craig has beaten Ricer twice in the last four meetings, both by double digits."),
- dict(pair=('Chad', 'Schwanz'), n=2, bar="Church Key and Riley's", where="626 University and 402 W. Gorham",
-      photo=None, cap=None,
-      head="A rematch of last year's final.",
-      story="Chad worked at Church Key and at Riley's Wines of the World, where the owner was always Mrs. Lee. The Lees later made the papers: federal tax cases in 2002 and 2009, and bank tellers who remembered Mr. Lee walking in with a backpack full of cash. Riley's 1995 tax return put the store's gross receipts at $6,241 for the year, which would surprise anyone who ever stood in that line.",
-      stakes="It's a rematch of last year's final, which Chad won 172.9 to 123.3. Schwanz has won six straight and leads the league in points. Chad's odds jumped to 80% this week. And since Chad was an Evans Scholar, it's also a caddie against Bushwood. Chad leads the series 15-10-1.",
-      wrong="Schwanz has won six straight and won Week 1 against Chad by 1.3."),
- dict(pair=('Rusty', 'Frenches'), n=3, bar="State Street Brats and the KK", where="603 State, then Lake at Langdon",
-      photo='rusty_moose_brats', cap="Rusty's 21st, State Street Brats. On the bar, with the moose.",
-      photo2='rusty_mattress', cap2="Later, carrying a mattress back to Chad's. Reason unknown.",
-      head="The Dog needs this one.",
-      story="Rusty turned 21 at State Street Brats and celebrated by climbing on the bar to kiss the moose. There is a photo. The KK was his other home. His best story there involves John Hall, the Badgers' kicker, around 1994, and nobody can remember the rest. Rusty is invited to fill it in.",
-      stakes="Rusty is second in the league in points and 3-6, and his odds dropped to 32%. He leads the series 13-6, but the Frenches have won the last three, including the biggest blowout in league history (165.8 to 71.6 in 2024) and Week 1 this year by 0.8.",
-      wrong="Projections have this at 125 to 124. The Week 1 meeting came down to 0.8."),
- dict(pair=('Abeln', 'Giff'), n=4, bar="Bull Feathers and Mondays", where="303 N. Henry, then 523 State",
-      photo=None, cap=None,
-      head="Housemates, with a bouncer's discount.",
-      story="Giff worked the door at Bull Feathers, the basement bar under Stillwaters, and his friends benefited the hell out of that. Mondays was another story: Giff got banned for breaking a gumball machine. Abes and Giff lived in the same apartment, and they have now played each other 73 times.",
-      stakes="Giff is 7-2 with three straight wins and a playoff spot all but locked, despite scoring the fewest points of any contender. Abes is 1-8. Giff leads the series 38-33-2, though Abes won both meetings last year.",
-      wrong="Abes beat Giff twice in 2025, including 132.6 to 86.9."),
- dict(pair=('Derek', 'Tom'), n=5, bar="Dayton Square", where="Johnson at Broom",
-      photo='tom_downs_shotgun', cap="League law, before the websites: draft a player who's already taken, shotgun a beer. Tom paying up, with Downs.",
-      head="The afterparty, and the oldest series in the league.",
-      story="Dayton Square was Derek's apartment, a block from La Bamba's, and almost everyone ended up there. Derek and Tom have the oldest rivalry in the league, 73 games since 1990. Tom also has a place in draft history. Back before the websites, if you tried to draft a player who was already taken, you shotgunned a beer. There is a photo of Tom paying up.",
-      stakes="Derek leads the series 36-34-3. The Ferries are 5-4 after two straight losses, and their odds fell to 68%. Tom is 3-6, but he has won two of his last three and outscored the Ferries both of the last two weeks.",
-      wrong="It's a 1.4-point projection. Tom has outscored the Ferries the last two weeks, and three other weeks this year were within 1.1 points."),
+ dict(pair=('Craig', 'Ricer'), n=1, bar="The Red Shed and La Bamba's", photo='red_shed_group', cap="The Red Shed, more recently.",
+      text=("Ricer is 7-2 and two games clear in the Right. Craig is 2-7 and at 1%, though he has beaten Ricer in two of their last four. "
+            "In the old days this was Ricer's Long Island at the Red Shed and Craig's burrito at La Bamba's, where he once asked them to "
+            "hold the mayo. The guy handed it over: \"One burrito, hold the mayo.\"")),
+ dict(pair=('Chad', 'Schwanz'), n=2, bar=None,
+      text=("A rematch of last year's final, which Chad won by 50. Schwanz has won six straight and leads the league in points; "
+            "Chad just climbed to 80% playoff odds.")),
+ dict(pair=('Rusty', 'Frenches'), n=3, bar="State Street Brats", photo='rusty_moose_brats', cap="Rusty's 21st, State Street Brats. Yes, that's the moose.",
+      text=("Rusty is second in the league in points and 3-6, which takes some doing. His playoff odds are down to 32%. "
+            "The Frenches have won the last three in this series, including Week 1 by 0.8.")),
+ dict(pair=('Abeln', 'Giff'), n=4, bar=None,
+      text=("Old housemates. Giff is 7-2 on three straight wins with the fewest points of any contender, which is its own kind of talent. "
+            "Abes is 1-8. Giff leads the series 38-33-2.")),
+ dict(pair=('Derek', 'Tom'), n=5, bar=None,
+      text=("The oldest rivalry in the league: 73 games since 1990, Derek up 36-34-3. The Ferries have lost two straight and slipped to 68%. "
+            "Tom has outscored them both of the last two weeks.")),
 ]
 
 # ---------------------------------------------------------------- page
@@ -138,20 +123,21 @@ figcaption{font:italic 14px/1.35 'Barlow';color:var(--mut);margin-top:6px}
 .call .p{font:400 26px/1.05 'Anton';text-transform:uppercase;margin:4px 0}
 .call p{margin:4px 0 0;font-size:15px}
 .small{font-size:13.5px;color:var(--mut)}
+.pick{font:700 17px 'Barlow Condensed';text-transform:uppercase;letter-spacing:.03em;margin:4px 0 14px}
+.pick span{background:var(--red);color:#fff;padding:2px 7px;margin-right:6px;font-size:14px;letter-spacing:.1em}
+.vs .t{font-size:20px!important}
 .stamp{display:inline-block;border:2px solid var(--red);color:var(--red);font:700 12px 'Courier Prime';letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;transform:rotate(-3deg);margin-left:6px}
 .foot{background:var(--red);color:#fff;margin:30px -16px 0;padding:14px 16px;font:700 12px/1.5 'Barlow Condensed';letter-spacing:.14em;text-transform:uppercase;text-align:center}
 """
 
 def nav():
     items = [('top', 'Map'), ('results', 'Last week'), ('money', 'Specials'), ('door', 'The door')]
-    items += [(f's{s["n"]}', f'{s["pair"][0]} v {s["pair"][1]}') for s in STOPS] + [('terrace', 'Last call')]
+    items += [('games', 'This week')] + [('terrace', 'Last call')]
     return '<nav class="nav">' + ''.join(f'<a href="#{k}">{v}</a>' for k, v in items) + '</nav>'
 
 def crawl_map():
-    # schematic, Capitol top right, State Street running down to campus; numbered in crawl order
-    pts = [('s4', 'Bull Feathers', 'Abeln v Giff', 352, 96), ('s4', 'Mondays', 'Abeln v Giff', 262, 168), ('s1', 'Red Shed', 'Craig v Ricer', 214, 186),
-           ('s3', 'State Street Brats', 'Rusty v Frenches', 176, 248), ('s3', 'KK', 'Rusty v Frenches', 96, 160), ('terrace', 'Union Terrace', 'Last call', 52, 70),
-           ('s2', 'Church Key', 'Chad v Schwanz', 78, 330), ('s1', "La Bamba's", 'Craig v Ricer', 300, 118), ('s5', 'Dayton Square', 'Derek v Tom', 334, 168)]
+    pts = [('s1', 'Red Shed', 'Craig v Ricer', 214, 186), ('s3', 'State Street Brats', 'Rusty v Frenches', 176, 248),
+           ('s1', "La Bamba's", 'Craig v Ricer', 300, 118), ('terrace', 'Union Terrace', 'Last call', 52, 70)]
     o = ['<svg viewBox="0 0 400 380" role="img" aria-label="Crawl map">', '<rect width="400" height="380" fill="#fffaf0"/>',
          '<path d="M-10 60 C60 20 120 30 170 10" stroke="#9bb7c9" stroke-width="30" fill="none" opacity=".55"/>',
          '<text x="10" y="22" style="font:italic 14px Barlow;fill:#4f7488">Lake Mendota</text>',
@@ -159,15 +145,14 @@ def crawl_map():
          '<text x="262" y="138" transform="rotate(-46 262 138)" style="font:700 13px Barlow Condensed;letter-spacing:.2em;fill:#6b6455">STATE ST</text>',
          '<path d="M0 352 L400 352" stroke="#15121c" stroke-width="6" opacity=".5"/>',
          '<text x="250" y="372" style="font:700 12px Barlow Condensed;letter-spacing:.2em;fill:#6b6455">UNIVERSITY AVE</text>',
-         '<rect x="330" y="8" width="62" height="34" fill="#c5050c"/><text x="361" y="30" text-anchor="middle" style="font:700 13px Barlow Condensed;fill:#fff">CAPITOL</text>',
-         '<path d="M352 96 L262 168 L214 186 L176 248 L96 160 L52 70 M96 160 L78 330 L300 118 L334 168" stroke="#c5050c" stroke-width="3" stroke-dasharray="7 6" fill="none"/>']
+         '<rect x="330" y="8" width="62" height="34" fill="#c5050c"/><text x="361" y="30" text-anchor="middle" style="font:700 13px Barlow Condensed;fill:#fff">CAPITOL</text>']
     for i, (a, name, game, x, y) in enumerate(pts, 1):
         o.append(f'<a href="#{a}"><circle cx="{x}" cy="{y}" r="15" fill="#c5050c" stroke="#fff" stroke-width="3"/>'
                  f'<text x="{x}" y="{y + 6}" text-anchor="middle" style="font:700 17px Barlow Condensed;fill:#fff">{i}</text></a>')
     o.append('</svg>')
     leg = ''.join(f'<a class="li" href="#{a}"><span class="n">{i}</span><span>{html.escape(name)}</span><em>{game}</em></a>'
                   for i, (a, name, game, x, y) in enumerate(pts, 1))
-    return '<div class="map">' + ''.join(o) + f'</div><div class="legend">{leg}</div><p class="small">Not to scale, and neither were the nights.</p>'
+    return '<div class="map">' + ''.join(o) + f'</div><div class="legend">{leg}</div>'
 
 def results():
     h = '<section id="results"><h2>Last week</h2><p class="dek">Week 9' + (', as it stood Sunday night. Monday night still to play.' if PROV else '.') + '</p>'
@@ -214,22 +199,16 @@ def door():
     return h
 
 def stop(s):
-    a, h = s['pair']; P = H.pair(a, h)
+    a, h = s['pair']
     pa, ph = proj(a), proj(h); pick = a if pa > ph else h; other = h if pick == a else a
     pp, po = max(pa, ph), min(pa, ph)
-    out = (f'<section class="stop" id="s{s["n"]}"><div class="bar">Stop {s["n"]} &middot; {s["bar"]}</div>'
-           f'<h2>{s["head"]}</h2><p class="dek">{s["where"]}</p>'
-           f'<div class="vs">{lg(a)}<div class="t">{TEAM[a]}<small>{a}, {wl(a)} &middot; playoffs {pct(a)}</small></div>'
-           f'<div class="at">at</div><div class="t r">{TEAM[h]}<small>{h}, {wl(h)} &middot; playoffs {pct(h)}</small></div>{lg(h)}</div>')
+    out = (f'<section class="stop" id="s{s["n"]}">' + (f'<div class="bar">{s["bar"]}</div>' if s.get('bar') else '') +
+           f'<div class="vs">{lg(a)}<div class="t">{a}<small>{wl(a)} &middot; {pct(a)}</small></div>'
+           f'<div class="at">at</div><div class="t r">{h}<small>{wl(h)} &middot; {pct(h)}</small></div>{lg(h)}</div>')
     if s.get('photo'):
         out += f'<figure><img src="{PH[s["photo"]]}" alt="" loading="lazy"><figcaption>{s["cap"]}</figcaption></figure>'
-    out += f'<p>{s["story"]}</p>'
-    if s.get('photo2'):
-        out += f'<figure><img src="{PH[s["photo2"]]}" alt="" loading="lazy" style="transform:rotate(.8deg)"><figcaption>{s["cap2"]}</figcaption></figure>'
-    out += (f'<p>{s["stakes"]}</p>'
-            f'<div class="call"><div class="k">The bouncer\'s call &middot; {conf(pp - po)}</div>'
-            f'<div class="p">{pick} {pp:.0f}, {other} {po:.0f}</div>'
-            f'<p><b>How this goes wrong.</b> {s["wrong"]}</p></div><div class="rule"></div></section>')
+    out += (f'<p>{s["text"]}</p><p class="pick"><span>Pick</span> {pick} {pp:.0f}, {other} {po:.0f} &middot; {conf(pp - po).lower()}</p>'
+            '<div class="rule" style="height:2px;background:var(--rule)"></div></section>')
     return out
 
 def three():
@@ -245,7 +224,7 @@ def terrace():
             f'<figure><img src="{PH["union_terrace_group"]}" alt="" loading="lazy"><figcaption>Union Terrace, more recently.</figcaption></figure>'
             '<p class="small">How the picks work: a projected score is 70% of a team\'s 2026 average plus 30% of the league average. '
             'Since 2005, a projected gap under 10 points has picked the winner 49% of the time; 10 to 20, 56%; over 20, 66%.</p>'
-            '<p class="small">Not in this sample: the bench report and the Trade Desk (the Dayton Square afterparty), which need Monday\'s final lineups.</p></section>')
+            '</section>')
 
 HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
         '<title>FFL Review, Week 10: State Street, 1990</title>'
@@ -253,9 +232,9 @@ HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="
         '<header class="mast" id="top"><div class="k">Bullwinkle\'s Dance League &middot; Vol. 37</div>'
         '<h1><span>FFL</span>Review</h1><div class="sub">State Street, 1990 &middot; Week 10 &middot; Nov. 10 to 16</div></header>'
         + ('<div class="prov">Sample. Week 9 as it stood Sunday night; Monday night is still to play, so scores, picks and odds will move.</div>' if PROV else '')
-        + '<section><h2>The crawl</h2><p class="dek">Five games, five stops, one route home. It\'s 1990, the Badgers are on their way to 1-10, and everyone went out anyway.</p>'
+        + '<section><h2>Tonight\'s route</h2><p class="dek">State Street, 1990. A few stops this week; the rest of the night keeps for later.</p>'
         + crawl_map() + '</section>' + three() + results() + money() + door()
-        + ''.join(stop(s) for s in STOPS) + terrace()
+        + '<section id="games"><h2>This week</h2><p class="dek">Week 10. Records, playoff odds, and the pick.</p></section>' + ''.join(stop(s) for s in STOPS) + terrace()
         + '<div class="foot">Bullwinkle\'s Dance League &middot; FFL Review &middot; Week 10 &middot; Est. 1990, hand-delivered then, texted now</div>'
         + '</div></body></html>')
 open('ffl_wk10.html', 'w').write(HTML)

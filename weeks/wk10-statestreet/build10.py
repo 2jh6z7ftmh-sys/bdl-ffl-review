@@ -33,29 +33,11 @@ RECAP = {
 
 # ---------------------------------------------------------------- Week 10 stops
 STOPS = [
- dict(pair=('Craig', 'Ricer'), n=1, bar="The Red Shed and La Bamba\'s", photo='red_shed_group', cap="The Red Shed, a few years ago.",
-      memory=("Ricer loved the Red Shed. We played on the broken pool table and drank the Long Island Iced Teas, which were potent. "
-              "Most nights ended at La Bamba\'s. Craig, pretty drunk, once ordered a burrito and asked them to hold the mayo. "
-              "The guy at the counter handed it over: \"One burrito, hold the mayo.\""),
-     text="Ricer is 7-2 and two games clear in the Right. Craig is 2-7 and at 1%, though he has beaten Ricer in two of their last four."),
- dict(pair=('Chad', 'Schwanz'), n=2, bar="Church Key and Riley\'s",
-      memory=("Chad worked at both, which is as close as any of us has come to a federal tax case. He always called the owner Mrs. Lee. "
-              "The Lees later made the papers, and bank tellers remembered Mr. Lee coming in with a backpack full of cash."),
-      text=("A rematch of last year\'s final, which Chad won by 50. Schwanz has won six straight and leads the league in points; "
-            "Chad just climbed to 80% playoff odds.")),
- dict(pair=('Rusty', 'Frenches'), n=3, bar="State Street Brats and the KK", photo='rusty_moose_brats', cap="Rusty, 21.",
-      memory=("At Brats, on your birthday, you kissed the moose. That\'s Rusty on his 21st. The KK was Rusty\'s bar. There is a story "
-              "involving John Hall, the Badgers\' kicker, around 1994. Rusty can tell it."),
-      text=("Rusty is second in the league in points and 3-6, and his playoff odds are down to 32%. The Frenches have won the last "
-            "three in this series, including Week 1 by 0.8.")),
- dict(pair=('Abeln', 'Giff'), n=4, bar="Bull Feathers and Mondays",
-      memory="Giff worked the door at one and was banned from the other, for breaking a gumball machine.",
-      text=("Abes and Giff were housemates and have now played 73 times; Giff leads 38-33-2. Giff is 7-2 on three straight wins, "
-            "with the fewest points of any contender. Abes is 1-8.")),
- dict(pair=('Derek', 'Tom'), n=5, bar="Dayton Square",
-      memory="Derek\'s apartment at Johnson and Broom, a block from La Bamba\'s. Almost everyone ended up here.",
-      text=("The oldest rivalry in the league: 73 games since 1990, Derek up 36-34-3. The Ferries have lost two straight and slipped "
-            "to 68%. Tom has outscored them both of the last two weeks.")),
+ dict(**{'pair': ('Craig', 'Ricer'), 'n': 1, 'bar': "The Red Shed and La Bamba's", 'photo': 'red_shed_group', 'cap': 'The Red Shed, a few years ago.', 'memory': "Ricer's bar. The pool table was broken and the Long Islands weren't.", 'text': 'Ricer is 7-2 and two games clear in the Right. Craig is 2-7 with 1% playoff odds and has asked that the rest of the season be held, like the mayo. He has beaten Ricer in two of their last four, so maybe not.'}),
+ dict(**{'pair': ('Chad', 'Schwanz'), 'n': 2, 'bar': "Church Key and Riley's", 'memory': 'Chad worked at both for Mrs. Lee and, as far as anyone knows, was paid on the books.', 'text': "A rematch of last year's final, which Chad won by 50. Schwanz has won six straight and leads the league in points. Chad is at 80% and would like those points in small bills."}),
+ dict(**{'pair': ('Rusty', 'Frenches'), 'n': 3, 'bar': 'State Street Brats and the KK', 'photo': 'rusty_moose_brats', 'cap': 'Rusty, 21.', 'memory': "At Brats you kiss the moose on your birthday. Rusty did at 21, and the luck hasn't been right since. The KK was his bar too. There is a John Hall story. Rusty knows it.", 'text': 'Rusty is second in the league in points and 3-6, which takes some doing. The Frenches have won three straight in this series, including Week 1 by 0.8.'}),
+ dict(**{'pair': ('Abeln', 'Giff'), 'n': 4, 'bar': 'Bull Feathers and Mondays', 'memory': 'Giff worked the door at Bull Feathers and was banned from Mondays for breaking a gumball machine. One for two on State Street.', 'text': 'Giff is 7-2 with the fewest points of any contender, which is what happens when you know the guy at the door. Abes is 1-8. They were housemates and have played 73 times; Giff leads 38-33-2.'}),
+ dict(**{'pair': ('Derek', 'Tom'), 'n': 5, 'bar': 'Dayton Square', 'memory': "Dayton Square, Derek's place at Johnson and Broom, a block from La Bamba's. Everyone ended up here. It was close; nobody was invited.", 'text': 'The oldest rivalry in the league: 73 games since 1990, Derek up 36-34-3. The Ferries have lost two straight and slipped to 68%. Tom has outscored them two weeks running. Derek has home field and not much else.'}),
 ]
 
 # ---------------------------------------------------------------- page

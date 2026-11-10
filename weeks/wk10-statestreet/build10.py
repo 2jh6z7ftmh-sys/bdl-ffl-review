@@ -218,9 +218,9 @@ def stop(s):
 
 def three():
     return ('<section><h2>Heard at the bar</h2><p class="dek">Three things that changed.</p><ol class="three">'
-            f'<li><b>Ricer is running the Right.</b> Two straight, the week\'s high score, and a two-game lead at {wl("Ricer")}. Division odds: {pct("Ricer","div")}.</li>'
-            f'<li><b>Chad is back in it.</b> Up {chg("Chad"):.0f} to {pct("Chad")}, level with Derek at {wl("Chad")}.</li>'
-            f'<li><b>Rusty keeps scoring and losing.</b> Second in points, {wl("Rusty")}, down {-chg("Rusty"):.0f} to {pct("Rusty")}.</li>'
+            f'<li><b>Ricer is running the Right.</b> Two straight, the week\'s high score, and a two-game lead at {wl("Ricer")}. Odds to win the division and the bye: {pct("Ricer","div")}.</li>'
+            f'<li><b>Chad is back in it.</b> Playoff odds up {chg("Chad"):.0f} to {pct("Chad")}, level with Derek at {wl("Chad")}.</li>'
+            f'<li><b>Rusty keeps scoring and losing.</b> Second in points at {wl("Rusty")}. Playoff odds down {-chg("Rusty"):.0f} to {pct("Rusty")}.</li>'
             '</ol></section>')
 
 def terrace():

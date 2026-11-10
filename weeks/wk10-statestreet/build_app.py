@@ -17,19 +17,29 @@ SINCE = {'Derek': 1990, 'Tom': 1990, 'Ricer': 1991, 'Rusty': 1991, 'Abeln': 1993
 games = [[g['y'], g['w'], g['a'], g['b'], round(g['sa'], 2), round(g['sb'], 2),
           ('P' if g['t'].startswith('po') else 'R') + ('e' if H.est(g) else '')] for g in H.G]
 champs = []
+_ch, _ru = {}, {}
 for r in csv.DictReader(open('../../shared/history/owner_seasons.csv')):
-    if r['playoff_finish'] == 'Champion':
-        o = r['owner']; y = int(r['year'])
-        if o == 'Chad' and 1997 <= y <= 2002: o = 'Chewy (Chad, half owner)'
-        champs.append([y, o])
-champs.sort(reverse=True)
+    if r['playoff_finish'] == 'Champion': _ch[int(r['year'])] = r['owner']
+    if r['playoff_finish'] == 'Runner-up': _ru[int(r['year'])] = r['owner']
+_fin = {g['y']: g for g in H.G if 'Final' in g['t']}
+def _nm(o, y):  # Chad was half owner of Chewy's team, 1997-2002
+    return ('Chewy', 'Chad, half owner') if o == 'Chad' and 1997 <= y <= 2002 else (o, '')
+for y in sorted(_ch, reverse=True):
+    c, csub = _nm(_ch[y], y); r, _ = _nm(_ru.get(y, ''), y); g = _fin.get(y); sc = None
+    if g and not H.est(g):
+        a, b = (g['sa'], g['sb']) if g['a'] == _ch[y] else (g['sb'], g['sa'])
+        f = lambda x: str(int(x)) if x == int(x) else f'{x:.1f}'
+        sc = f(a) + '-' + f(b)
+    champs.append([y, c, csub, r, sc])
+TITLES = {}
+for y, c, csub, r, sc in champs: TITLES[c] = TITLES.get(c, 0) + 1
 sched = {wk: pairs for wk, pairs in O.SCHED.items() if wk >= 10}
 APP = dict(
     owners=OWN, right=D.RIGHT, team=D.OWNER, logo=B.LOGO, career=CAREER, since=SINCE,
     season={o: dict(w=S[o]['w'], l=S[o]['l'], dw=S[o]['dw'], dl=S[o]['dl'], pf=round(S[o]['pf'], 1),
                     weeks=S[o]['weeks'], po=O.ODDS[o]['po'], div=O.ODDS[o]['div'], st=O.ODDS[o]['st'],
                     chg=round(B.chg(o))) for o in OWN},
-    sched=sched, games=games, champs=champs, unpaid=D.UNPAID, prov=B.PROV)
+    sched=sched, games=games, champs=champs, titles=TITLES, unpaid=D.UNPAID, prov=B.PROV)
 
 # ---------------------------------------------------------------- views
 WEEK = ('<header class="mast" id="top"><div class="k">Bullwinkle\'s Dance League &middot; Week 10 &middot; Nov. 10 to 16</div>'
@@ -41,6 +51,29 @@ WEEK = ('<header class="mast" id="top"><div class="k">Bullwinkle\'s Dance League
 STANDINGS = B.door().replace('id="door"', 'id="door-s"') + B.money().replace('id="money"', 'id="money-s"')
 
 APPCSS = """
+.raf{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 10px;margin:8px 0 6px}
+.ban{position:relative;background:var(--red);color:#fff;text-align:center;padding:16px 8px 30px;
+ clip-path:polygon(0 0,100% 0,100% 86%,50% 100%,0 86%);animation:drop .55s cubic-bezier(.2,.9,.3,1.2) both}
+.ban .yr{font:400 34px/1 'Anton';letter-spacing:1px}
+.ban img,.ban .noimg{width:54px;height:54px;border-radius:50%;border:3px solid #fff;margin:8px auto 6px;display:block;background:#fff;object-fit:cover}
+.ban .noimg{background:rgba(255,255,255,.18);font:400 26px/48px 'Anton';color:#fff}
+.ban .who{font:700 19px/1.05 'Barlow Condensed';text-transform:uppercase;letter-spacing:.04em}
+.ban .sub{font:500 11.5px 'Barlow';opacity:.85;margin-top:2px}
+.ban .ov{font:600 12.5px/1.3 'Barlow';margin-top:6px;opacity:.95;overflow-wrap:anywhere}
+.ban.top1{grid-column:1/-1;background:var(--ink);padding:22px 12px 40px}
+.ban.top1 .yr{font-size:20px;letter-spacing:.2em;color:#ff4b52}
+.ban.top1 img{width:96px;height:96px;margin:12px auto 8px}
+.ban.top1 .who{font:400 40px/1 'Anton';letter-spacing:1px}
+.ban.top1 .ov{font-size:15px}
+.dec{grid-column:1/-1;font:400 22px/1 'Anton';color:var(--ink);border-bottom:3px solid var(--ink);padding:14px 0 4px;letter-spacing:1px}
+@keyframes drop{from{opacity:0;transform:translateY(-36px) rotate(-4deg)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.ban{animation:none}}
+.lead .r{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--rule)}
+.lead .r .n{font:700 17px 'Barlow Condensed';text-transform:uppercase;width:92px}
+.lead .cups{display:flex;gap:3px;flex-wrap:wrap;flex:1}
+.lead .cups svg{width:17px;height:20px}
+.lead .r b{font:400 22px 'Anton';margin-left:auto}
+
 html,body{overflow-anchor:none} body{padding-bottom:76px}
 .top{position:sticky;top:0;z-index:6;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;height:44px;
  font:400 22px/1 'Anton';letter-spacing:2px;text-transform:uppercase}
@@ -140,11 +173,26 @@ function h2h(){
   $('#hb').onchange = e => { H2 = e.target.value; h2h(); };
 }
 function history(){
+  const cup = '<svg viewBox="0 0 24 28"><path fill="var(--red)" d="M5 2h14v5a7 7 0 0 1-5 6.7V18h3v3H7v-3h3v-4.3A7 7 0 0 1 5 7zM1 3h3v4a3 3 0 0 1-2-2.8zm22 0h-3v4a3 3 0 0 0 2-2.8zM6 23h12v3H6z"/></svg>';
+  const pic = (o) => A.logo[o] ? `<img src="${A.logo[o]}" alt="">` : `<div class="noimg">${o[0]}</div>`;
+  const ov = c => c[3] ? `over ${c[3]}${c[4] ? ', ' + c[4] : ''}` : '';
+  let i = 0, dec = null, b = '';
+  A.champs.forEach((c, k) => {
+    if (k === 0) { b += `<div class="ban top1" style="animation-delay:0s"><div class="yr">${c[0]} champion</div>${pic(c[1])}<div class="who">${c[1]}</div>${c[2] ? `<div class="sub">${c[2]}</div>` : ''}<div class="ov">${ov(c)}</div></div>`; return; }
+    const d = Math.floor(c[0] / 10) * 10;
+    if (d !== dec) { dec = d; b += `<div class="dec">${d}s</div>`; }
+    i++;
+    b += `<div class="ban" style="animation-delay:${Math.min(i * 0.05, 1.2)}s"><div class="yr">${c[0]}</div>${pic(c[1])}<div class="who">${c[1]}</div>${c[2] ? `<div class="sub">${c[2]}</div>` : ''}<div class="ov">${ov(c)}</div></div>`;
+  });
+  const lead = Object.entries(A.titles).sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0]))
+    .map(([o, n]) => `<div class="r">${A.logo[o] ? logo(o, 32) : '<span style="width:32px"></span>'}<span class="n">${o}</span><span class="cups">${cup.repeat(n)}</span><b>${n}</b></div>`).join('');
   const car = [...A.owners].sort((a,b)=>A.career[b][0]-A.career[a][0] || A.career[b][1]-A.career[a][1]);
-  $('#v-history').innerHTML = `<section><h2>History</h2><p class="dek">Bullwinkle's Dance League, since 1990.</p>
-    <div class="dv">Career, through 2025</div><table class="car"><tr><th>Owner</th><th>Titles</th><th>2nd</th><th>Div</th><th>Scoring</th></tr>
+  $('#v-history').innerHTML = `<section><h2>The rafters</h2><p class="dek">Every champion since 1990.</p>
+    <div class="raf">${b}</div>
+    <div class="dv" style="margin-top:22px">Title count</div><div class="lead">${lead}</div>
+    <div class="dv" style="margin-top:22px">Career, through 2025</div><table class="car"><tr><th>Owner</th><th>Titles</th><th>2nd</th><th>Div</th><th>Scoring</th></tr>
     ${car.map(o=>{const c=A.career[o];return `<tr><td><a href="#team-${o.toLowerCase()}" style="color:var(--ink)">${o}</a></td><td><b>${c[0]}</b></td><td>${c[1]}</td><td>${c[2]}</td><td>${c[3]}</td></tr>`}).join('')}</table>
-    <div class="dv" style="margin-top:18px">Champions</div><div class="champ">${A.champs.map(c=>`<div class="r"><span>${c[0]}</span><b>${c[1]}</b></div>`).join('')}</div></section>`;
+    <p class="small" style="margin-top:10px">Final scores before 1998 aren't on record.</p></section>`;
 }
 const VIEWS = ['week','standings','teams','h2h','history'];
 function route(){

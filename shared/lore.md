@@ -53,7 +53,7 @@ Stories and facts Derek has supplied, by owner. Only what's here gets printed; n
 
 ## Tom
 - Paid the shotgun penalty (see Group).
-- Photo of Tom at Derek's Dayton Square apartment, arm raised, during a card game: `weeks/wk10-statestreet/photos/tom_dayton_square.jpg`. Used in Week 10 stop 5.
+- Photo of Tom at Derek's Dayton Square apartment, arm raised, during a card game: `weeks/wk10-statestreet/photos/tom_dayton_square.jpg`. Ricer and Darcy are also in it (Derek, 11/9/26; positions not specified). Used in Week 10 stop 5.
 - Quiet in the group chat.
 
 ## Schwanz

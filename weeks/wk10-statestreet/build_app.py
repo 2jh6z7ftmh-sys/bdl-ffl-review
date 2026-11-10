@@ -80,7 +80,7 @@ html,body{overflow-anchor:none} body{padding-bottom:76px}
 .top span{background:#fff;color:var(--red);padding:2px 6px;margin-right:6px;transform:skew(-8deg);display:inline-block}
 .tabs{position:fixed;left:0;right:0;bottom:0;z-index:7;background:var(--ink);display:flex;padding-bottom:env(safe-area-inset-bottom)}
 .tabs a{flex:1;text-align:center;color:#bdb5a6;text-decoration:none;font:700 12px/1 'Barlow Condensed';letter-spacing:.08em;text-transform:uppercase;padding:12px 2px 14px}
-.tabs a b{display:block;font:400 19px/1 'Anton';margin-bottom:5px;color:inherit}
+.tabs a b{display:block;height:22px;margin:0 auto 5px;color:inherit} .tabs a b svg{height:22px;width:auto;display:block;margin:0 auto}
 .tabs a.on{color:#fff;box-shadow:inset 0 3px 0 var(--red)}
 .view{display:none} .view.on{display:block}
 .tlist a{display:flex;align-items:center;gap:12px;padding:10px 2px;border-bottom:1px solid var(--rule);color:var(--ink);text-decoration:none}
@@ -209,7 +209,8 @@ function route(){
 window.addEventListener('hashchange', route); route();
 """
 
-TABS = [('week', 'W10', 'This week'), ('standings', '1-9', 'Standings'), ('teams', '10', 'Teams'), ('h2h', 'VS', 'Head to head'), ('history', '90', 'History')]
+ICONS = {'week': '<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 4h13v16H6a2 2 0 0 1-2-2zM17 8h3v10a2 2 0 0 1-2 2M7 8h7M7 12h7M7 16h4"/></svg>', 'standings': '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M3 13h5v8H3zM9.5 3h5v18h-5zM16 8h5v13h-5z"/></svg>', 'teams': '<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/></svg>', 'h2h': '<svg viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-family="Anton" font-size="15" fill="currentColor">VS</text></svg>', 'history': '<svg viewBox="0 0 24 28"><path fill="currentColor" d="M5 2h14v5a7 7 0 0 1-5 6.7V18h3v3H7v-3h3v-4.3A7 7 0 0 1 5 7zM1 3h3v4a3 3 0 0 1-2-2.8zm22 0h-3v4a3 3 0 0 0 2-2.8zM6 23h12v3H6z"/></svg>'}
+TABS = [('week', ICONS['week'], 'This week'), ('standings', ICONS['standings'], 'Standings'), ('teams', ICONS['teams'], 'Teams'), ('h2h', ICONS['h2h'], 'Head to head'), ('history', ICONS['history'], 'History')]
 HTML = ('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
         '<meta name="apple-mobile-web-app-title" content="FFL Review"><meta name="application-name" content="FFL Review">'

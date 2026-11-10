@@ -27,6 +27,7 @@ Stories and facts Derek has supplied, by owner. Only what's here gets printed; n
 - 21st birthday at State Street Brats: kissed the moose, on his knees on the bar. Kissing the moose was the Brats birthday tradition (per Derek; not found written up anywhere online). Photo: `rusty_moose_brats.jpg`.
 - Famous for his time at the KK; the story involves John Hall, the Badgers' kicker, around 1994. Details not yet supplied.
 - Carried a mattress back to Chad's, reason unknown. Photo: `rusty_mattress.jpg`.
+- Also brought a board over to Chad's (long white board on his shoulder, front lawn). Photo: `weeks/wk10-statestreet/photos/rusty_board.jpg`. Pairs with the mattress: Rusty delivers things to Chad's.
 - College argument: Rusty (Sterling Sharpe) vs Abeln (Andre Rison) ended with Rusty doing a Superfly Snuka off the couch onto Abes. No added details.
 - Old team: Kodiak Bear; home field "the Spittoon."
 

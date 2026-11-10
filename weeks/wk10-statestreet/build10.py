@@ -210,8 +210,9 @@ def stop(s):
            f'<div class="at">at</div><div class="t r">{h}<small>{wl(h)} &middot; {pct(h)}</small></div>{lg(h)}</div>')
     if s.get('photo'):
         out += f'<figure><img src="{PH[s["photo"]]}" alt="" loading="lazy"><figcaption>{s["cap"]}</figcaption></figure>'
-    out += (''.join(f'<p>{x}</p>' for x in s['memory'].split('\n\n')) + f'<p>{s["text"]}</p>'
-            (f'<p class="pick"><span>Pick</span> {pick} {pp:.1f}, {other} {po:.1f} &middot; {conf(pp - po).lower()}</p>' if round(pp) == round(po) else f'<p class="pick"><span>Pick</span> {pick} {pp:.0f}, {other} {po:.0f} &middot; {conf(pp - po).lower()}</p>')
+    fmt = '.1f' if round(pp) == round(po) else '.0f'
+    out += ''.join(f'<p>{x}</p>' for x in s['memory'].split('\n\n')) + f'<p>{s["text"]}</p>'
+    out += (f'<p class="pick"><span>Pick</span> {pick} {pp:{fmt}}, {other} {po:{fmt}} &middot; {conf(pp - po).lower()}</p>'
             '<div class="rule" style="height:2px;background:var(--rule)"></div></section>')
     return out
 

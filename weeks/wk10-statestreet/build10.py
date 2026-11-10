@@ -34,13 +34,13 @@ RECAP = {
 # ---------------------------------------------------------------- Week 10 stops
 STOPS = [
  dict(pair=('Craig', 'Ricer'), n=1, bar="The Red Shed and La Bamba\'s", photo='red_shed_group', cap="The Red Shed, a few years ago.",
-      memory=("The Red Shed: the broken pool table and the Long Island Iced Teas, in mason jars. Ricer\'s bar. La Bamba\'s was where every "
-              "night ended. Craig, pretty drunk, once asked them to hold the mayo on his burrito. "
-              "\"One burrito, hold the mayo,\" said the guy at the counter."),
-      text="Ricer is 7-2 and two games clear in the Right. Craig is 2-7 and at 1%, though he has beaten Ricer in two of their last four."),
+      memory=("Ricer loved the Red Shed. We played on the broken pool table and drank the Long Island Iced Teas, which were potent. "
+              "Most nights ended at La Bamba\'s. Craig, pretty drunk, once ordered a burrito and asked them to hold the mayo. "
+              "The guy at the counter handed it over: \"One burrito, hold the mayo.\""),
+     text="Ricer is 7-2 and two games clear in the Right. Craig is 2-7 and at 1%, though he has beaten Ricer in two of their last four."),
  dict(pair=('Chad', 'Schwanz'), n=2, bar="Church Key and Riley\'s",
-      memory=("Chad worked at both, and he always called the owner Mrs. Lee. The Lees later made the papers over federal tax cases; "
-              "bank tellers remembered Mr. Lee coming in with a backpack full of cash."),
+      memory=("Chad worked at both, which is as close as any of us has come to a federal tax case. He always called the owner Mrs. Lee. "
+              "The Lees later made the papers, and bank tellers remembered Mr. Lee coming in with a backpack full of cash."),
       text=("A rematch of last year\'s final, which Chad won by 50. Schwanz has won six straight and leads the league in points; "
             "Chad just climbed to 80% playoff odds.")),
  dict(pair=('Rusty', 'Frenches'), n=3, bar="State Street Brats and the KK", photo='rusty_moose_brats', cap="Rusty, 21.",

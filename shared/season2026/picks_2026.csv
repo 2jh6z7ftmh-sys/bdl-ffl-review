@@ -34,3 +34,8 @@ week,pick,opponent,proj_pick,proj_opp,confidence,winner,margin,result,source
 9,Chad,Abeln,120,109,56%,Chad,50.7,HIT,as printed
 9,Rusty,Ricer,126,119,Coin flip,Ricer,33.5,MISS,as printed
 9,Tom,Craig,119,114,Coin flip,Tom,41.7,HIT,as printed
+10,Ricer,Craig,122,113,Coin flip,,,,as printed
+10,Schwanz,Chad,128,121,Coin flip,,,,as printed
+10,Rusty,Frenches,126.0,125.9,Coin flip,,,,as printed
+10,Giff,Abeln,116,107,Coin flip,,,,as printed
+10,Derek,Tom,122,121,Coin flip,,,,as printed

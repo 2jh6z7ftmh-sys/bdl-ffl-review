@@ -29,8 +29,8 @@ week,pick,opponent,proj_pick,proj_opp,confidence,winner,margin,result,source
 8,Schwanz,Abeln,130,112,56%,Schwanz,32.2,HIT,model (same formula as printed)
 8,Frenches,Craig,125,116,Coin flip,Frenches,43.2,HIT,model (same formula as printed)
 8,Rusty,Chad,129,120,Coin flip,Chad,15.8,MISS,model (same formula as printed)
-9,Derek,Giff,123,116,Coin flip,,,,as printed
-9,Schwanz,Frenches,128,125,Coin flip,,,,as printed
-9,Chad,Abeln,120,109,56%,,,,as printed
-9,Rusty,Ricer,126,119,Coin flip,,,,as printed
-9,Tom,Craig,119,114,Coin flip,,,,as printed
+9,Derek,Giff,123,116,Coin flip,Giff,8.0,MISS,as printed
+9,Schwanz,Frenches,128,125,Coin flip,Schwanz,0.2,HIT,as printed
+9,Chad,Abeln,120,109,56%,Chad,50.7,HIT,as printed
+9,Rusty,Ricer,126,119,Coin flip,Ricer,33.5,MISS,as printed
+9,Tom,Craig,119,114,Coin flip,Tom,41.7,HIT,as printed

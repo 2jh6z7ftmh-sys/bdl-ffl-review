@@ -38,8 +38,8 @@ def season(upto=None):
                 s['dw'] += r == 'W'; s['dl'] += r == 'L'
     return S
 # Week 9, PROVISIONAL: CBS live scoring Sun 11/8/26 ~11:15 pm CT, Monday night players still to play (PMR > 0 for several teams)
-W9 = {('Derek','Giff'): (98.9,109.3), ('Frenches','Schwanz'): (112.9,133.9), ('Chad','Abeln'): (123.2,48.7), ('Ricer','Rusty'): (157.8,119.3), ('Tom','Craig'): (127.4,102.4)}
-PROVISIONAL9 = True
+W9 = {('Derek','Giff'): (107.9,115.9), ('Frenches','Schwanz'): (133.7,133.9), ('Chad','Abeln'): (123.2,72.5), ('Ricer','Rusty'): (157.8,124.3), ('Tom','Craig'): (144.1,102.4)}  # final, CBS live matchup PMR 0, 11/9/26
+PROVISIONAL9 = False
 for (a, h), v in W9.items(): GAMES.append((9, a, h, v[0], v[1]))
 NG = 9
 WK20.append((9,'Ricer',157.8))

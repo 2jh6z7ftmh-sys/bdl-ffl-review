@@ -24,18 +24,18 @@ PICKS9 = {('Derek', 'Giff'): 'Derek', ('Frenches', 'Schwanz'): 'Schwanz', ('Chad
 hits9 = sum((PICKS9[(a, h)] == (a if sa > sh else h)) for a, h, (sa, sh) in W9)
 SEASON = (18 + hits9, 12 + 5 - hits9)
 RECAP = {
- ('Derek', 'Giff'): "Giff's third straight. The Ferries have now lost two in a row and are 2-2 in the division.",
- ('Frenches', 'Schwanz'): "Six straight for Schwanz, who also leads the league in points. The Frenches fall to 5-4.",
- ('Chad', 'Abeln'): "Abes still has three players going Monday night and needs about 75 points to catch up.",
- ('Ricer', 'Rusty'): "The week's high score, and Ricer goes 7-2. Meeting No. 86 goes to Ricer; he now leads the series 43-39-4.",
- ('Tom', 'Craig'): "Tom's first win since Week 7. Craig has lost two straight.",
+ ('Derek', 'Giff'): "Giff by eight for his third straight. The Ferries have dropped two in a row.",
+ ('Frenches', 'Schwanz'): "Two-tenths of a point. Schwanz has won six straight and leads the league in points. The Frenches will be checking the box score for a while.",
+ ('Chad', 'Abeln'): "Abes went into Monday night needing about 75 points. He got 24.",
+ ('Ricer', 'Rusty'): "The week's high score. Meeting No. 86 goes to Ricer, who now leads the series 43-39-4.",
+ ('Tom', 'Craig'): "Tom's best week of the season and his first win since Week 7. Craig has lost two straight.",
 }
 
 # ---------------------------------------------------------------- Week 10 stops
 STOPS = [
  dict(**{'pair': ('Craig', 'Ricer'), 'n': 1, 'bar': "The Red Shed and La Bamba's", 'photo': 'red_shed_group', 'cap': 'The Red Shed, a few years ago.', 'memory': "First stop: the Red Shed, the little bar with the covered wagon on the roof. Ricer is already there, closer to a shareholder than a regular, and the Long Island Iced Teas are coming in mason jars. Grab a half-size cue; the table sits too close to the walls for anything longer. Pace yourself. The Shed has been pouring these since 1969 and still pours them on State Street.\n\nSave room. The night ends, as always, at La Bamba's, where the burritos are as big as your head and the condiments are negotiable. Craig would know.", 'text': "Ricer is 7-2 and two games clear in the Right. Craig is 2-7 with 1% playoff odds. The series is closer than either record: Ricer leads 8-7-2 since 2010, and Craig has won two of the last four. Craig's only title came against Ricer, 60-59 in the 2011 final. One point. Ricer may need a Long Island."}),
- dict(**{'pair': ('Chad', 'Schwanz'), 'n': 2, 'bar': "Church Key and Riley's", 'memory': "Next, Church Key, where Cheap Trick and George Thorogood once played. Head downstairs and you're in Bullwinkle's. The name may be familiar. Raise your hand if you ever served as Chewie's wingman. Chad is working upstairs tonight for Mrs. Lee and, as far as the IRS knows, getting paid on the books.", 'text': "The last two champions, in a rematch of last year's final. Schwanz won the title in 2024. Chad won it in 2023 and again last year, beating Schwanz 172.9 to 123.3. Between them they have the last three. Chad leads the series 15-10-1. Schwanz took Week 1 by 1.3, has won six straight and leads the league in points. Chad is at 80% and would prefer to settle this one in cash."}),
- dict(**{'pair': ('Rusty', 'Frenches'), 'n': 3, 'bar': 'State Street Brats and the KK', 'photo': 'rusty_moose_brats', 'cap': 'Rusty, 21.', 'memory': "Back to State Street Brats, where there's a moose behind the bar and a tradition: you kiss it when you turn 21. Rusty is a proud member of that moose's body count. Then over to the KK, where Dog has spent his share of nights. If I go there tonight, will I see four-year Badger kicker John Hall?", 'text': 'Rusty is second in the league in points and 3-6, which takes some doing. He leads the Frenches 13-6 since 2009, but they have won the last three, including a 165.8 to 71.6 beating in 2024 and Week 1 this year by 0.8. Playoff odds: 32%. The moose is not helping.'}),
+ dict(**{'pair': ('Chad', 'Schwanz'), 'n': 2, 'bar': "Church Key and Riley's", 'memory': "Next, Church Key, where Cheap Trick and George Thorogood once played. Head downstairs and you're in Bullwinkle's. The name may be familiar. Raise your hand if you ever served as Chewie's wingman. Chad is working upstairs tonight for Mrs. Lee and, as far as the IRS knows, getting paid on the books.", 'text': "The last two champions, in a rematch of last year's final. Schwanz won the title in 2024. Chad won it in 2023 and again last year, beating Schwanz 172.9 to 123.3. Between them they have the last three. Chad leads the series 15-10-1. Schwanz took Week 1 by 1.3, has won six straight and leads the league in points. Chad is at 79% and would prefer to settle this one in cash."}),
+ dict(**{'pair': ('Rusty', 'Frenches'), 'n': 3, 'bar': 'State Street Brats and the KK', 'photo': 'rusty_moose_brats', 'cap': 'Rusty, 21.', 'memory': "Back to State Street Brats, where there's a moose behind the bar and a tradition: you kiss it when you turn 21. Rusty is a proud member of that moose's body count. Then over to the KK, where Dog has spent his share of nights. If I go there tonight, will I see four-year Badger kicker John Hall?", 'text': 'Rusty is second in the league in points and 3-6, which takes some doing. He leads the Frenches 13-6 since 2009, but they have won the last three, including a 165.8 to 71.6 beating in 2024 and Week 1 this year by 0.8. Playoff odds: 31%. The moose is not helping.'}),
  dict(**{'pair': ('Abeln', 'Giff'), 'n': 4, 'bar': 'Bull Feathers and Mondays', 'memory': 'Down the stairs to Bull Feathers. There was a time when Giff worked this door, and some of our readers benefited the hell out of that.\n\nThen Mondays, where the drinks hit like a Ron Dayne carry. Would a FOIA request turn up anything on Giff and the gumball machine?', 'text': 'Former roommates Abes and Giff have played 73 times. Giff leads 38-33-2, and their six playoff meetings are split 3-3; Abes won the last one, the 2023 semifinal. Giff is 7-2 with the fewest points of any contender, which is what happens when you know the guy at the door. Abes is 1-8.'}),
  dict(**{'pair': ('Derek', 'Tom'), 'n': 5, 'bar': 'Essen Haus and Dayton Square', 'photo': 'tom_dayton_square', 'cap': 'Tom at Dayton Square, making a point. He had notes.', 'memory': "We're going to need a cab for this one. Essen Haus. The polka band is warming up and somebody already has a boot going. Toe up, gentlemen. Finish it and the guy who handed it to you buys the next one, so choose your passes carefully.", 'text': 'The oldest rivalry in the league: 73 games since 1990. Tom won the first title that year; Derek leads the series 36-34-3. Their last playoff meeting was the 2021 quarterfinal, which Tom won 105 to 52 on his way to his third title. The Ferries have lost two straight and slipped to 68%. Derek is on the road and could use a boot.'}),
 ]
@@ -166,7 +166,7 @@ def results():
               f'<span class="pts">{sa:.1f} to {sh:.1f}</span></div><p>{RECAP[(a, hh)]}</p></div>')
     h += (f'<div class="call" style="box-shadow:5px 5px 0 var(--ink)"><div class="k">The bouncer\'s call, graded</div>'
           f'<div class="p">{hits9}-{5 - hits9} last week. {SEASON[0]}-{SEASON[1]} on the season.</div>'
-          f'<p>Missed on Derek over Giff and Rusty over Ricer. Hit on Schwanz, Chad and Tom.</p></div></section>')
+          f'<p>Missed on Derek over Giff and Rusty over Ricer. Hit on Schwanz (by two-tenths), Chad and Tom.</p></div></section>')
     return h
 
 def money():
@@ -180,11 +180,11 @@ def money():
             f'<div class="row"><span><b>Runner-up</b></span><span>$450</span></div>'
             f'<div class="row"><span><b>Scoring title</b> $300</span><span>{top[0]} {S[top[0]]["pf"]:.1f}, {top[1]} {S[top[1]]["pf"]:.1f}</span></div>'
             f'<div class="row"><span><b>Right Division</b> $210</span><span>Ricer, {wl("Ricer")}</span></div>'
-            f'<div class="row"><span><b>Left Division</b> $210</span><span>Schwanz, {wl("Schwanz")}, ahead of Giff on division record</span></div>'
+            f'<div class="row"><span><b>Left Division</b> $210</span><span>Schwanz, {wl("Schwanz")}, ahead of Giff on head-to-head</span></div>'
             '<div class="pot"><div class="in" style="width:80%">In: $1,600</div><div class="out" style="width:20%">Out: $400</div></div>'
             '</div>'
             f'<div class="tab"><div style="font-weight:700;margin-bottom:4px">THE BAR TAB &middot; $20 a week for high score</div>{tab}</div>'
-            f'<p class="small">Ricer, Schwanz, Derek and the Frenches have two each. Week 9 is Ricer\'s unless Monday night says otherwise.</p></section>')
+            f'<p class="small">Ricer, Schwanz, Derek and the Frenches have two each. Craig has one.</p></section>')
 
 def door():
     h = '<section id="door"><h2>The line at the door</h2><p class="dek">Giff did a stint on the door at Bull Feathers, and if he were working this one, we\'d all get in. But he isn\'t and has to play by the rules this time. Top three from each division. Records through Week 9, playoff odds from 20,000 simulations of the rest of the season, and the change since last week.</p>'
@@ -217,9 +217,9 @@ def stop(s):
 
 def three():
     return ('<section><h2>Heard at the bar</h2><p class="dek">Three things that changed.</p><ol class="three">'
-            f'<li><b>Ricer took the Right.</b> Two straight wins, the week\'s high score, and a two-game lead at {wl("Ricer")}. Division odds: {pct("Ricer","div")}.</li>'
-            f'<li><b>Chad got back in it.</b> Up 14 points to {pct("Chad")}, provided Abes doesn\'t find 75 on Monday night.</li>'
-            f'<li><b>Rusty keeps scoring and losing.</b> Second in points, {wl("Rusty")}, down 16 to {pct("Rusty")}.</li>'
+            f'<li><b>Ricer is running the Right.</b> Two straight, the week\'s high score, and a two-game lead at {wl("Ricer")}. Division odds: {pct("Ricer","div")}.</li>'
+            f'<li><b>Chad is back in it.</b> Up {chg("Chad"):.0f} to {pct("Chad")}, level with Derek at {wl("Chad")}.</li>'
+            f'<li><b>Rusty keeps scoring and losing.</b> Second in points, {wl("Rusty")}, down {-chg("Rusty"):.0f} to {pct("Rusty")}.</li>'
             '</ol></section>')
 
 def terrace():

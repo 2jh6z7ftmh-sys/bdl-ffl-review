@@ -36,12 +36,12 @@ document.getElementById('hero').innerHTML = `
     <h1 class="page">${I.title}</h1>
     <p class="lede">The league newsletter since 1991. This week's issue, plus every back issue we could find.</p>
     <div class="btns">
-      <a class="btn solid" href="${I.web || I.pdf}">Read Week ${I.wk}</a>
-      ${I.web && I.pdf ? `<a class="btn" href="${I.pdf}">PDF</a>` : ''}
+      <a class="btn solid" href="${I.web || I.pdf}" target="_blank" rel="noopener">Read Week ${I.wk}</a>
+      ${I.web && I.pdf ? `<a class="btn" href="${I.pdf}" target="_blank" rel="noopener">PDF</a>` : ''}
       <a class="btn" href="review.html">Back issues</a>
     </div>
   </div>
-  <a class="cover" href="${I.web || I.pdf}"><img src="${I.thumb}" alt="Week ${I.wk} cover"></a>`;
+  <a class="cover" href="${I.web || I.pdf}" target="_blank" rel="noopener"><img src="${I.thumb}" alt="Week ${I.wk} cover"></a>`;
 
 // standings
 const lastWk = Math.max(...D.games.filter(g => g[0] === 2026).map(g => g[1]));

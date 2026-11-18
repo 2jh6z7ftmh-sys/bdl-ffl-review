@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Owner · Bullwinkle's Dance League</title>
+<link rel="icon" href="assets/logos/derek.jpg">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/data.js"></script><script src="assets/common.js"></script>
+</head><body>
+<main id="m"></main>
+<script>
+const {D, CUR, fmt, fmt2, logo, teamCell, series, ownerGames, recStr, gameLabel, standings} = U;
+const o = new URLSearchParams(location.search).get('o');
+const m = document.getElementById('m');
+if (!CUR.includes(o)) { m.innerHTML = '<h1 class="page">Who?</h1><p class="lede"><a href="owners.html">Pick an owner.</a></p>'; }
+else {
+  document.title = `${o} · Bullwinkle's Dance League`;
+  const c = D.career[o], s26 = D.s26[o];
+  const div = D.right.includes(o) ? 'Right' : 'Left';
+  const place = standings(D.right.includes(o) ? D.right : D.left).findIndex(r => r.o === o) + 1;
+  const ord = n => n + (['th','st','nd','rd'][n] || 'th');
+  const seasons = D.seasons.filter(s => s.o === o).sort((a,b) => b.y - a.y);
+  const games = ownerGames(o).filter(g => !g.ph && g.y >= 2019);
+  const best = games.slice().sort((a,b) => b.s - a.s)[0], worst = games.slice().sort((a,b) => a.s - b.s)[0];
+  const chips = [...c.titles.map(y => `<span class="chip red">${y} Champ</span>`), ...c.ru.map(y => `<span class="chip teal">${y} Runner-up</span>`)].join('');
+  const keep = D.keepers.filter(k => k.owner === o).sort((a,b) => b.year - a.year);
+  const opp = CUR.filter(x => x !== o).map(x => ({x, s: series(o, x)})).sort((a,b) => (b.s.W-b.s.L) - (a.s.W-a.s.L));
+  const pf = p => `<span class="pf ${p.split(' ')[0]}">${p === 'In progress' ? '<i>In progress</i>' : p || ''}</span>`;
+  const g = c.reg[0]+c.reg[1]+c.reg[2];
+
+  m.innerHTML = `
+  <div class="ohead"><img src="${logo(o)}" alt="">
+    <div><div class="kicker">${div} Division · Since ${c.first}</div><h1 class="page">${o}</h1><div class="lede" style="margin:0">${D.team[o]}</div></div></div>
+  <div style="margin-top:14px">${chips}</div>
+  <div class="stats">
+    <div class="stat"><div class="v">${c.titles.length}</div><div class="k">Titles</div></div>
+    <div class="stat"><div class="v">${c.ru.length}</div><div class="k">Runner-up</div></div>
+    <div class="stat"><div class="v">${c.divs.length}</div><div class="k">Division titles</div></div>
+    <div class="stat"><div class="v">${c.pts.length}</div><div class="k">Points titles</div></div>
+    <div class="stat"><div class="v" style="font-size:24px;line-height:1.33">${recStr(...c.reg)}</div><div class="k">Regular season (${((c.reg[0]+c.reg[2]/2)/g).toFixed(3).replace(/^0/,'')})</div></div>
+    <div class="stat"><div class="v">${c.po[0]}-${c.po[1]}</div><div class="k">Playoffs</div></div>
+    <div class="stat"><div class="v">${c.missed}</div><div class="k">Missed playoffs</div></div>
+  </div>
+
+  <div class="sh"><span class="tab"><i>2026</i></span><h2>This Season</h2></div>
+  <p class="lede" style="max-width:none"><b>${recStr(s26.W,s26.L,s26.T)}</b>, ${ord(place)} in the ${div}. ${fmt(s26.PF)} points for, ${fmt(s26.PA)} against. Division ${s26.dw}-${s26.dl}.
+  <span class="form" style="margin-left:6px">${s26.res.split('').map(r => `<b class="${r}">${r}</b>`).join('')}</span></p>
+
+  <div class="g2">
+    <section>
+      <div class="sh"><span class="tab"><i>H2H</i></span><h2>Against the League</h2></div>
+      <table class="tbl"><thead><tr><th>Opponent</th><th class="n">All-time</th><th class="n hide-sm">Playoffs</th><th class="n">Streak</th></tr></thead><tbody>
+      ${opp.map(({x,s}) => `<tr><td>${teamCell(x)}</td><td class="n"><a href="records.html?a=${o}&b=${x}#h2h" style="color:${s.W>s.L?'var(--teal)':s.W<s.L?'var(--red)':'var(--ink)'}"><b>${recStr(s.W,s.L,s.T)}</b></a></td><td class="n hide-sm">${s.pW+s.pL ? s.pW+'-'+s.pL : '<span class="small">—</span>'}</td><td class="n"><span class="form"><b class="${s.streak[0]}">${s.streak[0]}</b></span>${s.streak.slice(1)}</td></tr>`).join('')}
+      </tbody></table>
+    </section>
+    <section>
+      <div class="sh"><span class="tab"><i>KEEPERS</i></span><h2>Keepers</h2></div>
+      <table class="tbl"><thead><tr><th>Year</th><th>Player</th><th class="n">Cost</th></tr></thead><tbody>
+      ${keep.length ? keep.map(k => `<tr><td>${k.year}</td><td>${k.player}</td><td class="n">${/^\d/.test(k.cost) ? '$' + parseFloat(k.cost) : '<span class="small">' + (k.cost || '—') + '</span>'}</td></tr>`).join('') : '<tr><td colspan="3" class="small">No keepers on record.</td></tr>'}
+      </tbody></table>
+      <p class="small">Keeper cost is last year's salary plus $5. Recorded since 2022, plus the 2002 franchise players.</p>
+      ${best ? `<div class="sh"><span class="tab"><i>CBS ERA</i></span><h2>Best and Worst</h2></div>
+      <table class="tbl"><tbody>
+        <tr><td>Best score</td><td class="n"><b>${fmt2(best.s)}</b> vs. ${best.opp}</td><td class="n small">${gameLabel(best)}</td></tr>
+        <tr><td>Worst score</td><td class="n"><b>${fmt2(worst.s)}</b> vs. ${worst.opp}</td><td class="n small">${gameLabel(worst)}</td></tr>
+      </tbody></table><p class="small">Since 2019.</p>` : ''}
+    </section>
+  </div>
+
+  <div class="sh"><span class="tab"><i>YEARS</i></span><h2>Season by Season</h2></div>
+  <div class="wrap"><table class="tbl"><thead><tr><th>Year</th><th class="n">W-L</th><th class="n hide-sm">PF</th><th class="n hide-sm">PA</th><th class="n">Div</th><th>Finish</th><th class="hide-sm">Awards</th></tr></thead><tbody>
+  ${seasons.map(s => `<tr><td><b>${s.y}</b></td>${s.y === 2000 || s.W === null ? `<td class="n"><span class="small">${s.y===2000?'lost':'—'}</span></td><td class="n hide-sm"></td><td class="n hide-sm"></td>` : `<td class="n">${recStr(s.W, s.L, s.T)}</td>
+    <td class="n hide-sm">${fmt2(Math.round(s.PF*10)/10)}</td><td class="n hide-sm">${fmt2(Math.round(s.PA*10)/10)}</td>`}
+    <td class="n">${s.df ? ord(s.df) : ''}</td><td>${pf(s.po === 'Not recorded' ? '' : s.po)}</td><td class="hide-sm small">${(s.aw || '').replace('Most points (reg. season)', 'Most points')}</td></tr>`).join('')}
+  </tbody></table></div><p class="small">Most 2000 regular-season scores were lost. 1990s scores came from touchdown-only scoring, so they look small next to today's.</p>`;
+}
+</script>
+</body></html>

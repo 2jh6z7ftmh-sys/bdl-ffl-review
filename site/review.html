@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>FFL Review · Bullwinkle's Dance League</title>
+<link rel="icon" href="assets/logos/derek.jpg">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/data.js"></script><script src="assets/issues.js"></script><script src="assets/common.js"></script>
+</head><body>
+<main>
+  <div class="kicker">The newsletter</div>
+  <h1 class="page">FFL Review</h1>
+  <p class="lede">Every issue, newest first. Each week has its own theme.</p>
+
+  <div class="sh"><span class="tab"><i>2026</i></span><h2>This Season</h2><span class="aside" id="count"></span></div>
+  <div class="shelf" id="cur"></div>
+
+  <div class="sh"><span class="tab"><i>VAULT</i></span><h2>The Archive</h2><span class="aside">1991 and on</span></div>
+  <div class="shelf" id="vault"></div>
+  <p class="note">Older issues from the 2000s exist as Word files and will be added. Anyone with a missing 2026 issue (Weeks 5 and 8) or an old printed copy, send it to Derek.</p>
+</main>
+<script>
+const card = (href, thumb, kick, title, fmt) => `<a class="issue" href="${href}"><div class="th"><img loading="lazy" src="${thumb}" alt=""></div>
+  <div class="wk">${kick}</div><div class="tt">${title}</div><div class="fmt">${fmt}</div></a>`;
+const cur = ISSUES.current;
+document.getElementById('count').textContent = cur.filter(i => !i.missing).length + ' issues';
+document.getElementById('cur').innerHTML = cur.map(i => i.missing
+  ? `<div class="issue missing"><div class="th">Week ${i.wk}<br>Not in the archive yet</div><div class="wk">Week ${i.wk}</div><div class="tt">${i.title}</div><div class="fmt">Missing</div></div>`
+  : card(i.web || i.pdf, i.thumb, 'Week ' + i.wk, i.title, i.web ? `Web · <span onclick="event.preventDefault();location.href='${i.pdf}'" style="text-decoration:underline">PDF</span>` : 'PDF')).join('');
+document.getElementById('vault').innerHTML = ISSUES.vault.map(i => card(i.pdf, i.thumb, i.label, i.title, i.note + ' · PDF')).join('');
+</script>
+</body></html>

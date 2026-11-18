@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Owners · Bullwinkle's Dance League</title>
+<link rel="icon" href="assets/logos/derek.jpg">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/data.js"></script><script src="assets/common.js"></script>
+</head><body>
+<main>
+  <div class="kicker">Ten owners · two divisions</div>
+  <h1 class="page">The Owners</h1>
+  <div class="sh"><span class="tab"><i>RIGHT</i></span><h2>Right Division</h2></div>
+  <div class="ogrid" id="right"></div>
+  <div class="sh"><span class="tab"><i>LEFT</i></span><h2>Left Division</h2></div>
+  <div class="ogrid" id="left"></div>
+</main>
+<script>
+const {D, logo, recStr} = U;
+const card = o => { const c = D.career[o];
+  return `<a class="ocard" href="owner.html?o=${o}"><img src="${logo(o)}" alt=""><div><div class="o">${o}</div><div class="t">${D.team[o]}</div>
+  <div class="c">Since ${c.first} · ${c.titles.length} title${c.titles.length===1?'':'s'} · ${c.divs.length} division${c.divs.length===1?'':'s'}</div></div></a>`; };
+document.getElementById('right').innerHTML = D.right.map(card).join('');
+document.getElementById('left').innerHTML = D.left.map(card).join('');
+</script>
+</body></html>

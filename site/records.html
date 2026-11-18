@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Records · Bullwinkle's Dance League</title>
+<link rel="icon" href="assets/logos/derek.jpg">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/data.js"></script><script src="assets/common.js"></script>
+</head><body>
+<main>
+  <div class="kicker">Hall of Records · 1990 to now</div>
+  <h1 class="page">The Record Book</h1>
+  <p class="lede">Every title, every division, and every head-to-head since 1990.</p>
+
+  <div class="sh"><span class="tab"><i>RINGS</i></span><h2>Championships</h2></div>
+  <div class="banners" id="rings"></div>
+
+  <div class="sh" id="career"><span class="tab"><i>CAREER</i></span><h2>Career Records</h2><span class="aside"><label><input type="checkbox" id="former"> Show former owners</label></span></div>
+  <div class="wrap"><table class="tbl" id="ctab"></table></div>
+  <p class="small">Regular season and playoffs counted separately. Pts = seasons leading the league in regular-season points. 2026 games through Week 10 included. Click a column to sort.</p>
+
+  <div class="sh" id="h2h"><span class="tab"><i>H2H</i></span><h2>Head-to-Head</h2></div>
+  <div class="h2h-pick"><select id="ha"></select><b>vs.</b><select id="hb"></select></div>
+  <div id="hout"></div>
+  <h3 style="font:800 18px 'Barlow Condensed';text-transform:uppercase;margin:32px 0 8px">The grid</h3>
+  <p class="small" style="margin-top:0">Row owner's record against the column owner, all games. Click any cell.</p>
+  <div class="wrap"><table class="tbl grid-h2h" id="grid"></table></div>
+
+  <div class="sh" id="seasons"><span class="tab"><i>YEARS</i></span><h2>Season by Season</h2></div>
+  <div class="wrap"><table class="tbl" id="stab"></table></div>
+  <p class="small">Most points has been paid since 2006; earlier leaders are computed from the scores. Several early finals survive only as a winner, so no score is shown.</p>
+
+  <div class="sh" id="games"><span class="tab"><i>GAMES</i></span><h2>Game Records</h2></div>
+  <div class="wrap"><table class="tbl" id="gtab"></table></div>
+  <div class="g3" style="margin-top:28px">
+    <div><h3 style="font:800 18px 'Barlow Condensed';text-transform:uppercase;margin:0 0 8px">Top scores</h3><table class="tbl" id="t-high"></table></div>
+    <div><h3 style="font:800 18px 'Barlow Condensed';text-transform:uppercase;margin:0 0 8px">Biggest blowouts</h3><table class="tbl" id="t-blow"></table></div>
+    <div><h3 style="font:800 18px 'Barlow Condensed';text-transform:uppercase;margin:0 0 8px">Closest games</h3><table class="tbl" id="t-close"></table></div>
+  </div>
+  <p class="small">Top-ten lists cover the CBS decimal era, 2019 on. Scoring rules have changed a lot since 1990 (teams used to score in the 30s), so older scores aren't comparable.</p>
+</main>
+<script>
+const {D, CUR, fmt, fmt2, teamCell, series, recStr, gameLabel} = U;
+const FORMER = ['Woody','Marv','Downs','Chewy','Jim','Rick'];
+
+// rings
+const cnt = {};
+D.champs.forEach(c => { if (c.final !== '' && c.champ_o && c.champ !== 'in progress') (cnt[c.champ_o] = cnt[c.champ_o] || []).push(c.y); });
+delete cnt['in'];
+document.getElementById('rings').innerHTML = Object.entries(cnt).sort((a,b) => b[1].length - a[1].length || a[1][0] - b[1][0]).map(([o,ys],i) =>
+  `<a class="banner${CUR.includes(o)?'':' ink'}" href="${CUR.includes(o)?'owner.html?o='+o:'#seasons'}"><div class="n">${ys.length}</div><div class="w">${o}</div><div class="y">${ys.map(y=>"'"+String(y).slice(2)).join(' ')}</div></a>`).join('');
+
+// career table
+let sortKey = 'titles', sortDir = -1;
+function careerRows() {
+  const owners = CUR.concat(document.getElementById('former').checked ? FORMER : []);
+  return owners.map(o => { const c = D.career[o]; const g = c.reg[0]+c.reg[1]+c.reg[2];
+    return {o, c, seasons: c.seasons, pct: g ? (c.reg[0]+c.reg[2]/2)/g : 0, pw: c.po[0], titles: c.titles.length, ru: c.ru.length, divs: c.divs.length, pts: c.pts.length, missed: c.missed, first: c.first}; });
+}
+function drawCareer() {
+  const rows = careerRows().sort((a,b) => sortDir * ((a[sortKey] - b[sortKey]) || (a.ru - b.ru) * 0 || (b.pct - a.pct) * -sortDir));
+  const H = [['o','Owner'],['first','Since'],['seasons','Yrs'],['pct','Reg. season'],['pw','Playoffs'],['titles','Titles'],['ru','Runner-up'],['divs','Div'],['pts','Pts'],['missed','Missed PO']];
+  document.getElementById('ctab').innerHTML = `<thead><tr>${H.map(([k,t]) => `<th class="sort${k==='o'?'':' n'}" data-k="${k}">${t}${k===sortKey?(sortDir<0?' ▾':' ▴'):''}</th>`).join('')}</tr></thead><tbody>${rows.map(r =>
+    `<tr${CUR.includes(r.o)?'':' style="color:var(--ink2)"'}><td>${teamCell(r.o, CUR.includes(r.o) ? D.team[r.o] : 'Former owner')}</td><td class="n">${r.first}</td><td class="n">${r.seasons}</td>
+    <td class="n">${recStr(...r.c.reg)} <span class="small">${r.pct.toFixed(3).replace(/^0/,'')}</span></td><td class="n">${r.c.po[0]}-${r.c.po[1]}</td>
+    <td class="n"><b>${r.titles}</b></td><td class="n">${r.ru}</td><td class="n">${r.divs}</td><td class="n">${r.pts}</td><td class="n">${r.missed}</td></tr>`).join('')}</tbody>`;
+  document.querySelectorAll('#ctab th.sort').forEach(th => th.onclick = () => { const k = th.dataset.k; if (k === 'o') return; if (k === sortKey) sortDir *= -1; else { sortKey = k; sortDir = -1; } drawCareer(); });
+}
+document.getElementById('former').onchange = drawCareer; drawCareer();
+
+// head to head
+const ha = document.getElementById('ha'), hb = document.getElementById('hb');
+ha.innerHTML = hb.innerHTML = CUR.map(o => `<option>${o}</option>`).join('');
+const qs = new URLSearchParams(location.search);
+ha.value = qs.get('a') || 'Ricer'; hb.value = qs.get('b') || 'Rusty';
+function drawH2H() {
+  const a = ha.value, b = hb.value, out = document.getElementById('hout');
+  if (a === b) { out.innerHTML = '<p class="lede" style="margin-top:20px">Pick two different owners. Nobody has played himself since a 1992 data-entry error.</p>'; return; }
+  const s = series(a,b), real = s.games.filter(g => !g.ph);
+  const wins = real.filter(g => g.r==='W').sort((x,y) => (y.s-y.os)-(x.s-x.os))[0];
+  const loss = real.filter(g => g.r==='L').sort((x,y) => (x.s-x.os)-(y.s-y.os))[0];
+  const close = real.filter(g => g.r!=='T').sort((x,y) => Math.abs(x.s-x.os)-Math.abs(y.s-y.os))[0];
+  const po = s.games.filter(g => g.t !== 'reg');
+  const last = s.games.slice(-8).reverse();
+  const strk = s.streak ? (s.streak[0]==='W' ? `${a} has won ${s.streak.slice(1)} straight` : s.streak[0]==='L' ? `${b} has won ${s.streak.slice(1)} straight` : 'Last meeting was a tie') : '';
+  const gm = g => `${g.s > g.os ? `<b>${fmt2(g.s)}</b>-${fmt2(g.os)}` : `${fmt2(g.s)}-<b>${fmt2(g.os)}</b>`} · ${gameLabel(g)}`;
+  out.innerHTML = `<div class="h2h-big">
+      <div><div class="v${s.W>s.L?' lead':''}">${s.W}</div><div class="o">${a}</div></div>
+      <div class="small">${s.T ? s.T + (s.T>1?' ties':' tie') + '<br>' : ''}${s.games.length} games<br>since ${s.games[0]?.y ?? '-'}</div>
+      <div><div class="v${s.L>s.W?' lead':''}">${s.L}</div><div class="o">${b}</div></div></div>
+    <p style="text-align:center;margin:0 0 20px" class="small">Regular season ${recStr(s.rW,s.rL,s.rT)} · Playoffs ${s.pW}-${s.pL}${strk ? ' · ' + strk : ''}</p>
+    <div class="g2">
+      <table class="tbl"><tbody>
+        ${wins ? `<tr><td>${a}'s biggest win</td><td class="n">${gm(wins)}</td></tr>` : ''}
+        ${loss ? `<tr><td>${b}'s biggest win</td><td class="n">${gm(loss)}</td></tr>` : ''}
+        ${close ? `<tr><td>Closest game</td><td class="n">${gm(close)}</td></tr>` : ''}
+        <tr><td>Playoff meetings</td><td class="n">${po.length ? po.map(g => `${g.y} ${g.t==='Final'?'Final':g.t} (${g.r==='W'?a:b})`).join(', ') : 'None'}</td></tr>
+      </tbody></table>
+      <table class="tbl"><thead><tr><th>Last ${last.length} meetings</th><th class="n">${a}–${b}</th></tr></thead><tbody>
+        ${last.map(g => `<tr><td>${gameLabel(g)}</td><td class="n"><span class="form"><b class="${g.r}">${g.r}</b></span> ${g.ph ? '<span class="small">score not preserved</span>' : fmt2(g.s)+'-'+fmt2(g.os)}</td></tr>`).join('')}
+      </tbody></table>
+    </div>`;
+  history.replaceState(null, '', `?a=${a}&b=${b}#h2h`);
+}
+ha.onchange = hb.onchange = drawH2H; drawH2H();
+
+// grid
+document.getElementById('grid').innerHTML = `<thead><tr><th></th>${CUR.map(o => `<th>${o}</th>`).join('')}</tr></thead><tbody>${CUR.map(r =>
+  `<tr><th style="text-align:left">${r}</th>${CUR.map(c => { if (r===c) return '<td class="self"></td>'; const s = series(r,c);
+    return `<td class="${s.W>s.L?'up':s.W<s.L?'dn':''}" data-a="${r}" data-b="${c}">${recStr(s.W,s.L,s.T)}</td>`; }).join('')}</tr>`).join('')}</tbody>`;
+document.querySelectorAll('#grid td[data-a]').forEach(td => td.onclick = () => { ha.value = td.dataset.a; hb.value = td.dataset.b; drawH2H(); document.getElementById('h2h').scrollIntoView({behavior:'smooth'}); });
+
+// season by season
+const nm = (raw, o) => !raw ? '' : (CUR.includes(o) ? `<a href="owner.html?o=${o}">${o}</a>` : `<span style="color:var(--ink2)">${o}</span>`);
+document.getElementById('stab').innerHTML = `<thead><tr><th>Year</th><th>Champion</th><th>Runner-up</th><th class="n">Final</th><th class="hide-sm">Right</th><th class="hide-sm">Left</th><th class="hide-sm">Most pts</th></tr></thead><tbody>${D.champs.slice().reverse().filter(c => c.y < 2026).map(c =>
+  `<tr><td><b>${c.y}</b></td><td><b>${nm(c.champ, c.champ_o)}</b></td><td>${nm(c.ru, c.ru_o)}</td><td class="n">${/\d-\d/.test(c.final) ? c.final.replace('-', '–') : '<span class="small">—</span>'}</td>
+  <td class="hide-sm">${nm(c.right, c.right_o)}</td><td class="hide-sm">${nm(c.left, c.left_o)}</td><td class="hide-sm">${nm(c.pts, c.pts_o)}</td></tr>`).join('')}</tbody>`;
+
+// game records (verified list)
+const GR = [
+  ['Highest score, regular season', 'Derek 200.32 vs. Tom', '2023 Wk 5'],
+  ['Highest score, playoffs', 'Craig 185.26 vs. Frenches', '2024 Quarterfinal'],
+  ['Largest margin', 'Frenches 165.84, Rusty 71.58 (94.26)', '2024 Wk 7'],
+  ['Only shutout', 'Derek 32, Ricer 0', '1993 Wk 15'],
+  ['Lowest score, CBS era', 'Craig 37 vs. Ricer', '2022 Wk 6'],
+  ['Closest final', 'Craig 60, Ricer 59', '2011 Final'],
+  ['Other one- or two-point finals', 'Marv 49-47 Rusty · Tom 92-90 Giff', '2001 · 2021'],
+  ['Single-digit scores', 'Rusty 3 (twice, both vs. Derek) · Downs 2 vs. Giff', '1996, 1998 · 1996'],
+  ['Longest series', '', '']
+];
+let L = null; for (let i=0;i<CUR.length;i++) for (let j=i+1;j<CUR.length;j++) { const s = series(CUR[i],CUR[j]); if (!L || s.games.length > L.n) L = {a:CUR[i], b:CUR[j], n:s.games.length, s}; }
+GR[GR.length-1] = ['Longest series', `${L.a} vs. ${L.b}, ${L.n} games (${L.s.W>=L.s.L ? L.a+' '+recStr(L.s.W,L.s.L,L.s.T) : L.b+' '+recStr(L.s.L,L.s.W,L.s.T)})`, 'Since 1991'];
+document.getElementById('gtab').innerHTML = `<tbody>${GR.map(r => `<tr><td>${r[0]}</td><td><b>${r[1]}</b></td><td class="n small">${r[2]}</td></tr>`).join('')}</tbody>`;
+const lab = d => `${d.y} ${d.t==='reg' ? 'Wk '+d.w : (d.t==='Final'?'Final':d.t)}`;
+document.getElementById('t-high').innerHTML = `<tbody>${D.rec.high.map(d => `<tr><td>${d.o} <span class="small">vs. ${d.opp}</span></td><td class="n"><b>${fmt2(d.s)}</b></td><td class="n small">${lab(d)}</td></tr>`).join('')}</tbody>`;
+document.getElementById('t-blow').innerHTML = `<tbody>${D.rec.blow.map(d => `<tr><td>${d.o} <span class="small">over ${d.opp}</span></td><td class="n"><b>${fmt2(Math.round((d.s-d.os)*100)/100)}</b></td><td class="n small">${lab(d)}</td></tr>`).join('')}</tbody>`;
+document.getElementById('t-close').innerHTML = `<tbody>${D.rec.close.map(d => `<tr><td>${d.o} <span class="small">over ${d.opp}</span></td><td class="n"><b>${fmt2(d.s)}-${fmt2(d.os)}</b></td><td class="n small">${lab(d)}</td></tr>`).join('')}</tbody>`;
+if (location.hash) setTimeout(() => document.querySelector(location.hash)?.scrollIntoView(), 50);
+</script>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Bullwinkle's Dance League</title>
+<link rel="icon" href="assets/logos/derek.jpg">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/data.js"></script><script src="assets/issues.js"></script><script src="assets/common.js"></script>
+</head><body>
+<main>
+  <section class="hero" id="hero"></section>
+
+  <div class="dyk" id="dyk"><span class="lbl">Did you know</span><p id="dyk-t"></p><button id="dyk-b">Another</button></div>
+
+  <div class="g2">
+    <section>
+      <div class="sh"><span class="tab"><i id="wk-tab">WK</i></span><h2>This Week</h2><span class="aside">All-time series</span></div>
+      <div id="matchups"></div>
+    </section>
+    <section>
+      <div class="sh"><span class="tab"><i>2026</i></span><h2>Standings</h2><span class="aside" id="thru"></span></div>
+      <div id="standings"></div>
+      <p class="small">Top three in each division make the playoffs. Division winners get a bye. Dashed line is the cut.</p>
+    </section>
+  </div>
+
+  <div class="sh"><span class="tab"><i>RECENT</i></span><h2>Champions</h2><span class="aside"><a href="records.html">All 36 seasons →</a></span></div>
+  <div class="banners" id="recent-champs"></div>
+</main>
+<script>
+const {D, fmt, teamCell, series, standings, recStr, logo} = U;
+const I = ISSUES.current.find(i => !i.missing);
+document.getElementById('hero').innerHTML = `
+  <div>
+    <div class="kicker">The FFL Review · Week ${I.wk}</div>
+    <h1 class="page">${I.title}</h1>
+    <p class="lede">The league newsletter since 1991. This week's issue, plus every back issue we could find.</p>
+    <div class="btns">
+      <a class="btn solid" href="${I.web || I.pdf}">Read Week ${I.wk}</a>
+      ${I.web && I.pdf ? `<a class="btn" href="${I.pdf}">PDF</a>` : ''}
+      <a class="btn" href="review.html">Back issues</a>
+    </div>
+  </div>
+  <a class="cover" href="${I.web || I.pdf}"><img src="${I.thumb}" alt="Week ${I.wk} cover"></a>`;
+
+// standings
+const lastWk = Math.max(...D.games.filter(g => g[0] === 2026).map(g => g[1]));
+document.getElementById('thru').textContent = 'Through Week ' + lastWk;
+const stTable = (name, div) => {
+  const rows = standings(div);
+  return `<div class="wrap"><table class="tbl"><thead><tr><th>${name}</th><th class="n">W-L</th><th class="n hide-sm">Div</th><th class="n">PF</th><th class="hide-sm">Last 5</th></tr></thead><tbody>
+  ${rows.map((r,i) => `<tr${i===2?' class="cut"':''}><td>${teamCell(r.o, D.team[r.o])}</td><td class="n"><b>${recStr(r.W,r.L,r.T)}</b></td><td class="n hide-sm">${r.dw}-${r.dl}</td><td class="n">${fmt(r.PF)}</td>
+  <td class="hide-sm"><span class="form">${r.res.slice(-5).split('').map(c => `<b class="${c}">${c}</b>`).join('')}</span></td></tr>`).join('')}</tbody></table></div>`;
+};
+document.getElementById('standings').innerHTML = stTable('Right', D.right) + '<div style="height:18px"></div>' + stTable('Left', D.left);
+
+// this week's games (away first, home second)
+const wk = lastWk + 1;
+document.getElementById('wk-tab').textContent = 'WK ' + wk;
+document.getElementById('matchups').innerHTML = D.week11.map(([a,h]) => {
+  const s = series(a,h), sa = D.s26[a], sh = D.s26[h];
+  const lead = s.W > s.L ? a : s.L > s.W ? h : null;
+  const big = s.W >= s.L ? `${s.W}-${s.L}${s.T?'-'+s.T:''}` : `${s.L}-${s.W}${s.T?'-'+s.T:''}`;
+  const div = (D.right.includes(a) === D.right.includes(h)) ? ' · Division game' : '';
+  return `<div class="mu">
+    <a class="side" href="owner.html?o=${a}" style="color:inherit"><img src="${logo(a)}" alt=""><div><div class="o">${a}</div><div class="rec">${recStr(sa.W,sa.L,sa.T)}</div></div></a>
+    <div class="mid"><div class="s">${big}</div><div class="l">${lead ? lead + ' leads' : 'Dead even'}<br>${s.games.length} meetings${div}</div></div>
+    <a class="side r" href="owner.html?o=${h}" style="color:inherit"><img src="${logo(h)}" alt=""><div><div class="o">${h}</div><div class="rec">${recStr(sh.W,sh.L,sh.T)}</div></div></a>
+  </div>`;
+}).join('') + `<p class="small">Away team on the left. Series counts regular season and playoffs. <a href="records.html#h2h">Look up any matchup →</a></p>`;
+
+// recent champions
+document.getElementById('recent-champs').innerHTML = D.champs.filter(c => /^[A-Z]/.test(c.champ_o) && c.champ_o !== 'in').slice(-8).reverse().map((c,i) =>
+  `<a class="banner${i%2?' ink':''}" href="${D.cur.includes(c.champ_o) ? 'owner.html?o='+c.champ_o : 'records.html'}"><div class="n">${String(c.y).slice(2)}</div><div class="w">${c.champ_o}</div><div class="y">${c.y}</div></a>`).join('');
+
+// did you know
+const longest = (() => { let best = null; for (let i=0;i<D.cur.length;i++) for (let j=i+1;j<D.cur.length;j++) { const s = series(D.cur[i], D.cur[j]); if (!best || s.games.length > best.n) best = {a:D.cur[i], b:D.cur[j], n:s.games.length, s}; } return best; })();
+const lead = longest.s.W >= longest.s.L ? `${longest.a} leads ${recStr(longest.s.W, longest.s.L, longest.s.T)}` : `${longest.b} leads ${recStr(longest.s.L, longest.s.W, longest.s.T)}`;
+const FACTS = [
+  `The only shutout in league history: 1993, Week 15. Derek 32, Ricer 0.`,
+  `The closest final ever was 2011: Craig 60, Ricer 59. Ricer started Tim Tebow, who scored −1.`,
+  `${longest.a} vs. ${longest.b} is the longest series in the league: ${longest.n} meetings. ${lead}.`,
+  `The Frenches have played in three finals (2013, 2016, 2017). They lost all three, each time to Ricer.`,
+  `Woody played in four straight finals, 2002 through 2005, and won two of them.`,
+  `Rusty owns 11 division titles, the most in league history, and one championship (2005).`,
+  `Ricer has seven runner-up finishes. Nobody else has more than six.`,
+  `Highest regular-season score on record: Derek, 200.32 against Tom, 2023 Week 5.`,
+  `Largest margin ever: the Frenches over Rusty by 94.26 points, 2024 Week 7.`,
+  `Craig 110.98, Frenches 110.96. 2023 Week 3. Two hundredths of a point.`,
+  `Craig's 185.26 against the Frenches in the 2024 quarterfinal is the highest playoff score on record.`,
+  `Randy Moss scored 42 for Rusty in 1998 Week 13, his rookie year. Best single game in the surviving 1990s scoring sheets.`,
+  `Tom won the first title in 1990 and his third in 2021. Thirty-one years between bookends.`,
+  `The league switched from a snake draft to a $200 auction in 2021. The buy-in is also $200, so draft dollars are real money.`,
+  `The FFL Review started in 1991 as a printed sheet, delivered on foot.`
+];
+let k = Math.floor(Math.random() * FACTS.length);
+const showFact = () => document.getElementById('dyk-t').textContent = FACTS[k % FACTS.length];
+showFact(); document.getElementById('dyk-b').onclick = () => { k++; showFact(); };
+</script>
+</body></html>

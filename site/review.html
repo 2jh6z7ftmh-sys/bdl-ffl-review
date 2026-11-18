@@ -20,13 +20,13 @@
   <p class="note">Older issues from the 2000s exist as Word files and will be added. Anyone with a missing 2026 issue (Weeks 5 and 8) or an old printed copy, send it to Derek.</p>
 </main>
 <script>
-const card = (href, thumb, kick, title, fmt) => `<a class="issue" href="${href}" target="_blank" rel="noopener"><div class="th"><img loading="lazy" src="${thumb}" alt=""></div>
+const card = (href, thumb, kick, title, fmt) => `<a class="issue" href="${href}"><div class="th"><img loading="lazy" src="${thumb}" alt=""></div>
   <div class="wk">${kick}</div><div class="tt">${title}</div><div class="fmt">${fmt}</div></a>`;
 const cur = ISSUES.current;
 document.getElementById('count').textContent = cur.filter(i => !i.missing).length + ' issues';
 document.getElementById('cur').innerHTML = cur.map(i => i.missing
   ? `<div class="issue missing"><div class="th">Week ${i.wk}<br>Not in the archive yet</div><div class="wk">Week ${i.wk}</div><div class="tt">${i.title}</div><div class="fmt">Missing</div></div>`
-  : card(i.web || i.pdf, i.thumb, 'Week ' + i.wk, i.title, i.web ? `Web · <span onclick="event.preventDefault();event.stopPropagation();window.open('${i.pdf}','_blank')" style="text-decoration:underline">PDF</span>` : 'PDF')).join('');
-document.getElementById('vault').innerHTML = ISSUES.vault.map(i => card(i.pdf, i.thumb, i.label, i.title, i.note + ' · PDF')).join('');
+  : card('issue.html?id=' + i.id, i.thumb, 'Week ' + i.wk, i.title, i.web ? 'Web + PDF' : 'PDF')).join('');
+document.getElementById('vault').innerHTML = ISSUES.vault.map(i => card('issue.html?id=' + i.id, i.thumb, i.label, i.title, i.note)).join('');
 </script>
 </body></html>

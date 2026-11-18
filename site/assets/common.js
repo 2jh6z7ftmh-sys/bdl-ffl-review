@@ -2,7 +2,7 @@
 const D = window.BDL;
 const NAV = [['index.html','Home'],['review.html','FFL Review'],['records.html','Records'],['owners.html','Owners'],['rules.html','Rules']];
 const here = (location.pathname.split('/').pop() || 'index.html');
-const page = here === 'owner.html' ? 'owners.html' : here;
+const page = here === 'owner.html' ? 'owners.html' : here === 'issue.html' ? 'review.html' : here;
 document.addEventListener('DOMContentLoaded', () => {
   const m = document.createElement('header'); m.className = 'mast';
   m.innerHTML = `<div class="mast-in"><a class="brand" href="index.html"><b>Bullwinkle's</b><span>Dance League · Est. 1990</span></a>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>FFL Review · Bullwinkle's Dance League</title>
+<link rel="icon" href="assets/logos/derek.jpg">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .ihead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+  .ihead h1{font:400 clamp(30px,5vw,48px)/1 Anton,sans-serif;text-transform:uppercase;margin:4px 0 0}
+  .inav{display:flex;gap:8px;flex-wrap:wrap}
+  .inav .btn{padding:9px 12px;font-size:13px}
+  .btn.off{opacity:.35;pointer-events:none}
+  .frame{width:100%;height:calc(100vh - 150px);min-height:520px;border:1px solid var(--rule);background:#fff;display:block}
+  .pages img{display:block;width:100%;max-width:900px;margin:0 auto 14px;background:#fff;border:1px solid var(--rule);box-shadow:0 4px 14px rgba(21,18,28,.10)}
+  main.issue-main{max-width:1000px}
+  @media(max-width:640px){.frame{height:calc(100vh - 120px)}}
+</style>
+<script src="assets/data.js"></script><script src="assets/issues.js"></script><script src="assets/common.js"></script>
+</head><body>
+<main class="issue-main" id="m"></main>
+<script>
+const id = new URLSearchParams(location.search).get('id');
+const all = ISSUES.current.filter(i => !i.missing).concat(ISSUES.vault);
+const k = all.findIndex(i => i.id === id);
+const m = document.getElementById('m');
+if (k < 0) {
+  m.innerHTML = '<h1 class="page">Issue not found</h1><p class="lede"><a href="review.html">Back to the archive</a></p>';
+} else {
+  const I = all[k], newer = all[k-1], older = all[k+1];
+  const kick = I.wk ? `FFL Review · 2026 · Week ${I.wk}` : `The Archive · ${I.label}`;
+  document.title = `${I.title} · FFL Review`;
+  m.innerHTML = `
+    <div class="ihead">
+      <div><div class="kicker" style="margin:0">${kick}</div><h1>${I.title}</h1></div>
+      <div class="inav">
+        <a class="btn" href="review.html">All issues</a>
+        <a class="btn${older ? '' : ' off'}" href="${older ? 'issue.html?id=' + older.id : '#'}">← Older</a>
+        <a class="btn${newer ? '' : ' off'}" href="${newer ? 'issue.html?id=' + newer.id : '#'}">Newer →</a>
+        ${I.pdf ? `<a class="btn solid" href="${I.pdf}" download>PDF</a>` : ''}
+      </div>
+    </div>
+    ${I.web ? `<iframe class="frame" src="${I.web}" title="${I.title}"></iframe>
+               <p class="small">Reading on a phone? <a href="${I.web}">Open this issue full screen</a>; your back button returns here.</p>`
+            : `<div class="pages">${(I.pages || []).map((p,n) => `<img loading="${n < 2 ? 'eager' : 'lazy'}" src="issues/pages/${I.id}/${p}" alt="Page ${n+1}">`).join('')}</div>`}
+    <div class="inav" style="justify-content:center;margin-top:20px">
+      <a class="btn${older ? '' : ' off'}" href="${older ? 'issue.html?id=' + older.id : '#'}">← Older</a>
+      <a class="btn" href="review.html">All issues</a>
+      <a class="btn${newer ? '' : ' off'}" href="${newer ? 'issue.html?id=' + newer.id : '#'}">Newer →</a>
+    </div>`;
+}
+</script>
+</body></html>

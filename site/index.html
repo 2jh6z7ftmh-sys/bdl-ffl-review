@@ -26,6 +26,9 @@
 
   <div class="sh"><span class="tab"><i>RECENT</i></span><h2>Champions</h2><span class="aside"><a href="records.html">All 36 seasons →</a></span></div>
   <div class="banners" id="recent-champs"></div>
+
+  <div class="sh"><span class="tab"><i>VAULT</i></span><h2>From the Archive</h2><span class="aside"><a href="review.html">The whole shelf →</a></span></div>
+  <div class="shelf" id="vault"></div>
 </main>
 <script>
 const {D, fmt, teamCell, series, standings, recStr, logo} = U;
@@ -72,6 +75,12 @@ document.getElementById('matchups').innerHTML = D.week11.map(([a,h]) => {
 // recent champions
 document.getElementById('recent-champs').innerHTML = D.champs.filter(c => /^[A-Z]/.test(c.champ_o) && c.champ_o !== 'in').slice(-8).reverse().map((c,i) =>
   `<a class="banner${i%2?' ink':''}" href="${D.cur.includes(c.champ_o) ? 'owner.html?o='+c.champ_o : 'records.html'}"><div class="n">${String(c.y).slice(2)}</div><div class="w">${c.champ_o}</div><div class="y">${c.y}</div></a>`).join('');
+
+// from the archive
+const pick = ['2001-wk03','2005-final','2006-right','1991-wk01','1994-2001-results'];
+const pool = [...ISSUES.vault, ...(ISSUES.sheets || [])];
+document.getElementById('vault').innerHTML = pick.map(id => pool.find(i => i.id === id)).filter(Boolean).map(i =>
+  `<a class="issue" href="issue.html?id=${i.id}"><div class="th"><img loading="lazy" src="${i.thumb}" alt=""></div><div class="wk">${i.label}</div><div class="tt">${i.title}</div></a>`).join('');
 
 // did you know
 const longest = (() => { let best = null; for (let i=0;i<D.cur.length;i++) for (let j=i+1;j<D.cur.length;j++) { const s = series(D.cur[i], D.cur[j]); if (!best || s.games.length > best.n) best = {a:D.cur[i], b:D.cur[j], n:s.games.length, s}; } return best; })();

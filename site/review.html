@@ -5,28 +5,89 @@
 <title>FFL Review · Bullwinkle's Dance League</title>
 <link rel="icon" href="assets/logos/derek.jpg">
 <link rel="stylesheet" href="assets/site.css">
+<style>
+  .tally{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 6px}
+  @media(max-width:700px){.tally{grid-template-columns:repeat(2,1fr)}}
+  .bars .row{display:grid;grid-template-columns:52px 1fr 128px;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid var(--rule);font-size:14px}
+  .bars .bar{height:16px;background:var(--rule);position:relative}
+  .bars .bar i{position:absolute;inset:0 auto 0 0;background:var(--red)}
+  .bars .row b{font:800 15px 'Barlow Condensed',sans-serif;text-transform:uppercase}
+  .quote{border-left:4px solid var(--red);padding:6px 0 6px 16px;margin:0 0 16px;font:italic 18px/1.45 Georgia,serif;color:var(--ink)}
+  .quote cite{display:block;font:700 12px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-style:normal;margin-top:8px}
+  .timeline{border-left:3px solid var(--ink);margin:0 0 0 8px;padding-left:18px}
+  .timeline div{position:relative;margin:0 0 14px}
+  .timeline div:before{content:"";position:absolute;left:-26px;top:5px;width:13px;height:13px;background:var(--red);border-radius:50%}
+  .timeline b{font:800 16px 'Barlow Condensed',sans-serif;text-transform:uppercase;margin-right:6px}
+</style>
 <script src="assets/data.js"></script><script src="assets/issues.js"></script><script src="assets/common.js"></script>
 </head><body>
 <main>
-  <div class="kicker">The newsletter</div>
+  <div class="kicker">The newsletter · since 1991</div>
   <h1 class="page">FFL Review</h1>
-  <p class="lede">Every issue, newest first. Each week has its own theme.</p>
+  <p class="lede">Every issue we have, from the hand-written 1991 sheets to this week. Each 2026 issue has its own theme.</p>
+  <div class="tally" id="tally"></div>
 
   <div class="sh"><span class="tab"><i>2026</i></span><h2>This Season</h2><span class="aside" id="count"></span></div>
   <div class="shelf" id="cur"></div>
 
-  <div class="sh"><span class="tab"><i>VAULT</i></span><h2>The Archive</h2><span class="aside">1991 and on</span></div>
+  <div class="g2" style="margin-top:12px">
+    <section>
+      <div class="sh"><span class="tab"><i>$20</i></span><h2>The Weekly Tab</h2><span class="aside">2026 high score, by week</span></div>
+      <div class="bars" id="tab"></div>
+      <p class="small" id="tabnote"></p>
+    </section>
+    <section>
+      <div class="sh"><span class="tab"><i>THEMES</i></span><h2>The 2026 Run</h2></div>
+      <div class="timeline" id="themes"></div>
+    </section>
+  </div>
+
+  <div class="sh"><span class="tab"><i>VAULT</i></span><h2>The Archive</h2><span class="aside">1991–2007</span></div>
+  <div class="g2" style="margin-bottom:18px">
+    <div>
+      <p class="quote">After starting the season 0-2 for the third straight year, the Washington Island Ferries announced a complete overhaul of their front office personnel.<cite>FFL Review, Week 3, 2001</cite></p>
+    </div>
+    <div>
+      <p class="quote">It would fit right in with the organization's long standing motto: "logic is for losers."<cite>On the Right, 2006 draft preview, on Kodiak</cite></p>
+    </div>
+  </div>
   <div class="shelf" id="vault"></div>
-  <p class="note">Older issues from the 2000s exist as Word files and will be added. Anyone with a missing 2026 issue (Weeks 5 and 8) or an old printed copy, send it to Derek.</p>
+
+  <div class="sh"><span class="tab"><i>STATS</i></span><h2>Stat Sheets &amp; Draft Docs</h2><span class="aside">The old paperwork</span></div>
+  <div class="shelf" id="sheets"></div>
+  <p class="note">The early-2000s issues ran as web posts and Word files; they're shown here as they were written. Anyone with a missing issue (2026 Weeks 5 and 8, or anything from the 1990s), send it to Derek.</p>
 </main>
 <script>
+const {D, fmt} = U;
 const card = (href, thumb, kick, title, fmt) => `<a class="issue" href="${href}"><div class="th"><img loading="lazy" src="${thumb}" alt=""></div>
   <div class="wk">${kick}</div><div class="tt">${title}</div><div class="fmt">${fmt}</div></a>`;
-const cur = ISSUES.current;
-document.getElementById('count').textContent = cur.filter(i => !i.missing).length + ' issues';
+const cur = ISSUES.current, vault = ISSUES.vault, sheets = ISSUES.sheets || [];
+const have = cur.filter(i => !i.missing);
+document.getElementById('count').textContent = have.length + ' issues';
+const years = new Set([...vault, ...sheets].map(i => i.year)); years.add(2026);
+const pages = [...have, ...vault, ...sheets].reduce((n,i) => n + (i.pages ? i.pages.length : 1), 0);
+document.getElementById('tally').innerHTML = [
+  [have.length + vault.length, 'Issues in the archive'], [years.size, 'Seasons covered'], [pages, 'Pages'], ['1991', 'First issue']
+].map(([v,k]) => `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`).join('');
+
 document.getElementById('cur').innerHTML = cur.map(i => i.missing
   ? `<div class="issue missing"><div class="th">Week ${i.wk}<br>Not in the archive yet</div><div class="wk">Week ${i.wk}</div><div class="tt">${i.title}</div><div class="fmt">Missing</div></div>`
-  : card('issue.html?id=' + i.id, i.thumb, 'Week ' + i.wk, i.title, i.web ? 'Web + PDF' : 'PDF')).join('');
-document.getElementById('vault').innerHTML = ISSUES.vault.map(i => card('issue.html?id=' + i.id, i.thumb, i.label, i.title, i.note)).join('');
+  : card('issue.html?id=' + i.id, i.thumb, 'Week ' + i.wk, i.title, i.web ? 'Web + PDF' : `PDF · ${i.pages ? i.pages.length + ' pages' : ''}`)).join('');
+document.getElementById('vault').innerHTML = vault.map(i => card('issue.html?id=' + i.id, i.thumb, i.label, i.title, i.web ? 'Original text' : (i.note || 'PDF'))).join('');
+document.getElementById('sheets').innerHTML = sheets.map(i => card('issue.html?id=' + i.id, i.thumb, i.label, i.title, `${i.note}${i.pages ? ' · ' + i.pages.length + ' pages' : ''}`)).join('');
+
+// weekly tab, computed from the 2026 scores
+const wk = {};
+for (const [y,w,t,a,sa,b,sb] of D.games) { if (y !== 2026 || t !== 'reg') continue;
+  for (const [o,s] of [[a,sa],[b,sb]]) if (!wk[w] || s > wk[w].s) wk[w] = {o, s}; }
+const weeks = Object.keys(wk).map(Number).sort((a,b) => a-b);
+const max = Math.max(...weeks.map(w => wk[w].s));
+document.getElementById('tab').innerHTML = weeks.map(w => `<div class="row"><span class="small">WK ${w}</span><div class="bar"><i style="width:${(wk[w].s/max*100).toFixed(1)}%"></i></div><span style="text-align:right"><b>${wk[w].o}</b> ${fmt(wk[w].s)}</span></div>`).join('');
+const wins = {}; weeks.forEach(w => wins[wk[w].o] = (wins[wk[w].o] || 0) + 1);
+const lead = Object.entries(wins).sort((a,b) => b[1]-a[1]);
+document.getElementById('tabnote').textContent = `Multiple winners: ${lead.filter(x => x[1] > 1).map(([o,n]) => `${o} ${n}`).join(', ')}. Each week's high score is worth $20.`;
+
+// themes
+document.getElementById('themes').innerHTML = cur.slice().reverse().map(i => `<div><b>Wk ${i.wk}</b>${i.missing ? `<span class="small">${i.title} (missing)</span>` : `<a href="issue.html?id=${i.id}">${i.title}</a>`}</div>`).join('');
 </script>
 </body></html>

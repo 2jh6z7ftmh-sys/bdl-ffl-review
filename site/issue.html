@@ -21,14 +21,14 @@
 <main class="issue-main" id="m"></main>
 <script>
 const id = new URLSearchParams(location.search).get('id');
-const all = ISSUES.current.filter(i => !i.missing).concat(ISSUES.vault);
+const all = ISSUES.current.filter(i => !i.missing).concat(ISSUES.vault, ISSUES.sheets || []);
 const k = all.findIndex(i => i.id === id);
 const m = document.getElementById('m');
 if (k < 0) {
   m.innerHTML = '<h1 class="page">Issue not found</h1><p class="lede"><a href="review.html">Back to the archive</a></p>';
 } else {
   const I = all[k], newer = all[k-1], older = all[k+1];
-  const kick = I.wk ? `FFL Review · 2026 · Week ${I.wk}` : `The Archive · ${I.label}`;
+  const kick = I.wk ? `FFL Review · 2026 · Week ${I.wk}` : (I.kind === 'stats' ? `Stat Sheets · ${I.label}` : `The Archive · ${I.label}`);
   document.title = `${I.title} · FFL Review`;
   m.innerHTML = `
     <div class="ihead">

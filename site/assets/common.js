@@ -5,7 +5,7 @@ const here = (location.pathname.split('/').pop() || 'index.html');
 const page = here === 'owner.html' ? 'owners.html' : here === 'issue.html' ? 'review.html' : here;
 document.addEventListener('DOMContentLoaded', () => {
   const m = document.createElement('header'); m.className = 'mast';
-  m.innerHTML = `<div class="mast-in"><a class="brand" href="index.html"><b>Bullwinkle's</b><span>Dance League · Est. 1990</span></a>
+  m.innerHTML = `<div class="mast-in"><a class="brand" href="index.html"><span class="crest" aria-hidden="true"><svg viewBox="0 0 64 44"><path d="M24 20C15 21 6 17 3 5l5 4 2-7 3 7 3-6 2 8 3-4 1 8c2 1 2 3 2 5zM40 20c9 1 18-3 21-15l-5 4-2-7-3 7-3-6-2 8-3-4-1 8c-2 1-2 3-2 5z"/><path d="M25 18h14c3 0 4 3 3 6l-3 11c-1 4-4 7-7 7s-6-3-7-7l-3-11c-1-3 0-6 3-6z"/></svg></span><span class="bw"><b>Bullwinkle's Dance League</b><span>Est. 1990 · Fantasy Football</span></span></a>
     <nav class="top">${NAV.map(([h,t]) => `<a href="${h}"${h===page?' class="on"':''}>${t}</a>`).join('')}</nav></div>`;
   document.body.prepend(m);
   const f = document.createElement('footer'); f.className = 'footer';

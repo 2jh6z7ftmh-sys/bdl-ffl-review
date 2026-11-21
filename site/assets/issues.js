@@ -43,7 +43,21 @@ window.ISSUES = {
    "id": "2026-wk08",
    "wk": 8,
    "title": "Trick or Treat",
-   "missing": true
+   "pdf": "issues/2026-wk08.pdf",
+   "thumb": "thumbs/2026-wk08-1.jpg",
+   "pages": [
+    "p-01.jpg",
+    "p-02.jpg",
+    "p-03.jpg",
+    "p-04.jpg",
+    "p-05.jpg",
+    "p-06.jpg",
+    "p-07.jpg",
+    "p-08.jpg",
+    "p-09.jpg",
+    "p-10.jpg",
+    "p-11.jpg"
+   ]
   },
   {
    "id": "2026-wk07",

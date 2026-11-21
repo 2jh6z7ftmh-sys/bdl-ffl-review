@@ -89,7 +89,24 @@ window.ISSUES = {
    "id": "2026-wk05",
    "wk": 5,
    "title": "Ricer vs. Rusty",
-   "missing": true
+   "pdf": "issues/2026-wk05.pdf",
+   "thumb": "thumbs/2026-wk05-1.jpg",
+   "pages": [
+    "p-01.jpg",
+    "p-02.jpg",
+    "p-03.jpg",
+    "p-04.jpg",
+    "p-05.jpg",
+    "p-06.jpg",
+    "p-07.jpg",
+    "p-08.jpg",
+    "p-09.jpg",
+    "p-10.jpg",
+    "p-11.jpg",
+    "p-12.jpg",
+    "p-13.jpg",
+    "p-14.jpg"
+   ]
   },
   {
    "id": "2026-wk04",

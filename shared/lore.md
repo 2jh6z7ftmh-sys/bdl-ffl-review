@@ -11,6 +11,7 @@ Stories and facts Derek has supplied, by owner. Only what's here gets printed; n
 - Housemates: Ricer, Tom, Jim and Rick shared an apartment one year; the next year Abeln, Rusty, Downs, Schwanz and Giff did (Derek thinks 510 West Washington). Mention occasionally.
 - The original FFL Review: in 1990 Derek hand-delivered printed copies to 510 West Washington, walking from Witte or Dayton Square. Use once in a while.
 - Union Terrace is "the Oasis of this whole thing." Group photo on the giant sunburst chair: `weeks/wk10-statestreet/photos/union_terrace_group.jpg`.
+- Thursdays: "we went to R&R Station every Thursday back in Madison. Chad saw Pearl Jam there." (Derek, 11/23/26; used in Week 12.)
 - Old draft rule, before the websites: try to draft a player who's already taken, shotgun a beer. Photo of Tom paying it, with Downs: `tom_downs_shotgun.jpg`.
 
 ## Derek

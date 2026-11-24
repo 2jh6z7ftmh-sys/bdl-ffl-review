@@ -23,7 +23,7 @@
 .box .row b{font:700 20px/1 'Barlow Condensed',sans-serif;font-variant-numeric:tabular-nums}
 .box .row.w b{color:var(--i-hot)}
 .box .meta{font-size:13px;color:var(--i-mute);border-top:1px solid var(--i-line);margin-top:6px;padding-top:6px}
-.hit{color:#5be38b}.miss{color:#ff6b6b}
+.hit{color:var(--i-up,#5be38b)}.miss{color:var(--i-dn,#ff6b6b)}
 .divs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:700px){.divs{grid-template-columns:1fr}}
 .st{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}
@@ -31,12 +31,12 @@
 .st td{padding:7px 6px;border-bottom:1px solid var(--i-line);white-space:nowrap}
 .st .n{text-align:right}
 .st tr.cut td{border-bottom:2px dashed var(--i-hot)}
-.st .tag{font:700 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;font-style:normal;background:var(--i-hot);color:#000;padding:3px 5px;border-radius:2px;margin-left:4px}
-.st .up{color:#5be38b}.st .dn{color:#ff6b6b}
+.st .tag{font:700 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;font-style:normal;background:var(--i-hot);color:#fff;padding:3px 5px;border-radius:2px;margin-left:4px}
+.st .up{color:var(--i-up,#5be38b)}.st .dn{color:var(--i-dn,#ff6b6b)}
 .tab{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
 .tab li{background:var(--i-card);border:1px solid var(--i-line);border-radius:4px;padding:8px 10px;display:flex;gap:8px;align-items:baseline}
 .tab span{font:700 12px/1 'Barlow Condensed',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--i-mute)}
 .tab b{flex:1}.tab em{font-style:normal;font-variant-numeric:tabular-nums;color:var(--i-hot)}
-.ix-top{position:fixed;right:14px;bottom:14px;z-index:50;font:700 12px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:10px 12px;border-radius:999px;background:var(--i-hot);color:#000!important;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.ix-top{position:fixed;right:14px;bottom:14px;z-index:50;font:700 12px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:10px 12px;border-radius:999px;background:var(--i-hot);color:#fff!important;box-shadow:0 4px 14px rgba(0,0,0,.4)}
 .ix-top:hover{text-decoration:none}
 .ix-top{opacity:0;pointer-events:none;transition:opacity .2s}.ix-top.show{opacity:1;pointer-events:auto}

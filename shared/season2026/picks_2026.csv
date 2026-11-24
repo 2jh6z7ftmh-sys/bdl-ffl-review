@@ -34,8 +34,13 @@ week,pick,opponent,proj_pick,proj_opp,confidence,winner,margin,result,source
 9,Chad,Abeln,120,109,56%,Chad,50.7,HIT,as printed
 9,Rusty,Ricer,126,119,Coin flip,Ricer,33.5,MISS,as printed
 9,Tom,Craig,119,114,Coin flip,Tom,41.7,HIT,as printed
-10,Ricer,Craig,122,113,Coin flip,,,,as printed
-10,Schwanz,Chad,128,121,Coin flip,,,,as printed
-10,Rusty,Frenches,126.0,125.9,Coin flip,,,,as printed
-10,Giff,Abeln,116,107,Coin flip,,,,as printed
-10,Derek,Tom,122,121,Coin flip,,,,as printed
+10,Ricer,Craig,122,113,Coin flip,Ricer,46.7,HIT,as printed
+10,Schwanz,Chad,128,121,Coin flip,Schwanz,50.7,HIT,as printed
+10,Rusty,Frenches,126.0,125.9,Coin flip,Rusty,23.8,HIT,as printed
+10,Giff,Abeln,116,107,Coin flip,Giff,16.1,HIT,as printed
+10,Derek,Tom,122,121,Coin flip,Derek,59.5,HIT,as printed
+11,Rusty,Derek,130,126,Coin flip,Derek,7.9,MISS,as printed
+11,Ricer,Abeln,126,108,56%,Ricer,38.1,HIT,as printed
+11,Frenches,Giff,128,117,56%,Giff,22.6,MISS,as printed
+11,Tom,Chad,121,118,Coin flip,Tom,42.8,HIT,as printed
+11,Schwanz,Craig,128,114,56%,Schwanz,61.3,HIT,as printed

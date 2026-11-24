@@ -1,5 +1,5 @@
 // Native FFL Review issues (Week 12 on): issue nav plus the blocks that fill themselves from data.js.
-// A page sets window.WEEK = {id, wk, last:[[away,home,pick],...], games:[[away,home,pick],...]} and marks
+// A page sets window.WEEK = {id, wk, last:[[away,home,pick,recap],...], games:[[away,home,pick],...]} and marks
 // containers with data-live="nav|scores|standings|tab|lows|tour|luck|streaks|through|receipts".
 // When a week's final scores go into data.js, scores, receipts, standings, the tab and the lows update on their own.
 (function(){
@@ -20,22 +20,22 @@ function nav(){
 }
 // last week's games: final score once it's in data.js, the printed pick either way
 function scores(){
-  return W.last.map(([a, h, pick]) => {
+  return W.last.map(([a, h, pick, recap]) => {
     const r = find(W.wk - 1, a, h);
     const win = r ? (r.a > r.b ? a : r.b > r.a ? h : null) : null;
     const grade = r && pick ? (pick === win ? '<b class="hit">Hit</b>' : '<b class="miss">Miss</b>') : '';
     return `<div class="box${r ? '' : ' pending'}">
       <div class="row${win === a ? ' w' : ''}">${logo(a)}<span>${NAME(a)}</span><b>${r ? f1(r.a) : '—'}</b></div>
       <div class="row${win === h ? ' w' : ''}">${logo(h)}<span>${NAME(h)}</span><b>${r ? f1(r.b) : '—'}</b></div>
-      <div class="meta">${r ? 'Final' : 'Final score goes here'}${pick ? ` · We picked ${NAME(pick)} ${grade}` : ''}</div></div>`;
+      <div class="meta">${r ? 'Final' : 'Final score goes here'}${pick ? ` · We picked ${NAME(pick)} ${grade}` : ''}</div>${r && recap ? `<p class="recap">${recap}</p>` : ''}</div>`;
   }).join('');
 }
 function standings(){
   return [['Right', D.right], ['Left', D.left]].map(([lbl, div]) => {
-    const rows = U.standings(div), top = rows[0];
+    const rows = U.standings(div), top = rows[0], clear = rows[1] && (rows[1].W < top.W || rows[1].L > top.L);
     return `<div class="div"><h4>${lbl} Division</h4><table class="st"><thead><tr><th></th><th>Team</th><th class="n">W-L</th><th class="n">GB</th><th class="n">PF</th></tr></thead><tbody>${
       rows.map((r, n) => { const gb = ((top.W - r.W) + (r.L - top.L)) / 2;
-        return `<tr class="${n === 2 ? 'cut' : ''}${n === 0 ? ' lead' : ''}"><td class="n">${n+1}</td><td>${logo(r.o)}${NAME(r.o)}${n === 0 ? ' <i class="tag">Runaway</i>' : ''}</td><td class="n">${U.recStr(r.W, r.L, r.T)}</td><td class="n">${gb ? gb : '—'}</td><td class="n">${f1(r.PF)}</td></tr>`; }).join('')
+        return `<tr class="${n === 2 ? 'cut' : ''}${n === 0 ? ' lead' : ''}"><td class="n">${n+1}</td><td>${logo(r.o)}${NAME(r.o)}${n === 0 && clear ? ' <i class="tag">Runaway</i>' : ''}</td><td class="n">${U.recStr(r.W, r.L, r.T)}</td><td class="n">${gb ? gb : '—'}</td><td class="n">${f1(r.PF)}</td></tr>`; }).join('')
     }</tbody></table></div>`;
   }).join('') + `<p class="fine">Through Week ${through}.</p>`;
 }

@@ -4,18 +4,18 @@
 <meta name="robots" content="noindex,nofollow">
 <base href="/">
 <title>Run Runaway · FFL Review Week 12 · Bullwinkle's Dance League</title>
-<meta name="description" content="FFL Review, Week 12: the hair metal issue. Week 11 box scores, the race to run away with it, and the Thanksgiving tour dates.">
+<meta name="description" content="FFL Review, Week 12: the hair metal issue. Three teams at 9-2, Week 11 box scores, and the Thanksgiving tour dates.">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Bullwinkle's Dance League">
 <meta property="og:title" content="FFL Review · Week 12 · Run Runaway">
-<meta property="og:description" content="The hair metal issue. Week 11 box scores, the race, and the Thanksgiving tour dates.">
+<meta property="og:description" content="The hair metal issue. Three teams at 9-2, Week 11 box scores, and the Thanksgiving tour dates.">
 <meta property="og:url" content="https://bullwinkles.kosiorek.com/review/2026/week-12">
 <meta property="og:image" content="https://bullwinkles.kosiorek.com/thumbs/2026-wk12-og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="FFL Review Week 12 cover: Run Runaway, the hair metal issue">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="FFL Review · Week 12 · Run Runaway">
-<meta name="twitter:description" content="The hair metal issue. Week 11 box scores, the race, and the Thanksgiving tour dates.">
+<meta name="twitter:description" content="The hair metal issue. Three teams at 9-2, Week 11 box scores, and the Thanksgiving tour dates.">
 <meta name="twitter:image" content="https://bullwinkles.kosiorek.com/thumbs/2026-wk12-og.jpg">
 <meta name="theme-color" content="#0b0910">
 <link rel="icon" href="assets/logos/derek.jpg">
@@ -79,6 +79,8 @@
 .trk .song{display:inline-block;margin-top:6px;font:700 12px/1 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);border:1px solid var(--brass);border-radius:999px;padding:5px 9px 4px}
 
 .runaway{border:1px solid var(--rule);border-radius:6px;padding:18px;background:var(--card)}
+.runaway .lede{font:700 24px/1.25 'Barlow Condensed',sans-serif;letter-spacing:.01em;margin:0 0 12px}
+.box .recap{font-size:14px;line-height:1.45;margin:8px 0 0}
 .liner{border-left:3px solid var(--brass);padding:8px 12px;margin:16px 0 0;background:var(--paper);font-size:15px;line-height:1.5;color:var(--ink2)}
 .liner b{color:var(--ink)}
 .countdown{display:flex;gap:8px;margin:14px 0}
@@ -150,13 +152,19 @@
 // Picks for Week 12 go in the third slot once the odds are run, e.g. 'Ferries 128, Schwanz 121 · coin flip'.
 window.WEEK = {
   id: '2026-wk12', wk: 12,
-  last: [['Rusty','Derek','Rusty'], ['Ricer','Abeln','Ricer'], ['Giff','Frenches','Frenches'], ['Chad','Tom','Tom'], ['Schwanz','Craig','Schwanz']],
+  last: [
+    ['Rusty','Derek','Rusty', "Dak Prescott threw four touchdowns and ran in a fifth, Tyler Bass kicked four field goals, and the Ferries held on by 7.9. Kelce, Hubbard, Mahomes and Pickens all cleared 23 for the Dog. Brock Bowers and the Vikings defense combined for zero."],
+    ['Ricer','Abeln','Ricer', "Ricer won by 38.1 and still left McConkey's 20.7 and Barkley's 13.5 on the bench. Nine wins and the habit survives. Josh Allen threw two picks for the Syndicate."],
+    ['Giff','Frenches','Frenches', "Giff's Denver back, Coleman, ran for three touchdowns and 34.9, and the Bears defense had six sacks. Kittle caught two touchdowns for the Legion. The Iceman has won five straight."],
+    ['Chad','Tom','Tom', "Javonte Williams, Bucky Irving, Tee Higgins and Xavier Worthy all scored for the Tomcats, who won by 42.8. Evans put up 22.9 on Chad's bench."],
+    ['Schwanz','Craig','Schwanz', "CeeDee Lamb 30.2, Gibbs 27.8, Stroud three touchdowns, and a Broncos defensive touchdown. The week's high and eight straight for the Night Putters. Craig started Caleb Williams (14.3) with Jared Goff (22.3) on the bench."]
+  ],
   games: [
-    ['Derek','Schwanz', null, 'Six titles against the Night Putters. Bring earplugs.'],
-    ['Giff','Rusty', null, 'The Bull Feathers bouncer works the door at the Junkyard.'],
-    ['Tom','Ricer', null, 'A Boscobel reunion. Long Island Iced Teas, mason jars, no encore.'],
-    ['Frenches','Abeln', null, 'Legion of Doom and the Syndicate. Sounds like a 1987 double bill.'],
-    ['Craig','Chad', null, 'Hold the mayo. Keep the flannel.']
+    ['Derek','Schwanz', 'Schwanz 129, Ferries 126. Coin flip.', 'Six titles against the Night Putters. Bring earplugs.'],
+    ['Giff','Rusty', 'Rusty 129, Giff 117. 56%.', 'The Bull Feathers bouncer works the door at the Junkyard.'],
+    ['Tom','Ricer', 'Ricer 125, Tom 121. Coin flip.', 'A Boscobel reunion. Long Island Iced Teas, mason jars, no encore.'],
+    ['Frenches','Abeln', 'Frenches 125, Abeln 106. 56%.', 'Legion of Doom and the Syndicate. Sounds like a 1987 double bill.'],
+    ['Craig','Chad', 'Chad 115, Craig 113. Coin flip.', 'Hold the mayo. Keep the flannel.']
   ]
 };
 </script>
@@ -173,7 +181,7 @@ window.WEEK = {
     <div class="title">Run <i>Runaway</i></div>
     <div class="sub">The Hair Metal Issue · Week 12</div>
     <ul class="coverlines">
-      <li><b>Nothin' But a Good Time?</b> Week 11, all five box scores</li>
+      <li><b>Nothin' But a Good Time:</b> three teams at 9-2</li>
       <li><b>Crazy Train:</b> the Thanksgiving weekend tour dates</li>
       <li><b>Every Rose Has Its Thorn:</b> the luck chart</li>
       <li><b>Hidden track:</b> Thursdays at the R&amp;R Station</li>
@@ -219,7 +227,11 @@ window.WEEK = {
   <section id="run">
     <header class="trk"><span class="no">A1</span><div><h2>The race</h2><span class="song">Run Runaway · Slade, 1984</span></div></header>
     <div class="runaway">
-      <div class="todo"><b>Cover story · write after Week 11</b>Who ran away this week, and who's still chasing. The tables below fill in on their own once Week 11's scores are in the data.</div>
+      <p class="lede">Three teams are 9-2. Only two get a bye.</p>
+      <p>Ricer is the runaway in the Right: two games up on the Ferries with three to play. A Barca win over Tom plus a Ferries loss to Schwanz wraps up the division this week.</p>
+      <p>The Left has no runaway, just two teams running. Giff and Schwanz are both 9-2. Schwanz has won eight straight, Giff five. They meet in Week 14 at Giff's place, which is the kind of scheduling Slade would have written a song about.</p>
+      <p>Behind them, the chase. Chad is 5-6 and holds third in the Right, with Rusty and Tom a game back at 4-7. The Frenches are 5-6 in the Left, and only Craig, at 2-9, can still catch them: Craig would have to win out and the Frenches lose out. The Syndicate are out.</p>
+      <p class="fine">Odds model (same one as all season, 20,000 sims): Ricer 89% to win the Right; the Ferries above 99% to make the playoffs; Chad 55%, Rusty 30%, Tom 16% for the last Right spot.</p>
       <div class="countdown">
         <div class="now"><b>12</b><span>This week</span></div><div><b>13</b><span>Next</span></div><div><b>14</b><span>Last call</span></div><div><b>🏆</b><span>Playoffs</span></div>
       </div>
@@ -231,27 +243,26 @@ window.WEEK = {
 
   <section id="scores">
     <header class="trk"><span class="no">A2</span><div><h2>Week 11 box scores</h2><span class="song">Nothin' But a Good Time · Poison, 1988</span></div></header>
-    <div class="todo"><b>Recaps · write after Week 11</b>One or two lines per game. Scores and the pick grades fill in from the data.</div>
     <div class="boxes" data-live="scores"></div>
   </section>
 
   <section id="tab">
     <header class="trk"><span class="no">A3</span><div><h2>The weekly $20</h2><span class="song">Here I Go Again · Whitesnake, 1987</span></div></header>
-    <p>Here they go again: Ferries, Frenches, Ricer and Schwanz have each taken the $20 twice through Week 10.</p>
+    <p>Here he goes again: Schwanz took the $20 with 153.5, his third of the season. The Ferries, Frenches and Ricer have two each.</p>
     <ul class="tab" data-live="tab"></ul>
-    <div class="todo" style="margin-top:12px"><b>Beckett Price Guide moves here</b>Banked $20s and who still owes the buy-in. Carry over from Week 11 and update from the ledger.</div>
+    <div class="todo" style="margin-top:12px"><b>Beckett Price Guide · needs the ledger</b>Banked $20s and who still owes the buy-in. The ledger isn't in the repo, so this stays open until it's updated.</div>
   </section>
 
   <section id="low">
     <header class="trk"><span class="no">A4</span><div><h2>Low score of the week</h2><span class="song">Down Boys · Warrant, 1989</span></div></header>
-    <div class="todo"><b>The Week 11 low · write after Week 11</b>One line for whoever brought the lowest score to the show. Every week's low is below.</div>
+    <p>Chad, 76.4, the low for the second week running. The Syndicate's 82.1 was next.</p>
     <ul class="tab" data-live="lows"></ul>
   </section>
 
   <section id="picks">
     <header class="trk"><span class="no">A5</span><div><h2>Picks and receipts</h2><span class="song">Don't Close Your Eyes · Kix, 1988</span></div></header>
-    <p>Last week's picks are graded on the box scores above. The picks went 5-for-5 in Week 10, and they're 26-14 through Week 10.</p>
-    <div class="todo"><b>Week 12 bold predictions · after the odds</b>Picks for each game go in the tour dates below.</div>
+    <p>Week 11 went 3-for-5. The coin flip on Rusty and the 56% call on the Frenches both missed. The picks are 29-16 on the season.</p>
+    <p>Week 12 picks are on the tour dates below: projected points, then how often a gap that size has picked the winner since 2005.</p>
   </section>
 
   <section id="tour">

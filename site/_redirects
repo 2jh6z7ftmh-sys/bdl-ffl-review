@@ -1,0 +1,2 @@
+# Clean issue links: /review/2026/week-9, /review/2001/week-3, /review/2006/left. issue.html reads the path.
+/review/:year/:slug  /issue.html  200

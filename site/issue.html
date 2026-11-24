@@ -2,6 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<base href="/">
 <title>FFL Review · Bullwinkle's Dance League</title>
 <link rel="icon" href="assets/logos/derek.jpg">
 <link rel="stylesheet" href="assets/site.css">
@@ -20,9 +21,12 @@
 </head><body>
 <main class="issue-main" id="m"></main>
 <script>
-const id = new URLSearchParams(location.search).get('id');
 const all = ISSUES.current.filter(i => !i.missing).concat(ISSUES.vault, ISSUES.sheets || []);
-const k = all.findIndex(i => i.id === id);
+const qid = new URLSearchParams(location.search).get('id');
+const path = location.pathname.replace(/\/+$/, '');
+const k = qid ? all.findIndex(i => i.id === qid) : all.findIndex(i => U.issueUrl(i.id) === path);
+// old issue.html?id= links still work; show the clean address so it can be copied and texted
+if (qid && k >= 0) history.replaceState(null, '', U.issueUrl(qid));
 const m = document.getElementById('m');
 if (k < 0) {
   m.innerHTML = '<h1 class="page">Issue not found</h1><p class="lede"><a href="review.html">Back to the archive</a></p>';
@@ -35,8 +39,8 @@ if (k < 0) {
       <div><div class="kicker" style="margin:0">${kick}</div><h1>${I.title}</h1></div>
       <div class="inav">
         <a class="btn" href="review.html">All issues</a>
-        <a class="btn${older ? '' : ' off'}" href="${older ? 'issue.html?id=' + older.id : '#'}">← Older</a>
-        <a class="btn${newer ? '' : ' off'}" href="${newer ? 'issue.html?id=' + newer.id : '#'}">Newer →</a>
+        <a class="btn${older ? '' : ' off'}" href="${older ? U.issueUrl(older.id) : '#'}">← Older</a>
+        <a class="btn${newer ? '' : ' off'}" href="${newer ? U.issueUrl(newer.id) : '#'}">Newer →</a>
         ${I.pdf ? `<a class="btn solid" href="${I.pdf}" download>PDF</a>` : ''}
       </div>
     </div>
@@ -44,9 +48,9 @@ if (k < 0) {
                <p class="small">Reading on a phone? <a href="${I.web}">Open this issue full screen</a>; your back button returns here.</p>`
             : `<div class="pages">${(I.pages || []).map((p,n) => `<img loading="${n < 2 ? 'eager' : 'lazy'}" src="issues/pages/${I.id}/${p}" alt="Page ${n+1}">`).join('')}</div>`}
     <div class="inav" style="justify-content:center;margin-top:20px">
-      <a class="btn${older ? '' : ' off'}" href="${older ? 'issue.html?id=' + older.id : '#'}">← Older</a>
+      <a class="btn${older ? '' : ' off'}" href="${older ? U.issueUrl(older.id) : '#'}">← Older</a>
       <a class="btn" href="review.html">All issues</a>
-      <a class="btn${newer ? '' : ' off'}" href="${newer ? 'issue.html?id=' + newer.id : '#'}">Newer →</a>
+      <a class="btn${newer ? '' : ' off'}" href="${newer ? U.issueUrl(newer.id) : '#'}">Newer →</a>
     </div>`;
 }
 </script>

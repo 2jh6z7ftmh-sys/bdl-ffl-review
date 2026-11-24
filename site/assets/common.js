@@ -2,7 +2,9 @@
 const D = window.BDL;
 const NAV = [['index.html','Home'],['review.html','FFL Review'],['records.html','Records'],['owners.html','Owners'],['rules.html','Rules']];
 const here = (location.pathname.split('/').pop() || 'index.html');
-const page = here === 'owner.html' ? 'owners.html' : here === 'issue.html' ? 'review.html' : here;
+const page = here === 'owner.html' ? 'owners.html' : (here === 'issue.html' || location.pathname.startsWith('/review/')) ? 'review.html' : here;
+// clean issue link: 2026-wk09 -> /review/2026/week-9, 2006-left -> /review/2006/left (_redirects sends /review/* to issue.html)
+const issueUrl = id => '/review/' + id.replace(/^(\d{4}(?:-\d{4})?)-/, '$1/').replace(/\/wk0*(\d+)$/, '/week-$1');
 document.addEventListener('DOMContentLoaded', () => {
   const m = document.createElement('header'); m.className = 'mast';
   m.innerHTML = `<div class="mast-in"><a class="brand" href="index.html"><span class="crest" aria-hidden="true"><svg viewBox="0 0 64 44"><path d="M24 20C15 21 6 17 3 5l5 4 2-7 3 7 3-6 2 8 3-4 1 8c2 1 2 3 2 5zM40 20c9 1 18-3 21-15l-5 4-2-7-3 7-3-6-2 8-3-4-1 8c-2 1-2 3-2 5z"/><path d="M25 18h14c3 0 4 3 3 6l-3 11c-1 4-4 7-7 7s-6-3-7-7l-3-11c-1-3 0-6 3-6z"/></svg></span><span class="bw"><b>Bullwinkle's Dance League</b><span>Est. 1990 · Fantasy Football</span></span></a>
@@ -63,5 +65,5 @@ function standings(div) {
   rows.sort((a,b) => (b.pct - a.pct) || (-h2h26(a.o,b.o)) || ((b.dw-b.dl)-(a.dw-a.dl)) || (b.PF - a.PF));
   return rows;
 }
-window.U = {D, CUR, fmt, fmt2, logo, teamCell, gameLabel, recStr, series, ownerGames, standings, TYPE};
+window.U = {D, CUR, issueUrl, fmt, fmt2, logo, teamCell, gameLabel, recStr, series, ownerGames, standings, TYPE};
 })();

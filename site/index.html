@@ -39,12 +39,12 @@ document.getElementById('hero').innerHTML = `
     <h1 class="page">${I.title}</h1>
     <p class="lede">The league newsletter since 1991. This week's issue, plus every back issue we could find.</p>
     <div class="btns">
-      <a class="btn solid" href="issue.html?id=${I.id}">Read Week ${I.wk}</a>
+      <a class="btn solid" href="${U.issueUrl(I.id)}">Read Week ${I.wk}</a>
       ${I.web && I.pdf ? `<a class="btn" href="${I.pdf}" download>PDF</a>` : ''}
       <a class="btn" href="review.html">Back issues</a>
     </div>
   </div>
-  <a class="cover" href="issue.html?id=${I.id}"><img src="${I.thumb}" alt="Week ${I.wk} cover"></a>`;
+  <a class="cover" href="${U.issueUrl(I.id)}"><img src="${I.thumb}" alt="Week ${I.wk} cover"></a>`;
 
 // standings
 const lastWk = Math.max(...D.games.filter(g => g[0] === 2026).map(g => g[1]));
@@ -80,7 +80,7 @@ document.getElementById('recent-champs').innerHTML = D.champs.filter(c => /^[A-Z
 const pick = ['2001-wk03','2005-final','2006-right','1991-wk01','1994-2001-results'];
 const pool = [...ISSUES.vault, ...(ISSUES.sheets || [])];
 document.getElementById('vault').innerHTML = pick.map(id => pool.find(i => i.id === id)).filter(Boolean).map(i =>
-  `<a class="issue" href="issue.html?id=${i.id}"><div class="th"><img loading="lazy" src="${i.thumb}" alt=""></div><div class="wk">${i.label}</div><div class="tt">${i.title}</div></a>`).join('');
+  `<a class="issue" href="${U.issueUrl(i.id)}"><div class="th"><img loading="lazy" src="${i.thumb}" alt=""></div><div class="wk">${i.label}</div><div class="tt">${i.title}</div></a>`).join('');
 
 // did you know
 const longest = (() => { let best = null; for (let i=0;i<D.cur.length;i++) for (let j=i+1;j<D.cur.length;j++) { const s = series(D.cur[i], D.cur[j]); if (!best || s.games.length > best.n) best = {a:D.cur[i], b:D.cur[j], n:s.games.length, s}; } return best; })();

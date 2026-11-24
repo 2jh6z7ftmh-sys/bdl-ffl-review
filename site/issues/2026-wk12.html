@@ -124,6 +124,46 @@
 .notes .thanks{columns:2;column-gap:20px;font-size:13px;color:#5d5560}
 @media(max-width:520px){.notes .thanks{columns:1}}
 .notes .rr{font:400 26px/1 Anton,sans-serif;text-transform:uppercase;color:#1a1720;margin:4px 0 8px}
+
+/* band-style lettering: free fonts (SIL Open Font License, via Google Fonts) plus effects. No logo files. */
+@font-face{font-family:Creepster;src:url(assets/fonts/creepster.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'Metal Mania';src:url(assets/fonts/metalmania.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'Kaushan Script';src:url(assets/fonts/kaushanscript.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'Pirata One';src:url(assets/fonts/pirataone.woff2) format('woff2');font-display:swap}
+@font-face{font-family:Bungee;src:url(assets/fonts/bungee.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'Bungee Shade';src:url(assets/fonts/bungeeshade.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'Cinzel Decorative';src:url(assets/fonts/cinzeldecorative.woff2) format('woff2');font-weight:900;font-display:swap}
+.band{display:inline-block;line-height:1;margin:0 0 4px;font-size:clamp(28px,8vw,40px);white-space:nowrap}
+.b-slade{font-family:'Bungee Shade',Anton,sans-serif;color:#ffd400;font-size:clamp(26px,7.4vw,38px);letter-spacing:.02em;text-shadow:0 0 14px rgba(255,212,0,.45)}
+.b-poison{font-family:Creepster,Anton,sans-serif;color:#45ff2e;font-size:clamp(34px,10vw,50px);letter-spacing:.04em;transform:rotate(-4deg);transform-origin:left bottom;text-shadow:2px 2px 0 #000,0 0 16px rgba(69,255,46,.55)}
+.b-whitesnake{font-family:'Kaushan Script',cursive;color:#fff;font-size:clamp(30px,9vw,46px);text-decoration:underline wavy #2fd26b 2px;text-underline-offset:8px;text-shadow:0 0 10px rgba(255,255,255,.5),0 0 22px rgba(41,224,255,.35)}
+.b-warrant{font-family:'Metal Mania',Anton,sans-serif;font-size:clamp(34px,10vw,50px);letter-spacing:.04em;
+  background:linear-gradient(180deg,#fff 0%,#cfd6df 40%,#4b5563 52%,#e5e9ef 70%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 0 #000) drop-shadow(0 0 10px rgba(41,224,255,.5))}
+.b-kix{font-family:Bungee,Anton,sans-serif;color:#ff2b2b;font-size:clamp(30px,9vw,44px);transform:skewX(-12deg);transform-origin:left;-webkit-text-stroke:1.5px #ffd400;text-shadow:4px 4px 0 #ffd400}
+.b-ozzy{font-family:'Pirata One',serif;color:#f1e6d0;font-size:clamp(32px,9.6vw,48px);letter-spacing:.02em;text-shadow:2px 2px 0 #8a0f0f,0 0 18px rgba(170,60,255,.55)}
+.b-whitelion{font-family:'Cinzel Decorative',serif;font-weight:900;color:#fff;font-size:clamp(24px,7vw,36px);letter-spacing:.04em;text-shadow:0 1px 0 #d9a441,0 2px 0 #b07d22,0 0 14px rgba(217,164,65,.5)}
+.b-rr{font:400 clamp(26px,7.4vw,38px)/1 Anton,sans-serif;text-transform:uppercase;color:#29e0ff;letter-spacing:.06em;text-shadow:0 0 6px #fff,0 0 18px #29e0ff}
+.trk{align-items:flex-start}.trk .no{margin-top:6px}
+.trk h2{font-size:clamp(24px,6.4vw,38px)!important}
+
+/* the bill: every band on the issue, in its own lettering */
+.bill{margin-top:28px;text-align:center;border:3px double var(--zap);padding:18px 10px 14px;background:
+  radial-gradient(circle at 50% 0,rgba(255,46,136,.2),transparent 60%),#0f0b16}
+.bill .pre{font:700 12px/1 'Barlow Condensed',sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--i-mute)}
+.bill .fest{font:400 clamp(26px,7.4vw,52px)/.95 Anton,sans-serif;text-transform:uppercase;color:#fff;margin:8px 0 12px;text-shadow:3px 3px 0 var(--i-hot)}
+.bill .acts{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 18px}
+.bill .acts .band{margin:0;transform:none}
+.bill .acts .b-poison{transform:rotate(-4deg)}.bill .acts .b-kix{transform:skewX(-12deg)}
+.bill .also{margin-top:12px;font:700 13px/1.4 'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--i-mute)}
+
+/* leopard-print stripe between sections */
+.ix section+section::before{content:"";display:block;height:12px;margin:0 -16px 40px;opacity:.9;
+  background:radial-gradient(ellipse 3px 2px at 7px 6px,#a8611c 70%,transparent 75%) 0 0/24px 12px,
+             radial-gradient(ellipse 6px 4px at 7px 6px,#1b1208 70%,transparent 75%) 0 0/24px 12px,
+             radial-gradient(ellipse 3px 2px at 18px 3px,#1b1208 70%,transparent 75%) 0 0/24px 12px,
+             radial-gradient(ellipse 2px 2px at 20px 10px,#1b1208 70%,transparent 75%) 0 0/24px 12px,
+             linear-gradient(#d99a3e,#d99a3e)}
 </style>
 <script src="assets/data.js"></script><script src="assets/issues.js"></script><script src="assets/common.js"></script>
 <script>
@@ -185,10 +225,20 @@ window.WEEK = {
     </div>
   </div>
 
+  <div class="bill">
+    <div class="pre">Bullwinkle's Dance League presents</div>
+    <div class="fest">Monsters of the Dance League</div>
+    <div class="acts">
+      <span class="band b-slade">Slade</span><span class="band b-poison">Poison</span><span class="band b-whitesnake">Whitesnake</span>
+      <span class="band b-warrant">Warrant</span><span class="band b-kix">Kix</span><span class="band b-ozzy">Ozzy</span><span class="band b-whitelion">White Lion</span>
+    </div>
+    <div class="also">Also appearing: Quiet Riot · Europe · Mötley Crüe · Cinderella · Def Leppard · Skid Row</div>
+  </div>
+
   <div class="ix-nav" data-live="nav"></div>
 
   <section id="run">
-    <header class="trk"><span class="no">A1</span><div><h2 class="chrome">Run Runaway</h2><p class="by">Slade · 1984 · <em>the race to get away</em></p></div></header>
+    <header class="trk"><span class="no">A1</span><div><div class="band b-slade">Slade</div><h2>Run Runaway</h2><p class="by">Single · 1984 · <em>the race to get away</em></p></div></header>
     <div class="runaway">
       <div class="big">Run<br>Runaway</div>
       <div class="todo"><b>Cover story · write after Week 11</b>Who ran away this week, and who's still chasing. The tables below fill in on their own once Week 11's scores are in the data.</div>
@@ -202,31 +252,32 @@ window.WEEK = {
   </section>
 
   <section id="scores">
-    <header class="trk"><span class="no">A2</span><div><h2 class="chrome">Nothin' But a Good Time</h2><p class="by">Poison · Open Up and Say... Ahh!, 1988 · <em>Week 11 box scores</em></p></div></header>
+    <header class="trk"><span class="no">A2</span><div><div class="band b-poison">Poison</div><h2>Nothin' But a Good Time</h2><p class="by">Open Up and Say... Ahh! · 1988 · <em>Week 11 box scores</em></p></div></header>
     <div class="todo"><b>Recaps · write after Week 11</b>One or two lines per game. Scores and the pick grades fill in from the data.</div>
     <div class="boxes" data-live="scores"></div>
   </section>
 
   <section id="tab">
-    <header class="trk"><span class="no">A3</span><div><h2 class="chrome">Here I Go Again</h2><p class="by">Whitesnake · 1987 · <em>the weekly $20 for high score</em></p></div></header>
+    <header class="trk"><span class="no">A3</span><div><div class="band b-whitesnake">Whitesnake</div><h2>Here I Go Again</h2><p class="by">Whitesnake · 1987 · <em>the weekly $20 for high score</em></p></div></header>
+    <p>Here they go again: Ferries, Frenches, Ricer and Schwanz have each taken the $20 twice through Week 10.</p>
     <ul class="tab" data-live="tab"></ul>
     <div class="todo" style="margin-top:12px"><b>Beckett Price Guide moves here</b>Banked $20s and who still owes the buy-in. Carry over from Week 11 and update from the ledger.</div>
   </section>
 
   <section id="low">
-    <header class="trk"><span class="no">A4</span><div><h2 class="chrome">Down Boys</h2><p class="by">Warrant · Dirty Rotten Filthy Stinking Rich, 1989 · <em>low score of the week</em></p></div></header>
+    <header class="trk"><span class="no">A4</span><div><div class="band b-warrant">Warrant</div><h2>Down Boys</h2><p class="by">Dirty Rotten Filthy Stinking Rich · 1989 · <em>low score of the week</em></p></div></header>
     <div class="todo"><b>The Week 11 low · write after Week 11</b>One line for whoever brought the lowest score to the show. Every week's low is below.</div>
     <ul class="tab" data-live="lows"></ul>
   </section>
 
   <section id="picks">
-    <header class="trk"><span class="no">A5</span><div><h2 class="chrome">Don't Close Your Eyes</h2><p class="by">Kix · Blow My Fuse, 1988 · <em>picks and receipts</em></p></div></header>
+    <header class="trk"><span class="no">A5</span><div><div class="band b-kix">Kix</div><h2>Don't Close Your Eyes</h2><p class="by">Blow My Fuse · 1988 · <em>picks and receipts</em></p></div></header>
     <p>Last week's picks are graded on the box scores above. The picks went 5-for-5 in Week 10, and they're 26-14 through Week 10.</p>
     <div class="todo"><b>Week 12 bold predictions · after the odds</b>Picks for each game go in the tour dates below.</div>
   </section>
 
   <section id="tour">
-    <header class="trk"><span class="no">B1</span><div><h2 class="chrome">Crazy Train</h2><p class="by">Ozzy Osbourne · Blizzard of Ozz, 1980 · <em>Week 12 tour dates</em></p></div></header>
+    <header class="trk"><span class="no">B1</span><div><div class="band b-ozzy">Ozzy Osbourne</div><h2>Crazy Train</h2><p class="by">Blizzard of Ozz · 1980 · <em>Week 12 tour dates</em></p></div></header>
     <div class="poster">
       <div class="pre">Bullwinkle's Dance League presents</div>
       <div class="ptitle chrome">The Crazy Train<br>Tour '26</div>
@@ -237,33 +288,33 @@ window.WEEK = {
   </section>
 
   <section id="luck">
-    <header class="trk"><span class="no">B2</span><div><h2 class="chrome">Every Rose Has Its Thorn</h2><p class="by">Poison · 1988 · <em>the luck chart</em></p></div></header>
+    <header class="trk"><span class="no">B2</span><div><div class="band b-poison">Poison</div><h2>Every Rose Has Its Thorn</h2><p class="by">Open Up and Say... Ahh! · 1988 · <em>the luck chart</em></p></div></header>
     <p>"Against the league" is the record each owner would have if they played all nine others every week. Luck is the gap, in points of winning percentage. The top of the list got roses. The bottom got thorns.</p>
     <div class="card" style="padding:8px 10px"><div class="wrap"><table class="st"><thead><tr><th>Team</th><th class="n">Record</th><th class="n">Vs league</th><th class="n">Luck</th></tr></thead><tbody data-live="luck"></tbody></table></div></div>
     <p class="fine">Through Week <span data-live="through"></span>.</p>
   </section>
 
   <section id="streaks">
-    <header class="trk"><span class="no">B3</span><div><h2 class="chrome">When the Children Cry</h2><p class="by">White Lion · Pride, 1987 · <em>streaks</em></p></div></header>
-    <p>Kickstart My Heart for the hot ones. Long Cold Winter for the rest.</p>
+    <header class="trk"><span class="no">B3</span><div><div class="band b-whitelion">White Lion</div><h2>When the Children Cry</h2><p class="by">Pride · 1987 · <em>streaks</em></p></div></header>
+    <p>Mötley Crüe's "Kickstart My Heart" for the hot ones. Cinderella's "Long Cold Winter" for the rest.</p>
     <ul class="streak" data-live="streaks"></ul>
     <p class="fine">Current streaks through Week <span data-live="through"></span>.</p>
   </section>
 
   <section id="pie">
-    <header class="trk"><span class="no">B4</span><div><h2 class="chrome">Cherry Pie</h2><p class="by">Warrant · 1990 · <em>Thanksgiving lineups</em></p></div></header>
+    <header class="trk"><span class="no">B4</span><div><div class="band b-warrant">Warrant</div><h2>Cherry Pie</h2><p class="by">Cherry Pie · 1990 · <em>Thanksgiving lineups</em></p></div></header>
     <div class="card"><p style="margin:0">Week 12 starts on Thanksgiving. Anyone with a Thursday player locks at Thursday's kickoff, so set the lineup before the pie comes out. Nobody wants to be the guy with a zero on his bench and whipped cream on his phone.</p></div>
   </section>
 
   <section id="notes">
-    <header class="trk"><span class="no">B5</span><div><h2 class="chrome">Liner Notes</h2><p class="by">Hidden track · <em>back of the cassette insert</em></p></div></header>
+    <header class="trk"><span class="no">B5</span><div><div class="band b-rr">R&amp;R Station</div><h2>Liner Notes</h2><p class="by">Hidden track · <em>back of the cassette insert</em></p></div></header>
     <div class="notes">
       <h3>Thursdays, Madison</h3>
       <div class="rr">The R&amp;R Station</div>
       <p>We went to R&amp;R Station every Thursday back in Madison. Chad saw Pearl Jam there.</p>
       <p>Pearl Jam. In the hair metal issue. Somebody always brings the flannel.</p>
       <h3 style="margin-top:16px">The band would like to thank</h3>
-      <div class="thanks">Aqua Net · Witte 6B · La Bamba's, hold the mayo · the Union Terrace chairs · the Red Shed pool table · Slade, for the castle · everybody who set a lineup · Mötley Crüe, Def Leppard, Ratt, Cinderella and Skid Row, for the B-sides we didn't get to</div>
+      <div class="thanks">Aqua Net · Witte 6B · La Bamba's, hold the mayo · the Union Terrace chairs · the Red Shed pool table · Slade, for the castle · everybody who set a lineup · Ratt and Twisted Sister, who didn't make the bill</div>
       <p class="fine" style="color:#6b6257;margin-top:12px">FFL Review Vol. 37, No. 12. Recorded after Monday Night Football, Nov 23, 2026. Play it loud.</p>
     </div>
   </section>

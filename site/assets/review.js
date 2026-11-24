@@ -37,7 +37,7 @@ function standings(){
       rows.map((r, n) => { const gb = ((top.W - r.W) + (r.L - top.L)) / 2;
         return `<tr class="${n === 2 ? 'cut' : ''}${n === 0 ? ' lead' : ''}"><td class="n">${n+1}</td><td>${logo(r.o)}${NAME(r.o)}${n === 0 ? ' <i class="tag">Runaway</i>' : ''}</td><td class="n">${U.recStr(r.W, r.L, r.T)}</td><td class="n">${gb ? gb : '—'}</td><td class="n">${f1(r.PF)}</td></tr>`; }).join('')
     }</tbody></table></div>`;
-  }).join('') + `<p class="fine">Top three in each division make the playoffs (dashed line). Through Week ${through}.</p>`;
+  }).join('') + `<p class="fine">Through Week ${through}.</p>`;
 }
 const byWeek = () => { const w = {}; for (const g of reg26) { (w[g[1]] = w[g[1]] || []).push([g[3], g[4]], [g[5], g[6]]); } return w; };
 function tab(hi){

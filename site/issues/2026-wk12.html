@@ -170,6 +170,15 @@
 .b-twisted{font-family:'Bungee Shade',Anton,sans-serif;color:#ffd400;font-size:clamp(20px,6vw,38px);letter-spacing:.04em;white-space:normal;text-shadow:0 0 16px rgba(255,212,0,.5)}
 .b-ratt{font-family:'Bungee Shade',Anton,sans-serif;color:#ffd400;font-size:clamp(34px,10vw,52px);letter-spacing:.08em;text-shadow:0 0 16px rgba(255,212,0,.5)}
 .bill .acts .b-poison{transform:rotate(-4deg)}.bill .acts .b-leppard{transform:skewX(-12deg)}
+/* B5 comparison: KISS vs Rusty */
+.cmp-lede{font:700 19px/1.35 'Barlow Condensed',sans-serif!important;color:#1a1720!important;margin:0 0 12px!important}
+.cmp{border-top:2px solid #1a1720;margin-bottom:12px}
+.cmp-h,.cmp-r{display:grid;grid-template-columns:78px 1fr 1fr;gap:10px;padding:9px 0;border-bottom:1px dashed #cfc3ad;align-items:start}
+.cmp-h b{font:400 18px/1 Anton,sans-serif;text-transform:uppercase;letter-spacing:.04em;color:#ff2e88}
+.cmp-r span{font:700 11px/1.3 'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8a7f70;padding-top:2px}
+.cmp-r p{margin:0!important;font:500 14px/1.4 Barlow,sans-serif!important;color:#1a1720!important}
+.cmp-guest{font-size:14px!important;color:#5d5560!important}
+@media(max-width:380px){.cmp-h,.cmp-r{grid-template-columns:62px 1fr 1fr;gap:8px}.cmp-r p{font-size:13px!important}}
 /* B5: Rusty's season, as a band lineup on the back of the insert */
 .lineup{list-style:none;margin:6px 0 12px;padding:0}
 .lineup li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:9px 0;border-bottom:1px dashed #cfc3ad}
@@ -235,7 +244,7 @@ window.WEEK = {
     <ul class="coverlines">
       <li><b>Ricer</b> can wrap up the Right this week</li>
       <li><b>The Final Countdown:</b> Schwanz at Giff, Week 14, both 9-2</li>
-      <li><b>Rock and roll all nite:</b> Rusty is second in points and 4-7</li>
+      <li><b>Close, never No. 1:</b> Rusty and KISS</li>
       <li><b>House of Pain:</b> the Syndicate, nine straight</li>
     </ul>
     <div class="pa" aria-label="Parental advisory: explicit bench decisions"><div>Parental Advisory</div><div>Explicit</div><div>Bench Decisions</div></div>
@@ -260,7 +269,7 @@ window.WEEK = {
         <li><a href="#wk14"><span class="k">B2</span><span class="s">The Final Countdown<small>Europe · Schwanz at Giff</small></span></a></li>
         <li><a href="#luck"><span class="k">B3</span><span class="s">Every Rose Has Its Thorn<small>Poison · the luck chart</small></span></a></li>
         <li><a href="#streaks"><span class="k">B4</span><span class="s">House of Pain<small>Faster Pussycat · streaks</small></span></a></li>
-        <li><a href="#notes"><span class="k">B5</span><span class="s">Rock and Roll All Nite<small>KISS · Rusty's season</small></span></a></li>
+        <li><a href="#notes"><span class="k">B5</span><span class="s">Rock and Roll All Nite<small>KISS · close, never No. 1</small></span></a></li>
       </ol></div>
     </div>
   </div>
@@ -357,19 +366,23 @@ window.WEEK = {
   </section>
 
   <section id="notes">
-    <header class="trk"><span class="no">B5</span><div><div class="band b-kiss">KISS</div><h2>Rock and Roll All Nite</h2><p class="by">Dressed to Kill · 1975 · <em>Rusty's season</em></p></div></header>
+    <header class="trk"><span class="no">B5</span><div><div class="band b-kiss">KISS</div><h2>Rock and Roll All Nite</h2><p class="by">Alive! · 1975 · <em>Rusty's season</em></p></div></header>
     <div class="notes">
-      <h3>Hidden track · the lineup</h3>
-      <ul class="lineup">
-        <li><span class="m">Paul Stanley<small>Rhythm guitar, vocals</small></span><span class="v">1457.5</span><span class="d">Points scored, second in the league. Front and center, every week.</span></li>
-        <li><span class="m">Ace Frehley<small>Lead guitar</small></span><span class="v">66-33</span><span class="d">His record against the whole league. Only Schwanz is better.</span></li>
-        <li><span class="m">Gene Simmons<small>Bass</small></span><span class="v">2.8</span><span class="d">Points behind Schwanz for the $300 scoring title. He can smell the money.</span></li>
-        <li><span class="m">Peter Criss<small>Drums</small></span><span class="v">4-7</span><span class="d">The record. Two games out of a playoff spot.</span></li>
-        <li><span class="m">Warren DeMartini<small>Guest solo, from RATT</small></span><span class="v">−30</span><span class="d">Luck, worst in the league. Not even DeMartini can play over that.</span></li>
-      </ul>
-      <p style="margin:0">Plays all night. Loses anyway.</p>
+      <h3>Hidden track · close, never No. 1</h3>
+      <p class="cmp-lede">KISS never had a No. 1 single. Rusty has one title. Both are always in the conversation, and neither one ever closes.</p>
+      <div class="cmp">
+        <div class="cmp-h"><span></span><b>KISS</b><b>Rusty</b></div>
+        <div class="cmp-r"><span>No. 1s</span><p>No singles. No albums.</p><p>One title. Six runner-ups.</p></div>
+        <div class="cmp-r"><span>Best shot</span><p>"Beth," No. 7, sung by the drummer.</p><p>11 division titles, most of any current owner.</p></div>
+        <div class="cmp-r"><span>So close</span><p><i>Sonic Boom</i>, No. 2 album, 2009.</p><p>1457.5 points this year, No. 2, 2.8 behind Schwanz.</p></div>
+        <div class="cmp-r"><span>The anthem</span><p>"Rock and Roll All Nite," live, No. 12.</p><p>66-33 against the whole league, No. 2 behind Schwanz.</p></div>
+        <div class="cmp-r"><span>Recognition</span><p>The Rock Hall, 15 years after they were eligible.</p><p>4-7, two games out. Luck: −30, worst in the league.</p></div>
+      </div>
+      <p class="cmp-guest"><b>Guest solo: Warren DeMartini.</b> RATT's biggest hit, "Round and Round," also stopped at No. 12. Rusty knows the feeling.</p>
+      <p style="margin:0"><b>Both of them can play all night. Neither one gets to No. 1.</b></p>
     </div>
   </section>
+
 
   <div class="ix-nav" data-live="nav"></div>
 </div>

@@ -27,6 +27,8 @@ const path = location.pathname.replace(/\/+$/, '');
 const k = qid ? all.findIndex(i => i.id === qid) : all.findIndex(i => U.issueUrl(i.id) === path);
 // old issue.html?id= links still work; show the clean address so it can be copied and texted
 if (qid && k >= 0) history.replaceState(null, '', U.issueUrl(qid));
+// native issues are their own pages; send old-style links there
+if (qid && k >= 0 && all[k].native) location.replace(U.issueUrl(qid));
 const m = document.getElementById('m');
 if (k < 0) {
   m.innerHTML = '<h1 class="page">Issue not found</h1><p class="lede"><a href="review.html">Back to the archive</a></p>';

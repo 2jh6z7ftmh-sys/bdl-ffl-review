@@ -1,9 +1,18 @@
 // FFL Review archive. Newest first. To add an issue: put its files in issues/ (and page images in
 // issues/pages/<id>/ for PDF-only issues), a cover in thumbs/<id>-1.jpg, and add an entry at the top of `current`.
+// native: the issue is its own site page (Week 12 on); give it a line in _redirects too.
 // web: HTML version (shown inside the site). pdf: download. pages: page images shown on the site.
 // vault = old newsletters; sheets = old stat sheets and draft documents.
 window.ISSUES = {
  "current": [
+  {
+   "id": "2026-wk12",
+   "wk": 12,
+   "title": "Home Sweet Home",
+   "web": "issues/2026-wk12.html",
+   "native": true,
+   "thumb": "thumbs/2026-wk12-1.jpg"
+  },
   {
    "id": "2026-wk11",
    "wk": 11,

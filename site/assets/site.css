@@ -190,3 +190,5 @@ select{font:600 16px Barlow,sans-serif;padding:9px 10px;border:2px solid var(--g
 .mu .mid .s{color:var(--brass)}
 .hero .cover{transform:rotate(-2deg)}
 @media(max-width:640px){.brand .crest{width:46px;height:32px}.brand .crest svg{width:24px;height:18px}}
+@media(max-width:360px){nav.top a{padding:8px 4px;font-size:12.5px;letter-spacing:.08em}}
+.g2>*,.g3>*{min-width:0}main li,main p{overflow-wrap:anywhere}

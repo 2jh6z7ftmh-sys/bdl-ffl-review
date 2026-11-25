@@ -72,7 +72,7 @@ document.getElementById('tally').innerHTML = [
 
 document.getElementById('cur').innerHTML = cur.map(i => i.missing
   ? `<div class="issue missing"><div class="th">Week ${i.wk}<br>Not in the archive yet</div><div class="wk">Week ${i.wk}</div><div class="tt">${i.title}</div><div class="fmt">Missing</div></div>`
-  : card(U.issueUrl(i.id), i.thumb, 'Week ' + i.wk, i.title, i.web ? 'Web + PDF' : `PDF · ${i.pages ? i.pages.length + ' pages' : ''}`)).join('');
+  : card(U.issueUrl(i.id), i.thumb, 'Week ' + i.wk, i.title, i.native ? 'Web' : i.web ? 'Web + PDF' : `PDF · ${i.pages ? i.pages.length + ' pages' : ''}`)).join('');
 document.getElementById('vault').innerHTML = vault.map(i => card(U.issueUrl(i.id), i.thumb, i.label, i.title, i.web ? 'Original text' : (i.note || 'PDF'))).join('');
 document.getElementById('sheets').innerHTML = sheets.map(i => card(U.issueUrl(i.id), i.thumb, i.label, i.title, `${i.note}${i.pages ? ' · ' + i.pages.length + ' pages' : ''}`)).join('');
 

@@ -12,6 +12,15 @@
 
   <div class="dyk" id="dyk"><span class="lbl">Did you know</span><p id="dyk-t"></p><button id="dyk-b">Another</button></div>
 
+
+  <section class="hs" id="hs">
+    <div class="sh"><span class="tab"><i>$20</i></span><h2>Weekly High Score</h2><span class="aside" id="hs-aside"></span></div>
+    <div class="hs-top" id="hs-top"></div>
+    <div class="hs-slots" id="hs-slots"></div>
+    <div class="hs-board" id="hs-board"></div>
+    <p class="small">$20 a week to the high score, Weeks 1 to 14. Paid out at the end of the season.</p>
+  </section>
+
   <div class="g2">
     <section>
       <div class="sh"><span class="tab"><i id="wk-tab">WK</i></span><h2>This Week</h2><span class="aside">All-time series</span></div>
@@ -71,6 +80,39 @@ document.getElementById('matchups').innerHTML = D.week11.map(([a,h]) => {
     <a class="side r" href="owner.html?o=${h}" style="color:inherit"><img src="${logo(h)}" alt=""><div><div class="o">${h}</div><div class="rec">${recStr(sh.W,sh.L,sh.T)}</div></div></a>
   </div>`;
 }).join('') + `<p class="small">Away team on the left. Series counts regular season and playoffs. <a href="records.html#h2h">Look up any matchup →</a></p>`;
+
+
+// weekly high score: $20 a week, Weeks 1-14
+(() => {
+  const PRIZE = 20, WEEKS = 14;
+  const reg = D.games.filter(g => g[0] === 2026 && g[2] === 'reg');
+  const highs = [];
+  for (let w = 1; w <= WEEKS; w++) {
+    const sc = reg.filter(g => g[1] === w).flatMap(g => [[g[3], g[4]], [g[5], g[6]]]);
+    if (!sc.length) { highs.push({w}); continue; }
+    const top = Math.max(...sc.map(x => x[1]));
+    highs.push({w, o: sc.filter(x => x[1] === top).map(x => x[0]), s: top});
+  }
+  const won = highs.filter(h => h.o), open = WEEKS - won.length;
+  const claimed = won.length * PRIZE, left = open * PRIZE;
+  document.getElementById('hs-aside').textContent = 'Through Week ' + (won.length ? won[won.length-1].w : 0);
+  document.getElementById('hs-top').innerHTML = `
+    <div class="hs-stat"><b>$${claimed}</b><span>Claimed</span></div>
+    <div class="hs-stat on"><b>$${left}</b><span>On the table</span></div>
+    <div class="hs-stat"><b>${open}</b><span>Week${open===1?'':'s'} left</span></div>
+    <div class="hs-meter" aria-hidden="true"><i style="width:${claimed/(WEEKS*PRIZE)*100}%"></i></div>`;
+  document.getElementById('hs-slots').innerHTML = highs.map(h => h.o
+    ? `<a class="slot won" href="owner.html?o=${h.o[0]}"><span class="w">Wk ${h.w}</span><img src="${logo(h.o[0])}" alt=""><span class="o">${h.o.join(' / ')}</span><span class="p">${fmt(h.s)}</span></a>`
+    : `<div class="slot open"><span class="w">Wk ${h.w}</span><span class="d">$${PRIZE}</span><span class="o">Open</span></div>`).join('');
+  const tally = Object.fromEntries(D.cur.map(o => [o, 0]));
+  won.forEach(h => h.o.forEach(o => tally[o] += PRIZE / h.o.length));
+  const rows = D.cur.map(o => [o, tally[o]]).sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]));
+  const max = Math.max(...rows.map(r => r[1]), PRIZE);
+  const zero = rows.filter(r => !r[1]).map(r => r[0]);
+  document.getElementById('hs-board').innerHTML = rows.filter(r => r[1]).map(([o,v]) =>
+    `<a class="hsb" href="owner.html?o=${o}"><img src="${logo(o)}" alt=""><span class="o">${o}</span><span class="t"><i style="width:${v/max*100}%"></i></span><b>$${v}</b></a>`).join('')
+    + (zero.length ? `<div class="hsb none"><span class="o">Still waiting</span><span class="z">${zero.join(' · ')}</span><b>$0</b></div>` : '');
+})();
 
 // recent champions
 document.getElementById('recent-champs').innerHTML = D.champs.filter(c => /^[A-Z]/.test(c.champ_o) && c.champ_o !== 'in').slice(-8).reverse().map((c,i) =>
